@@ -9,5 +9,6 @@
   // Reset the counter
   counter(page).update(0)
   set page(numbering: "I")
+
   it
 }

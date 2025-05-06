@@ -11,21 +11,13 @@
 #import "utils/font.typ": _support-font-family
 
 #let define-config(
+  font: (:),
   twoside: false,
   info: (
-    title: (
-      title: "标 题",
-      subtitle: "副标题",
-    ),
-    authors: (
-      (
-        name: "作者",
-        email: "mail@example.com",
-      ),
-    ),
+    title: (title: "标 题", subtitle: "副标题"),
+    authors: ((name: "作者", email: "mail@example.com"),),
     version: "0.0.0",
   ),
-  font: (:),
 ) = {
   assert(
     font.keys() == _support-font-family,

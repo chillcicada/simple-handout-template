@@ -1,4 +1,4 @@
-#import "@preview/cuti:0.3.0": show-fakebold
+#import "../imports.typ": show-fakebold
 
 #let doc(
   // from entry
@@ -6,14 +6,15 @@
   // options
   margin: (:),
   lang: "zh",
-  font-fallback: false,
+  region: "zh",
+  fallback: false,
   // self
   it,
 ) = {
   // fix bold and italic
   show: show-fakebold
 
-  set text(lang: lang, fallback: font-fallback)
+  set text(lang: lang, fallback: fallback, region: region)
 
   set page(margin: margin)
 

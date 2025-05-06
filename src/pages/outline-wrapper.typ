@@ -32,7 +32,7 @@
     } else {
       assert(
         type(it) == length,
-        message: "Invalid font size length.",
+        message: "Invalid font size type.",
       )
     }
   }

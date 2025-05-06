@@ -23,9 +23,11 @@
   ]
 
   /// Render the page
-  assert(_support-size.contains(size), message: "Unsupported font size: " + size)
+  if type(size) == str { assert(_support-size.contains(size), message: "Unsupported font size: " + size) } else {
+    assert(type(size) == length, message: "Invalid font size type.")
+  }
 
-  set text(size: font-size.at(size), font: font.SongTi)
+  set text(size: if type(size) == str { font-size.at(size) } else { size }, font: font.SongTi)
 
   [
     *Fonts Display Page | Adjust the font configuration to render correctly in the PDF*
@@ -43,5 +45,6 @@
 
   for it in font-list { display-font(..it) }
 
+  // always break page to odd page after this page
   pagebreak(to: "odd")
 }

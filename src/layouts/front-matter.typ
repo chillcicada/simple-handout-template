@@ -1,7 +1,9 @@
-#import "../utils/font-size.typ": font-size
+#import "../utils/font.typ": font-size
 
 #let front-matter(
+  // from entry
   font: (:),
+  // self
   it,
 ) = {
   // Reset the counter

@@ -33,7 +33,7 @@
 #let (
   /// layouts
   doc,
-  after-cover,
+  after-cover-doc,
   front-matter,
   main-matter,
   back-matter,
@@ -71,14 +71,17 @@
   font: font-family,
 )
 
+/// Document Configuration
 #show: doc
 
+/// Font Display Page
 // #font-display()
 
 /// Cover Page
 #cover()
 
-#show: after-cover
+/// After Cover Layout, basical layout for Front Matter, Main Matter and Back Matter
+#show: after-cover-doc
 
 /// ------------ ///
 /// Front Matter ///
@@ -86,10 +89,12 @@
 
 #show: front-matter
 
+// Preface Page
 #preface()[
   #lorem(100)
 ]
 
+// Outline Page
 #outline-wrapper()
 
 /// ----------- ///
@@ -98,10 +103,11 @@
 
 #show: main-matter
 
+/// Load Chapters
 #include "chapter/chapter1.typ"
-
 #include "chapter/chapter2.typ"
-
+#include "chapter/chapter3.typ"
+#include "chapter/chapter4.typ"
 
 /// ----------- ///
 /// Back Matter ///

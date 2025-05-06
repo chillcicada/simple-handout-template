@@ -1,5 +1,4 @@
-#import "layouts/doc.typ": doc
-#import "layouts/after-cover.typ": after-cover
+#import "layouts/doc.typ": doc, after-cover-doc
 #import "layouts/front-matter.typ": front-matter
 #import "layouts/main-matter.typ": main-matter
 #import "layouts/back-matter.typ": back-matter
@@ -9,6 +8,7 @@
 #import "pages/preface.typ": preface
 #import "pages/outline-wrapper.typ": outline-wrapper
 
+#import "utils/font.typ": _support-font-family
 
 #let define-config(
   twoside: false,
@@ -27,8 +27,13 @@
   ),
   font: (:),
 ) = {
+  assert(
+    font.keys() == _support-font-family,
+    message: "Font family not supported, ensure the font family keys contain " + _support-font-family.join(", "),
+  )
+
   return (
-    /// options
+    /// entry options
     twoside: twoside,
     info: info,
     font: font,
@@ -39,7 +44,7 @@
       ..args,
     ),
     // after cover layout
-    after-cover: (..args) => after-cover(
+    after-cover-doc: (..args) => after-cover-doc(
       font: font,
       ..args,
     ),

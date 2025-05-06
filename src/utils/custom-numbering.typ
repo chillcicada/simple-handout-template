@@ -1,6 +1,6 @@
 #let custom-numbering(
   base: 1,
-  depth: 5,
+  depth: 3,
   first-level: auto,
   second-level: auto,
   third-level: auto,

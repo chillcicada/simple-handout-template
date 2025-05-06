@@ -1,4 +1,4 @@
-#import "../utils/font-size.typ": font-size
+#import "../utils/font.typ": font-size
 
 #let preface(
   font: (:),

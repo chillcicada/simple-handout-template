@@ -1,16 +1,14 @@
-#import "../utils/font-size.typ": font-size
+#import "../utils/font.typ": font-size
 
 #let cover(
+  // from entry
   info: (:),
   font: (:),
+  // options
   date: datetime.today(),
 ) = {
   /// Auxiliary function to parse the SemVer version and display it as Chinese numbering
-  let parse-semver(version) = {
-    let major = int(version.split(".").at(0))
-
-    return numbering("一", major)
-  }
+  let parse-semver-major(version) = numbering("一", int(version.split(".").at(0)))
 
   /// Render the cover page
   // Title
@@ -34,7 +32,7 @@
       #text(
         size: font-size.三号,
         weight: "regular",
-      )[（第#parse-semver(info.version)版）]
+      )[（第#parse-semver-major(info.version)版）]
     ]
   ]
 
@@ -55,7 +53,7 @@
             #info.authors.at(index).name \
           ]
           #text(size: font-size.小四, weight: "regular")[
-            #info.authors.at(index).email
+            #link("mailto:" + info.authors.at(index).email)
           ]
           #v(1em)
         ])

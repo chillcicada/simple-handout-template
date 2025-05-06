@@ -1,20 +1,24 @@
-#import "../utils/font-size.typ": font-size
+#import "../utils/font.typ": font-size
 #import "../utils/custom-numbering.typ": custom-numbering
 
 #let main-matter(
+  // from entry
   font: (:),
   twoside: false,
-  numbering: custom-numbering.with(first-level: "第一章　", depth: 3, "1.1　"),
+  // options
+  numbering-style: custom-numbering.with(first-level: "第一章　", depth: 3, "1.1　"),
   // self
   it,
 ) = {
-  // reset the counter
   pagebreak(weak: true, to: if twoside { "odd" })
 
+  // reset the counter
   counter(page).update(1)
   set page(numbering: "1")
 
-  set heading(numbering: numbering)
+  set heading(numbering: numbering-style)
+
+  show heading: set text(font: font.SongTi, size: font-size.小四, weight: "bold")
 
   show heading.where(level: 1): it => {
     pagebreak(weak: true, to: if twoside { "odd" })

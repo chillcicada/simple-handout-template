@@ -1,9 +1,11 @@
-#import "../utils/font-size.typ": font-size
+#import "../utils/font.typ": font-size, _support-size
 
 /// Font Display Page
 #let font-display(
+  // from entry
   font: (:),
-  size: font-size.小四,
+  // options
+  size: "小四",
 ) = {
   /// Auxiliary function to display fonts
   let display-font(cjk-name, latin-name) = [
@@ -21,7 +23,9 @@
   ]
 
   /// Render the page
-  set text(size: size, font: font.SongTi)
+  assert(_support-size.contains(size), message: "Unsupported font size: " + size)
+
+  set text(size: font-size.at(size), font: font.SongTi)
 
   [
     *Fonts Display Page | Adjust the font configuration to render correctly in the PDF*

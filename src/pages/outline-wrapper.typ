@@ -1,4 +1,4 @@
-#import "../utils/font-size.typ": font-size
+#import "../utils/font.typ": font-size, _support-size, _support-font-family
 
 #let outline-wrapper(
   // from entry
@@ -12,12 +12,31 @@
   depth: 3,
   title: "目　　录",
   indent: (0pt, 28pt, 32pt),
-  above: (30pt, 18pt, 14pt),
-  below: (14pt, 14pt, 14pt),
+  above: (30pt, 18pt, 12pt),
 ) = {
   /// Parse the outline configuration
+  for it in font-list {
+    assert(
+      _support-font-family.contains(it),
+      message: "Font family " + it + " is not supported.",
+    )
+  }
   font-list = font-list.map(name => font.at(name))
-  size = size.map(name => font-size.at(name))
+
+  for it in size {
+    if type(it) == str {
+      assert(
+        _support-size.contains(it),
+        message: "Font size " + it + " is not supported.",
+      )
+    } else {
+      assert(
+        type(it) == length,
+        message: "Invalid font size length.",
+      )
+    }
+  }
+  size = size.map(it => if type(it) == str { font-size.at(it) } else { it })
 
   /// Render the outline page
   pagebreak(weak: true, to: if twoside { "odd" })
@@ -31,7 +50,6 @@
 
   show outline.entry: entry => block(
     above: above.at(entry.level - 1, default: above.last()),
-    below: below.at(entry.level - 1, default: below.last()),
     link(
       entry.element.location(),
       entry.indented(

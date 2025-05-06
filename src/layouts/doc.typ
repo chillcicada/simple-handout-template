@@ -1,10 +1,13 @@
 #import "@preview/cuti:0.3.0": show-fakebold
 
 #let doc(
+  // from entry
   info: (:),
+  // options
   margin: (:),
   lang: "zh",
   font-fallback: false,
+  // self
   it,
 ) = {
   // fix bold and italic
@@ -18,6 +21,33 @@
     title: info.title.title,
     author: info.authors.map(author => author.name),
   )
+
+  it
+}
+
+#let after-cover-doc(
+  // from entry
+  font: (:),
+  // options
+  leading: 1.5 * 15.6pt - 0.7em,
+  spacing: 1.5 * 15.6pt - 0.7em,
+  indent: 2em,
+  justify: true,
+  // self
+  it,
+) = {
+  set par(
+    justify: justify,
+    leading: leading,
+    spacing: spacing,
+    first-line-indent: (amount: indent, all: true),
+  )
+
+  set list(indent: indent)
+
+  show raw: set text(font: font.Mono)
+
+  show terms: set par(first-line-indent: 0em)
 
   it
 }

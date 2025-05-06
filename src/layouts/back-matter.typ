@@ -1,8 +1,10 @@
-#import "../utils/font-size.typ": font-size
+#import "../utils/font.typ": font-size
 
 #let back-matter(
+  // from entry
   font: (:),
   twoside: false,
+  // self
   it,
 ) = {
   /// Render the back matter page

@@ -1,3 +1,11 @@
+#let _support-font-family = (
+  "SongTi",
+  "HeiTi",
+  "KaiTi",
+  "FangSong",
+  "Mono",
+)
+
 /// Word compatible font size
 #let font-size = (
   初号: 42pt,
@@ -18,3 +26,5 @@
   七号: 5.5pt,
   小七: 5pt,
 )
+
+#let _support-size = font-size.keys()

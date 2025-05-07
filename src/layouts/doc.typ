@@ -26,7 +26,7 @@
   it
 }
 
-#let after-cover-doc(
+#let doc-after-cover(
   // from entry
   font: (:),
   // options

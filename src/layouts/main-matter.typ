@@ -36,5 +36,8 @@
     align(left, it)
   }
 
+  // body text
+  set text(font: font.SongTi, size: font-size.小四, weight: "regular")
+
   it
 }

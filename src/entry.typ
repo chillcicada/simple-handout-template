@@ -1,4 +1,4 @@
-#import "layouts/doc.typ": doc, after-cover-doc
+#import "layouts/doc.typ": doc, doc-after-cover
 #import "layouts/front-matter.typ": front-matter
 #import "layouts/main-matter.typ": main-matter
 #import "layouts/back-matter.typ": back-matter
@@ -36,7 +36,7 @@
       ..args,
     ),
     // after cover layout
-    after-cover-doc: (..args) => after-cover-doc(
+    doc-after-cover: (..args) => doc-after-cover(
       font: font,
       ..args,
     ),

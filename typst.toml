@@ -13,5 +13,5 @@ compiler = "0.13.0"
 
 [template]
 path = "template"
-entrypoint = "handout.typ"
+entrypoint = "main.typ"
 thumbnail = "thumbnail.png"

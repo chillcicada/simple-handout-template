@@ -1,4 +1,4 @@
-#import "../utils/font.typ": font-size, _support-size, _support-font-family
+#import "../utils/font.typ": font-size, _support-font-size, _support-font-family
 
 #let outline-wrapper(
   // from entry
@@ -26,7 +26,7 @@
   for it in size {
     if type(it) == str {
       assert(
-        _support-size.contains(it),
+        _support-font-size.contains(it),
         message: "Font size " + it + " is not supported.",
       )
     } else {

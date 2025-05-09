@@ -6,7 +6,18 @@
   "Mono",
 )
 
-/// Word compatible font size
+#let font-check(font) = {
+  for key in font.keys() {
+    assert(
+      key in _support-font-family,
+      message: "Font family not supported, ensure the font family keys contain " + _support-font-family.join(", "),
+    )
+  }
+
+  font
+}
+
+/// Word compatible font size for CJK
 #let font-size = (
   初号: 42pt,
   小初: 36pt,
@@ -27,4 +38,4 @@
   小七: 5pt,
 )
 
-#let _support-size = font-size.keys()
+#let _support-font-size = font-size.keys()

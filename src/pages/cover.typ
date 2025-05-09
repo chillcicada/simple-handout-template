@@ -66,11 +66,7 @@
   // Date
   set text(font: font.SongTi)
 
-  block(width: 100%)[
-    #text(size: font-size.小四)[
-      #align(center)[#date.display("[year] 年 [month] 月 [day] 日")]
-    ]
-  ]
+  block(width: 100%, text(size: font-size.小四, align(center, date.display("[year] 年 [month] 月 [day] 日"))))
 
   v(1fr)
 }

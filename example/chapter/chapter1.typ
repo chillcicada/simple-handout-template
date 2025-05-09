@@ -1,22 +1,4 @@
-#import "../../src/lib.typ": *
-
 = 绪论
-
-#figure(
-  two-line-table[
-    | z | z |
-    | z | z |
-    | z | z |
-  ],
-)
-
-#figure(
-  three-line-table[
-    | z | z |
-    | z | z |
-    | z | z |
-  ],
-)
 
 == 流变学概念
 

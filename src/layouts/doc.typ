@@ -1,4 +1,4 @@
-#import "../imports.typ": show-fakebold
+#import "../imports.typ": show-cn-fakebold
 
 #let doc(
   // from entry
@@ -12,7 +12,7 @@
   it,
 ) = {
   // fix bold and italic
-  show: show-fakebold
+  show: show-cn-fakebold
 
   set text(lang: lang, fallback: fallback, region: region)
 

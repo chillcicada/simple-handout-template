@@ -1,4 +1,4 @@
-#import "../utils/font.typ": font-size, _support-size
+#import "../utils/font.typ": font-size, _support-font-size
 
 /// Font Display Page
 #let font-display(
@@ -23,16 +23,16 @@
   ]
 
   /// Render the page
-  if type(size) == str { assert(_support-size.contains(size), message: "Unsupported font size: " + size) } else {
+  if type(size) == str { assert(_support-font-size.contains(size), message: "Unsupported font size: " + size) } else {
     assert(type(size) == length, message: "Invalid font size type.")
   }
 
   set text(size: if type(size) == str { font-size.at(size) } else { size }, font: font.SongTi)
 
   [
-    *Fonts Display Page | Adjust the font configuration to render correctly in the PDF*
+    *字体展示页 | 请调整字体配置至正确渲染*
 
-    *字体展示页 | 请调整字体配置至正确在 PDF 中渲染*
+    *Fonts Display Page | Adjust the font configuration to render correctly*
   ]
 
   let font-list = (

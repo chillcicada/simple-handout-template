@@ -6,15 +6,17 @@
   font: (:),
   twoside: false,
   // options
-  numbering-style: custom-numbering.with(first-level: "第一章　", depth: 3, "1.1　"),
+  numbering-style: custom-numbering.with(first-level: "第一章　", depth: 4, "1.1　"),
+  page-start: 1,
+  page-numbering: "1",
   // self
   it,
 ) = {
   pagebreak(weak: true, to: if twoside { "odd" })
 
   // reset the counter
-  counter(page).update(1)
-  set page(numbering: "1")
+  counter(page).update(page-start)
+  set page(numbering: page-numbering)
 
   set heading(numbering: numbering-style)
 

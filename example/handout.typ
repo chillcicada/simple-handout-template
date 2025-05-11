@@ -75,10 +75,10 @@
 #show: doc
 
 /// Font Display Page
-#font-display()
+// #font-display()
 
 /// Cover Page
-#cover()
+// #cover()
 
 /// After Cover Layout, basical layout for Front Matter, Main Matter and Back Matter
 #show: doc-after-cover
@@ -87,12 +87,12 @@
 /// Front Matter ///
 /// ------------ ///
 
-#show: front-matter
+#show: front-matter.with(page-start: 1)
 
 // Preface Page
-#preface(date: datetime(year: 2025, month: 5, day: 1))[
-  #include "preface.typ"
-]
+// #preface(date: datetime(year: 2025, month: 5, day: 1))[
+//   #include "preface.typ"
+// ]
 
 // Outline Page
 #outline-wrapper()

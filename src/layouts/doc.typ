@@ -48,7 +48,7 @@
 
   show raw: set text(font: font.Mono)
 
-  show terms: set par(first-line-indent: 0em)
+  show terms: set par(first-line-indent: 0)
 
   it
 }

@@ -6,6 +6,7 @@
   twoside: false,
   // options
   date: datetime.today(),
+  date-display: "[year] 年 [month] 月 [day] 日",
   title: "前　　言",
   body-font: "FangSong",
   back-font: "KaiTi",
@@ -13,7 +14,7 @@
   it,
 ) = {
   assert(_support-font-family.contains(body-font), message: "不支持的字体族：" + body-font)
-  assert(_support-font-family.contains(back-font), message: "不支持的字体族：" + body-font)
+  assert(_support-font-family.contains(back-font), message: "不支持的字体族：" + back-font)
 
   /// Render the preface page
   pagebreak(weak: true, to: if twoside { "odd" })
@@ -29,5 +30,5 @@
   it
 
   // back
-  align(right, text(font: font.at(back-font), size: font-size.小四, date.display("[year] 年 [month] 月 [day] 日")))
+  align(right, text(font: font.at(back-font), size: font-size.小四, date.display(date-display)))
 }

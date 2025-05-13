@@ -11,7 +11,7 @@
   size: ("小三", "四号", "小四"),
   depth: 4,
   title: "目　　录",
-  indent: (0pt, 28pt, 32pt, 15pt),
+  indent: (0pt, 28pt, 32pt, 37pt),
   above: (30pt, 18pt, 12pt, 12pt),
 ) = {
   /// Parse the outline configuration

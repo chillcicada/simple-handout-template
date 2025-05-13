@@ -6,7 +6,7 @@ This is a simple typst handout template, **original made for my course 'Polymer 
 
 ## Example
 
-See the `example` folder for an example handout, which is made for the course 'Polymer Molding and Processing' at Tsinghua University.
+[See the `example` folder](example/README.md) for an example handout, which is made for the course 'Polymer Molding and Processing' at Tsinghua University.
 
 ## LICENSE
 

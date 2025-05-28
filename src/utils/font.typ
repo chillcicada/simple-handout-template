@@ -4,12 +4,20 @@
   "KaiTi",
   "FangSong",
   "Mono",
+  "Math",
 )
 
 #let font-check(font) = {
-  for key in font.keys() {
+  if type(font) == dictionary {
+    for key in font.keys() {
+      assert(
+        key in _support-font-family,
+        message: "Font family not supported, ensure the font family keys contain " + _support-font-family.join(", "),
+      )
+    }
+  } else {
     assert(
-      key in _support-font-family,
+      _support-font-family.contains(font),
       message: "Font family not supported, ensure the font family keys contain " + _support-font-family.join(", "),
     )
   }
@@ -18,7 +26,7 @@
 }
 
 /// Word compatible font size for CJK
-#let font-size = (
+#let _builtin-font-size = (
   初号: 42pt,
   小初: 36pt,
   一号: 26pt,
@@ -38,4 +46,17 @@
   小七: 5pt,
 )
 
-#let _support-font-size = font-size.keys()
+#let _support-font-size = _builtin-font-size.keys()
+
+#let size-check(size) = {
+  if type(size) == str { assert(_support-font-size.contains(size), message: "Unsupported font size: " + size) } else {
+    assert(type(size) == length, message: "Invalid font size type.")
+  }
+
+  size
+}
+
+#let use-size(size) = {
+  size = size-check(size)
+  if type(size) == str { _builtin-font-size.at(size) } else { size }
+}

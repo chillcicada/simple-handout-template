@@ -1,4 +1,4 @@
-#import "../utils/font.typ": font-size, _support-font-family
+#import "../utils/font.typ": use-size, _support-font-family
 
 #let preface(
   // from entry
@@ -20,15 +20,15 @@
   pagebreak(weak: true, to: if twoside { "odd" })
 
   // title
-  align(center, text(font: font.HeiTi, size: font-size.三号, title))
+  align(center, text(font: font.HeiTi, size: use-size("三号"), title))
 
   v(2em)
 
   // body
-  set text(font: font.at(body-font), size: font-size.小四)
+  set text(font: font.at(body-font), size: use-size("小四"))
 
   it
 
   // back
-  align(right, text(font: font.at(back-font), size: font-size.小四, date.display(date-display)))
+  align(right, text(font: font.at(back-font), size: use-size("小四"), date.display(date-display)))
 }

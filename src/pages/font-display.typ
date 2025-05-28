@@ -1,4 +1,4 @@
-#import "../utils/font.typ": font-size, _support-font-size
+#import "../utils/font.typ": use-size, _support-font-size
 
 /// Font Display Page
 #let font-display(
@@ -23,11 +23,7 @@
   ]
 
   /// Render the page
-  if type(size) == str { assert(_support-font-size.contains(size), message: "Unsupported font size: " + size) } else {
-    assert(type(size) == length, message: "Invalid font size type.")
-  }
-
-  set text(size: if type(size) == str { font-size.at(size) } else { size }, font: font.SongTi)
+  set text(size: use-size(size), font: font.SongTi)
 
   [
     *字体展示页 | 请调整字体配置至正确渲染*

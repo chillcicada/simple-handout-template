@@ -1,4 +1,4 @@
-#import "../utils/font.typ": font-size, _support-font-size, _support-font-family
+#import "../utils/font.typ": use-size, _support-font-size, _support-font-family
 
 #let outline-wrapper(
   // from entry
@@ -36,13 +36,13 @@
       )
     }
   }
-  size = size.map(it => if type(it) == str { font-size.at(it) } else { it })
+  size = size.map(use-size)
 
   /// Render the outline page
   pagebreak(weak: true, to: if twoside { "odd" })
 
   // title
-  align(center, text(font: font.HeiTi, size: font-size.三号, title))
+  align(center, text(font: font.HeiTi, size: use-size("三号"), title))
 
   v(2em)
 

@@ -1,14 +1,18 @@
-#import "layouts/doc.typ": doc, doc-after-cover
+#import "layouts/doc.typ": meta, doc
 #import "layouts/front-matter.typ": front-matter
 #import "layouts/main-matter.typ": main-matter
 #import "layouts/back-matter.typ": back-matter
 
 #import "pages/font-display.typ": font-display
 #import "pages/cover.typ": cover
+
 #import "pages/preface.typ": preface
 #import "pages/outline-wrapper.typ": outline-wrapper
 
-#import "utils/font.typ": _support-font-family, font-check
+#import "pages/figure-list.typ": figure-list
+#import "pages/table-list.typ": table-list
+
+#import "utils/font.typ": font-check
 
 #let define-config(
   font: (:),
@@ -19,11 +23,6 @@
     version: "0.0.0",
   ),
 ) = {
-  assert(
-    font.keys() == _support-font-family,
-    message: "Font family not supported, ensure the font family keys is " + _support-font-family.join(", "),
-  )
-
   return (
     /// ------------- ///
     /// entry options ///
@@ -35,12 +34,12 @@
     /// layouts ///
     /// ------- ///
     // doc layout
-    doc: (..args) => doc(
+    meta: (..args) => meta(
       info: info,
       ..args,
     ),
     // after cover layout
-    doc-after-cover: (..args) => doc-after-cover(
+    doc: (..args) => doc(
       ..args,
       font: font + font-check(args.named().at("font", default: (:))),
     ),
@@ -84,6 +83,16 @@
       twoside: twoside,
       ..args,
       font: font + font-check(args.named().at("font", default: (:))),
+    ),
+    // figure list page
+    figure-list: (..args) => figure-list(
+      twoside: twoside,
+      ..args,
+    ),
+    // table list page
+    table-list: (..args) => table-list(
+      twoside: twoside,
+      ..args,
     ),
   )
 }

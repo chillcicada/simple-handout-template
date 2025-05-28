@@ -1,4 +1,4 @@
-#import "../utils/font.typ": font-size
+#import "../utils/font.typ": _builtin-font-size
 
 #let front-matter(
   // from entry

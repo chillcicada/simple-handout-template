@@ -48,6 +48,7 @@
   cover,
   preface,
   outline-wrapper,
+  notation,
   figure-list,
   table-list,
 ) = define-config(
@@ -122,6 +123,8 @@
 /// ----------- ///
 
 #show: back-matter
+
+#notation()[]
 
 #figure-list()
 

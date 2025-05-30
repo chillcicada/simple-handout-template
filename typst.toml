@@ -7,11 +7,11 @@ license = "MIT"
 description = "A simple handout template."
 repository = "https://github.com/chillcicada/simple-handout-template"
 keywords = ["book", "handout", "template"]
-categories = ["template"]
+# categories = ["template"]
 exclude = [".*", "example"]
 compiler = "0.13.0"
 
-[template]
-path = "template"
-entrypoint = "main.typ"
-thumbnail = "thumbnail.png"
+# [template]
+# path = "template"
+# entrypoint = "main.typ"
+# thumbnail = "thumbnail.png"

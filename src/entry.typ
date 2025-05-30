@@ -9,6 +9,7 @@
 #import "pages/preface.typ": preface
 #import "pages/outline-wrapper.typ": outline-wrapper
 
+#import "pages/notation.typ": notation
 #import "pages/figure-list.typ": figure-list
 #import "pages/table-list.typ": table-list
 
@@ -83,6 +84,11 @@
       twoside: twoside,
       ..args,
       font: font + font-check(args.named().at("font", default: (:))),
+    ),
+    // notation page
+    notation: (..args) => notation(
+      twoside: twoside,
+      ..args,
     ),
     // figure list page
     figure-list: (..args) => figure-list(

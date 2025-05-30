@@ -69,7 +69,7 @@
 
   block(width: 100%, text(size: use-size("小四"), align(center, date.display("[year] 年 [month] 月 [day] 日"))))
 
-  if display-version { block(width: 100%, text(size: use-size("小四"), gray, align(center, [version #info.version])))}
+  if display-version { block(width: 100%, text(size: use-size("小四"), gray, align(center, [version #info.version]))) }
 
   v(1fr)
 }

@@ -49,7 +49,7 @@ $ eta_a=tau / dot(gamma) $
 
 *主要优点：*
 
-+ 操作简单、测量准确，测量范围广(剪切速率 $10^1~10^5$ s#super[-1])，可测量高剪切速率；
++ 操作简单、测量准确，测量范围广(剪切速率 $10^1~10^5 "s"^(-1)$)，可测量高剪切速率；
 + 和某些实际成型加工中物料流动相仿，因而具有实用价值。可方便地加到加工生产线中，进行在线测量；
 + 除可测定黏性外，还能从挤出胀大等数据中测定弹性
 
@@ -103,10 +103,12 @@ $
   L/D很大（>24）时，可不作入口效应校正。
 
   *入口效应的应用－零长毛细管流变仪*
+
   #figure(
     image("media/chapter3/双筒毛细管流变仪.png", width: 150pt),
     caption: [双筒毛细管流变仪示意图],
   )
+
   如图，双筒毛细管流变仪，由零长毛细管直接获得入口压力降（弹性信息）；
   由普通毛细管获得粘度信息。
 
@@ -121,9 +123,10 @@ $
   $
 
 [问题：毛细管测试之前，通常要设定几个等比数列的剪切速率，在测
-  量前是不知道非牛顿指数n的。那么怎么设定剪切速率？]
+量前是不知道非牛顿指数n的。那么怎么设定剪切速率？]
 
 *毛细管流变仪测量误差的来源*
+
 + 仪器本身参数的误差；
 + 管壁滑移；
 + 粘性发热引起的误差，以及熔体破裂限制了高剪切速率时测粘度的可靠性；
@@ -132,6 +135,7 @@ $
 *毛细管流变仪的适用范围和不足*
 
 *适用范围:*
+
 + 剪切速率$dot(gamma)$范围: $10~10^5$ s#super[-1]；
 
 + 粘度$eta$范围:$10 ~ 10^6$ Pa $dot$ S (Rosand RH2000)，取决于压力传感器和测量条件等。
@@ -254,6 +258,7 @@ $ tau = (3 T) / (2 pi R^3) $
 $ eta = (3 T tan alpha) / (2 pi R^3 omega) = (K T) / omega $
 
 第一法向应力差的测定：
+
 $ tau_11 - tau_22 = (2 F) / (pi R^2) $
 
 *优点：*
@@ -314,7 +319,7 @@ $ tau_11 - tau_22 = (2 F) / (pi R^2) $
 在这类情况下可相应地定义拉伸粘度为
 
 $
-  eta_T=sigma / dot(epsilon)
+  eta_T = sigma / dot(epsilon)
 $
 
 ==== 拉伸应变、应力张量
@@ -331,7 +336,8 @@ Hencky拉伸应变（真应变）：$ epsilon = integral_(l_0)^l (d l) / l =ln l
 拉伸应力：习用应力：$ sigma=F / A_0 $
 真实应力: $ sigma=F / A $
 
-#figure(image("media/chapter3/拉伸应力张量.png", width: 250pt),
+#figure(
+  image("media/chapter3/拉伸应力张量.png", width: 250pt),
   caption: [应力张量示意图],
 )
 
@@ -430,10 +436,11 @@ WLF方程适用范围：
 
 *粘度对剪切速率的敏感性指标：*
 
-$eta$（$dot(gamma)=$100 s#super[-1]) / $eta$（$dot(gamma)=$1000 s#super[-1])
-。工业测试，熔融指数MFR(2.16 kg)/MFR(21.6 kg),相同测试温度。
+$eta$（$dot(gamma) = 100 "s"^(-1)$) / $eta$（$dot(gamma) = 1000 "s"^(-1)$)。
+工业测试，熔融指数MFR(2.16 kg)/MFR(21.6 kg),相同测试温度。
 
 *对剪切速率敏感的高聚物：*
+
 聚苯乙烯、聚乙烯、聚丙烯、聚氯乙烯等。这些高聚物特点是具有柔性分子链（静态柔性），外力作用下分子链易变形
 
 *对剪切速率不敏感的聚合物：*聚酰胺、聚对苯二甲酸乙二酯等。
@@ -451,7 +458,7 @@ $eta$（$dot(gamma)=$100 s#super[-1]) / $eta$（$dot(gamma)=$1000 s#super[-1])
 *压力－温度等效性：*
 p升高，相当于温度T下降。
 
-在维持η恒定的条件下，每升高1个大气压，相当于温度降低$(3~9) times 10^(-2)$ ℃。
+在维持η恒定的条件下，每升高1个大气压，相当于温度降低$(3~9) times 10^(-2) ℃$。
 
 
 ===== 分子结构特征（分子量及其分布、支链、分子间作用）
@@ -536,12 +543,12 @@ $M_c$ : 临界分子量，发生分子链缠结的最小分子量
 #text(blue)[*链支化*]
 
 #figure(
-  image("media/链支化-1.png", width: 300pt),
+  image("media/chapter3/链支化-1.png", width: 300pt),
   caption: [Polyolefin architectures],
 )
 
 #figure(
-  image("media/链支化-2.png", width: 200pt),
+  image("media/chapter3/链支化-2.png", width: 200pt),
   caption: [高、低密度聚乙烯的粘度与剪切速率的关系],
 )
 
@@ -565,7 +572,7 @@ $M_c$ : 临界分子量，发生分子链缠结的最小分子量
 #text(blue)[*多臂星形高分子分子量对粘度的影响*]
 
 #figure(
-  image("media/链支化-3.png", width: 250pt),
+  image("media/chapter3/链支化-3.png", width: 250pt),
   caption: [多臂星形高分子分子量对零切粘度的影响],
 )
 
@@ -578,8 +585,7 @@ $M_c$ : 临界分子量，发生分子链缠结的最小分子量
     columns: 2,
     gutter: 1em,
     align: center + horizon,
-    image("media/超支化-1.png", width: 200pt),
-    image("media/超支化-2.png", width: 200pt),
+    image("media/chapter3/超支化-1.png", width: 200pt), image("media/chapter3/超支化-2.png", width: 200pt),
   ),
   caption: [超支化对粘度的影响],
 )
@@ -600,13 +606,13 @@ $M_c$ : 临界分子量，发生分子链缠结的最小分子量
 4. 超支化大分子的粘度在分子量超过一定数值后，反而随分子量提高而下降。
 5. *长支链使熔体强度增加，有利于吹膜、发泡。*（支链对加工性能的影响，与前文“拉伸硬化”内容可相互结合。）
 ===== 配方因素（添加剂：润滑剂、填料）
-体系组成对η的影响 
+体系组成对η的影响
 1．加低分子物（溶剂、增塑剂、润滑剂），流动促
 进剂（如液晶，流动取向），降低粘度；
 [问题：2．共混（不同高分子）]2．共混（不同高分子）
- 共混是高分子改性三大方法之一（连续纤维增强
+共混是高分子改性三大方法之一（连续纤维增强
 、填充、共混）。
- 共混（blending)是指加入高分子和高分子混合，
+共混（blending)是指加入高分子和高分子混合，
 研究共混高聚物熔体的流变学, 对于控制共混物的
 相结构和最终性能有重要指导意义。
 重点：填充体系的流变行为
@@ -614,9 +620,9 @@ $M_c$ : 临界分子量，发生分子链缠结的最小分子量
 #text(red)[*填充体系的流变行为*]
 
 
- 实际中，高分子经常都加填料，成多组分材料（降低成本、提高性能），可称该体系为填充体系。
- 
- 填料从尺度上可以划分为：*微米*粒子填充、*纳米*粒子填充。
+实际中，高分子经常都加填料，成多组分材料（降低成本、提高性能），可称该体系为填充体系。
+
+填料从尺度上可以划分为：*微米*粒子填充、*纳米*粒子填充。
 
 
 
@@ -648,30 +654,32 @@ $M_c$ : 临界分子量，发生分子链缠结的最小分子量
 
 （1）*低填充量*时，填充体系粘度可用*Einstein公式：*
 $
-eta_r = eta/eta_0=1+K_E phi
+  eta_r = eta / eta_0=1+K_E phi
 $
 
 $eta_0$: 牛顿型分散介质的粘度;
 
 $K_E$: Einstein系数:
-对刚性球形粒子， $K_E$ ＝2.5；若为刚性棒状粒子，且长径比>1, $K_E$ >2.5 。
+对刚性球形粒子， $K_E$ =2.5；若为刚性棒状粒子，且长径比>1, $K_E$ >2.5 。
 
 $phi$: 刚性分散粒子的体积分数。
 
 （2) 当*填充量增加，需要考虑填料间相互作用*，*Guth-Gold方程*提供更准确描述：
 $
-eta_r = 1+2.5 phi +14.1 phi^2
+  eta_r = 1+2.5 phi +14.1 phi^2
 $
 
 对于*非球形填料，需引入形状因子$f$*：
 $
-eta_r = 1+2.5 phi +14.1 phi^2 f^2
+  eta_r = 1+2.5 phi +14.1 phi^2 f^2
 $
 
 （3) 特性粘数和流体力学半径
 $
-[eta] =  op("lim",
-     limits: #true)_(c->0) ((eta)/(eta_s)-1)/c
+  [eta] = op(
+    "lim",
+    limits: #true
+  )_(c->0) ((eta) / (eta_s)-1) / c
 $
 
 $eta_s$：溶剂的粘度
@@ -680,11 +688,11 @@ $eta$：溶液的粘度
 
 $c$: 溶液中聚合物的质量浓度
 
-根据*Einstein公式：*$eta_r = eta/eta_0=1+K_E phi$ (注：Einstein公式中$eta_0$即为$eta_s$)
+根据*Einstein公式：*$eta_r = eta / eta_0=1+K_E phi$ (注：Einstein公式中$eta_0$即为$eta_s$)
 
 可以推得：
 $
-[eta]=(K_E phi)/c =(2.5 phi)/c prop (R^3_h)/M
+  [eta]=(K_E phi) / c =(2.5 phi) / c prop (R^3_h) / M
 $
 
 $R_h$:一个聚合物分子的流体力学半径
@@ -695,28 +703,28 @@ $M$：聚合物的分子量
 
 根据Zimm模型
 $
-R_h prop M^v
+  R_h prop M^v
 $
 
-- 良溶液：$v=3"/"5, $
+- 良溶液：$v=3"/"5,$
 $
-[eta] prop (M^(1.8))/M = 𝑀^0.8
+  [eta] prop (M^(1.8)) / M = 𝑀^0.8
 $
 - $theta$溶液：$v=0.5,$
 $
-[eta] prop (M^(1.5))/M=𝑀^0.5
+  [eta] prop (M^(1.5)) / M=𝑀^0.5
 $
 
 （4）*刚性粒子浓度较大时*，Mooney公式：
 $
-ln(eta/eta_0)=(K_E phi)/(1-phi"/"phi_m)
+  ln(eta / eta_0)=(K_E phi) / (1-phi"/"phi_m)
 $
 
 $phi_m$:分散相最大堆砌系数
 
-+ 粒子有序堆砌聚集时， $phi_m$＝0.74；
-+ 粒子随机分布未聚集时， $phi_m＝0.60~0.63$；
-+ 粒子随机聚集时, $phi_m$＝0.37。
++ 粒子有序堆砌聚集时， $phi_m$=0.74；
++ 粒子随机分布未聚集时， $phi_m=0.60~0.63$；
++ 粒子随机聚集时, $phi_m$=0.37。
 #figure(
   image("media/chapter3/填充-3-1.png", width: 250pt),
   caption: [填充粒子形状与$phi_m$的关系],
@@ -783,7 +791,7 @@ $phi_m$:分散相最大堆砌系数
 
 假设一块橡胶在室温下受外力$f$从起始长度$l_0$拉伸到$l$。根据热力学第一定律（能量守衡与转化定律），体系内能的变化等于吸收的热量减去对外做的功，有$d u=d Q-d W$；根据热力学第二定律，假设过程是可逆的，有$d Q=T d S$。又体系对外作功为拉伸过程中体积变化$p d V$和形状变化$-f d l$之和，故有$d W=p d V-f d l$。假设在拉伸过程中体积不变，$d V=0$，$d W=-f d l$。即$d u=d Q+f d l=T d S+f d l$。
 
-所以$f=((partial u)/(partial l))_(T,V)-T((partial S)/(partial l))_(T,V)$。这说明橡胶的张力是由形变时内能的变化和熵的变化引起的。令$f_u=((partial u)/(partial l))_(T,V)$，$f_S=-T((partial S)/(partial l))_(T,V)$，则$f=f_u+f_S$。
+所以$f=((partial u) / (partial l))_(T,V)-T((partial S) / (partial l))_(T,V)$。这说明橡胶的张力是由形变时内能的变化和熵的变化引起的。令$f_u=((partial u) / (partial l))_(T,V)$，$f_S=-T((partial S) / (partial l))_(T,V)$，则$f=f_u+f_S$。
 
 #figure(
   image("media/elasticity/ftotemp.png", width: 200pt),
@@ -803,9 +811,9 @@ $f_u=0$的高弹体也叫理想高弹体。理想高弹体拉伸时，只引起�
 从前面的热力学分析可见，对于理想高弹体来说，其弹性是熵弹性，形变时回缩力仅仅由体系内部熵的变化，进而推导出宏观的应力—应变关系。
 对于一个孤立的柔性高分子链，可以按等效自由结合链来处理，看作是含有$n_e$个长度为$l_e$链段的自由结合链，如果把它的一端固定在坐标原点，另一端点落在点（x, y, z）处的小体积元dx, dy, dz内的几率，可用高斯分布函数来描述：
 
-#align(center, block[$W(x,y,z)d x d y d z=(beta/sqrt(pi))^3 e^(-beta^2 (x^2+y^2+z^2))d x d y d z$])
+#align(center, block[$W(x,y,z)d x d y d z=(beta / sqrt(pi))^3 e^(-beta^2 (x^2+y^2+z^2))d x d y d z$])
 
-其中$beta^2=3/(2n_e l_e^2)$。
+其中$beta^2=3 / (2n_e l_e^2)$。
 
 由此可知一个孤立高分子链的构象熵$S=k ln Omega = C-k beta^2 (x^2+y^2+z^2)$。
 
@@ -817,16 +825,16 @@ $f_u=0$的高弹体也叫理想高弹体。理想高弹体拉伸时，只引起�
 3）由这些高斯链组成的各向同性的交联网的构象总数为各个单独网链构象数的乘积。
 4）产生形变时，假定微观交联网与整个橡胶试样的形变有相同的比率，即符合仿射形变的假定。
 
-等容条件下，外界对体系做的功等于自由能的升高：$W = Delta F_d = 1/2 N k T (lambda_1^2+lambda_2^2+lambda_3^2-3)$，由于拉伸前后体积不变，$lambda_1 lambda_2 lambda_3 = 1$。
+等容条件下，外界对体系做的功等于自由能的升高：$W = Delta F_d = 1 / 2 N k T (lambda_1^2+lambda_2^2+lambda_3^2-3)$，由于拉伸前后体积不变，$lambda_1 lambda_2 lambda_3 = 1$。
 
-对于单轴拉伸，可推知工程（习用）拉伸应力$sigma_e =(N k T)/V_0 (lambda - 1/lambda^2)$。假设平均每个网链的分子量为$overline(M_c)$，网链的密度$rho = (N overline(M_c))/(N_A V_0)$，则$sigma_e =(rho R T)/overline(M_c) (lambda - 1/lambda^2)$。
+对于单轴拉伸，可推知工程（习用）拉伸应力$sigma_e =(N k T) / V_0 (lambda - 1 / lambda^2)$。假设平均每个网链的分子量为$overline(M_c)$，网链的密度$rho = (N overline(M_c)) / (N_A V_0)$，则$sigma_e =(rho R T) / overline(M_c) (lambda - 1 / lambda^2)$。
 
-由此可见，交联橡胶的拉伸仅在小应变时符合虎克定律。当$lambda ≈ 1$时，泊松比$nu = 0.5$，$G = 1/3 E=(rho R T)/overline(M_c)$。因此，交联网的模量只与交联网单位体积中网链数目有关。通过测定高分子材料的剪切模量。可以确定交联点密度。
+由此可见，交联橡胶的拉伸仅在小应变时符合虎克定律。当$lambda ≈ 1$时，泊松比$nu = 0.5$，$G = 1 / 3 E=(rho R T) / overline(M_c)$。因此，交联网的模量只与交联网单位体积中网链数目有关。通过测定高分子材料的剪切模量。可以确定交联点密度。
 
 ==== 橡胶弹性影响因素
 - 交联与缠结效应：随着网链密度的增加，剪切模量$G$升高。缠结的存在也会导致$G$上升。
 - 溶胀效应：溶胀使网链密度下降，剪切模量$G$下降。
-- 填充剂影响：填充剂的存在会增大刚性及强度。（模量修正公式：$E_f/E_0=1+2.5 V_f+14.1 V_f^2$，其中$V_f$为填充剂体积分数。）
+- 填充剂影响：填充剂的存在会增大刚性及强度。（模量修正公式：$E_f / E_0=1+2.5 V_f+14.1 V_f^2$，其中$V_f$为填充剂体积分数。）
 - 应变诱发结晶：分子链取向排列局部结晶，导致应变硬化。
 
 ==== 描述力学性质的基本物理量
@@ -839,7 +847,7 @@ $f_u=0$的高弹体也叫理想高弹体。理想高弹体拉伸时，只引起�
 - 弹性模量(modulus)=应力/应变。模量越大，越不易变形，刚度大。应变无量纲，故模量单位与应力相同。
 
 ==== 几种常用的力学性能指标
-- 拉伸强度(strength elongation)：规定的试验温度，湿度，试验速度下，在标准试样上沿轴向施加拉伸载荷，直到试样被拉断为止。#align(center, block[$sigma_t = P/(b d)$])
+- 拉伸强度(strength elongation)：规定的试验温度，湿度，试验速度下，在标准试样上沿轴向施加拉伸载荷，直到试样被拉断为止。#align(center, block[$sigma_t = P / (b d)$])
 
 $P$：断裂前的最大载荷
 
@@ -847,37 +855,37 @@ $b$：试样宽
 
 $d$：试样厚
 
-- 拉伸模量（杨氏模量：拉伸初始阶段的应力与应变比例。且由于高聚物拉伸曲线非线性，只取初始阶段。）#align(center, block[$E= (Delta P"/" b d)/(Delta l "/" l_0)$])
+- 拉伸模量（杨氏模量：拉伸初始阶段的应力与应变比例。且由于高聚物拉伸曲线非线性，只取初始阶段。）#align(center, block[$E= (Delta P"/" b d) / (Delta l "/" l_0)$])
 
-- 弯曲强度(bending strength)：规定试验条件下，对试样施加静弯曲力矩。#align(center, block[$sigma_f = P/2 (l_0"/"2)/(b d^2"/"6)$])
-  #align(center, block[$E_f = (Delta P l_0^3)/(4 b d^3 delta)$])
+- 弯曲强度(bending strength)：规定试验条件下，对试样施加静弯曲力矩。#align(center, block[$sigma_f = P / 2 (l_0"/"2) / (b d^2"/"6)$])
+  #align(center, block[$E_f = (Delta P l_0^3) / (4 b d^3 delta)$])
 
 其中$delta$为挠度。
 
-- 冲击强度(impact strength)：衡量材料韧性，表征抗冲击载荷破坏能力。#align(center, block[$sigma_i = W/(b d)$])
+- 冲击强度(impact strength)：衡量材料韧性，表征抗冲击载荷破坏能力。#align(center, block[$sigma_i = W / (b d)$])
 
 $W$：冲断试样所做的功
 
 ==== 弹性模量
 各向同性材料的受力方式与应变方式有三种类型：
 
-1）简单拉伸：拉伸应变$epsilon = (Delta l)/ l_0$。
+1）简单拉伸：拉伸应变$epsilon = (Delta l) / l_0$。
 
-*拉伸模量*，或*杨氏模量*(Young$'$s modulus)为：$E=sigma/epsilon = (F "/" A_0)/(Delta l "/" l_0)$。
+*拉伸模量*，或*杨氏模量*(Young$'$s modulus)为：$E=sigma / epsilon = (F "/" A_0) / (Delta l "/" l_0)$。
 
-2）简单剪切；切应变$ 𝛾 = tan theta$，剪切应力$sigma_s=G gamma$。物体体积不变。
+2）简单剪切；切应变$𝛾 = tan theta$，剪切应力$sigma_s=G gamma$。物体体积不变。
 
-*剪切模量*(Shear modulus)：$G=sigma_s/gamma = F/(A_0 tan theta)$。
+*剪切模量*(Shear modulus)：$G=sigma_s / gamma = F / (A_0 tan theta)$。
 
-3）均匀压缩：均匀压缩应变$Delta = (Delta V)/V_0$。
+3）均匀压缩：均匀压缩应变$Delta = (Delta V) / V_0$。
 
-体积模量(Volume modulus)：$B=F/(Delta V"/"V_0)=(P V_0)/(Delta V)$。
+体积模量(Volume modulus)：$B=F / (Delta V"/"V_0)=(P V_0) / (Delta V)$。
 
 三种模量的关系：$E=2G (1+nu)=3B(1-2nu)$。其中$nu$为泊松比，定义为材料拉伸实验中材料横向宽度的减少与纵向长度的增加之比。大多数材料拉伸时，体积膨胀，$nu=0.2~0.5$，对于橡胶，$nu≈0.5$。
 
-当理想不可压缩体拉伸变形时，体积不变，$(Delta V)/V_0=0$，$B=infinity$，$nu=0.5$，$E=3G$。
+当理想不可压缩体拉伸变形时，体积不变，$(Delta V) / V_0=0$，$B=infinity$，$nu=0.5$，$E=3G$。
 
-根据橡胶弹性统计理论，在小应变时，交联橡胶的$G = 1/3 E=(rho R T)/overline(M_c)$。
+根据橡胶弹性统计理论，在小应变时，交联橡胶的$G = 1 / 3 E=(rho R T) / overline(M_c)$。
 
 === 聚合物弹性行为的本质
 力学原因是第一法向应力差；微观原因是外力作用下分子链构象偏离无应力时的平衡构象。
@@ -971,14 +979,14 @@ $W$：冲断试样所做的功
 
 究其微观本质，挤出胀大效应的本质是分子链在挤出过程中弹性应变未完全松弛，而在出
 口处松弛所引起的。出口处可恢复弹性形变
-$gamma_"出口" = gamma_"入口" dot e^(-t/lambda) + gamma_"管内"= gamma_"入口" dot e^(-t/lambda) +(2tau_w)/(3G)$。
+$gamma_"出口" = gamma_"入口" dot e^(-t / lambda) + gamma_"管内"= gamma_"入口" dot e^(-t / lambda) +(2tau_w) / (3G)$。
 
 #figure(
   image("media/elasticity/出口胀大微观本质.png", width: 200pt),
   caption: [出口胀大原理示意图],
 )
 
-据此，我们也可以得知降低膨胀比的两种方法：a）降低弹性应变；b）增加松弛时间比$t/lambda$。
+据此，我们也可以得知降低膨胀比的两种方法：a）降低弹性应变；b）增加松弛时间比$t / lambda$。
 
 - 影响出口胀大的具体因素:
 #text(blue)[分子结构因素：]
@@ -1000,7 +1008,7 @@ $gamma_"出口" = gamma_"入口" dot e^(-t/lambda) + gamma_"管内"= gamma_"入�
 
 a）长径比L/D：长径比越大，入口应变衰减更充分，挤出胀大越不显著。
 
-b）入口端收敛角：随着入口端收敛角减小，液体中可逆应变成分减少，膨胀比也减小。当入口角＝收敛角时，膨胀比最小。
+b）入口端收敛角：随着入口端收敛角减小，液体中可逆应变成分减少，膨胀比也减小。当入口角=收敛角时，膨胀比最小。
 
 *待插入图片*
 
@@ -1111,13 +1119,13 @@ $tau_s$和$tau$分别是指定温度的松弛时间。
 动态力学松弛是在交变应力和应变作用下发生的滞后现象和力学损耗。
 动态应变：$ epsilon (t) =epsilon_0 sin omega t $
 动态应力：$ sigma (t)=sigma_0 sin omega t cos delta + sigma_0 cos omega t sin delta $
-储能模量：$ E'=(sigma_0/epsilon_0) cos delta $
-损耗模量：$ E''=(sigma_0/epsilon_0) sin delta $
+储能模量：$ E'=(sigma_0 / epsilon_0) cos delta $
+损耗模量：$ E''=(sigma_0 / epsilon_0) sin delta $
 复数模量：$ E^*=E'+i E'' $
-损耗因子：$ tan delta =E''/E' $
+损耗因子：$ tan delta =E'' / E' $
 动态模量（又称绝对模量）：$ E=|E^*|=sqrt(E'^2+E''^2) $
-复数粘度：$ eta^*=tau^* / dot(gamma)^* =tau^* / (i omega gamma^*)=G''/omega - i G'/omega $
-动态粘度：$ eta'=G''/omega $
+复数粘度：$ eta^*=tau^* / dot(gamma)^* =tau^* / (i omega gamma^*)=G'' / omega - i G' / omega $
+动态粘度：$ eta'=G'' / omega $
 
 ==== 线性粘弹性与非线性粘弹性
 *粘弹性的本质*: 不同的时空尺度（不同的时间或频率激发不同尺度的运动）导致不同的粘弹性表现。\
@@ -1141,7 +1149,7 @@ $tau_s$和$tau$分别是指定温度的松弛时间。
 *动态振幅扫描测试*：频率固定，变化应变（振幅）\
 要判断动态流变测试是否处于线性黏弹性区域（LVE）， 需要首先进行动态振幅扫描。\
 可以得到的信息包括：\
-（1）确定线性黏弹区（LVE），画出 $lg G'-lg γ$ 或者 $lg G''-lg γ$  曲线，转折点 $γ L$ 为黏弹区末端，即屈服点；\
+（1）确定线性黏弹区（LVE），画出 $lg G'-lg γ$ 或者 $lg G''-lg γ$ 曲线，转折点 $γ L$ 为黏弹区末端，即屈服点；\
 （2）$G''$ 和 $G'$ 的交点为流动点 $τ f$，可对样品的流动性、凝胶强度、柔韧性和稳定性等进行分析。\
 
 *动态频率扫描测试*：
@@ -1171,13 +1179,13 @@ $tau_s$和$tau$分别是指定温度的松弛时间。
 
 ==== 动态粘弹性与稳态流变性的关系——Cox-Merz关系式\*
 第一 Cox-Merz 关系式：
- $ |eta^*(omega)| = eta_a (dot(gamma))|_(dot( gamma) = omega) $
+$ |eta^*(omega)| = eta_a (dot(gamma))|_(dot(gamma) = omega) $
 第二 Cox-Merz 关系式：
 $ eta'(omega) = eta_c ( dot(gamma))|_(dot(gamma) = omega) $
 
-$ eta_c (dot(gamma)) = (d tau(dot( gamma)))/(d dot(gamma)) $
+$ eta_c (dot(gamma)) = (d tau(dot(gamma))) / (d dot(gamma)) $
 
 储能模量与法向应力差关系：
- $ lim_(omega → 0) (G'(omega))/omega^2 = lim_(N_1 → infinity) N_1/(2 dot( gamma)^2) |_(dot( gamma) = omega) $
+$ lim_(omega → 0) (G'(omega)) / omega^2 = lim_(N_1 → infinity) N_1 / (2 dot(gamma)^2) |_(dot(gamma) = omega) $
 
 #heading(level: 2, numbering: none)[参考文献]

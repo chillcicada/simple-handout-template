@@ -13,7 +13,7 @@
 === 聚合物流变学的研究对象
 
 #figure(
-  image("media/chapter1/聚合物流变学研究对象.png"),
+  image("media/chapter1/聚合物流变学研究对象.png", height: 3cm),
   caption: [聚合物流变学的研究对象],
 )
 

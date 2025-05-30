@@ -6,6 +6,7 @@
   font: (:),
   // options
   date: datetime.today(),
+  display-version: false,
 ) = {
   /// Auxiliary function to parse the SemVer version and display it as Chinese numbering
   let parse-semver-major(version) = numbering("一", int(version.split(".").at(0)))
@@ -67,6 +68,8 @@
   set text(font: font.SongTi)
 
   block(width: 100%, text(size: use-size("小四"), align(center, date.display("[year] 年 [month] 月 [day] 日"))))
+
+  if display-version { block(width: 100%, text(size: use-size("小四"), gray, align(center, [version #info.version]))) }
 
   v(1fr)
 }

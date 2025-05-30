@@ -27,7 +27,7 @@
     "STFangSong",
   ),
   Mono: (
-    (name: "Courier New", covers: "latin-in-cjk"),
+    (name: "DejaVu Sans Mono", covers: "latin-in-cjk"),
     "SimHei",
   ),
   Math: (
@@ -86,7 +86,7 @@
 // #font-display()
 
 /// Cover Page
-#cover()
+#cover(display-version: true)
 
 /// After Cover Layout, basical layout for Front Matter, Main Matter and Back Matter
 #show: doc

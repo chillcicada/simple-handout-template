@@ -1,8 +1,6 @@
-#import "../utils/font.typ": _builtin-font-size
-
 #let front-matter(
   // from entry
-  font: (:),
+  twoside: false,
   // options
   page-start: 0,
   page-numbering: "I",

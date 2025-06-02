@@ -12,8 +12,9 @@
 #import "pages/notation.typ": notation
 #import "pages/figure-list.typ": figure-list
 #import "pages/table-list.typ": table-list
+#import "pages/equation-list.typ": equation-list
 
-#import "utils/font.typ": font-check
+#import "utils/font.typ": use-size, _use-font
 
 #let define-config(
   font: (:),
@@ -42,22 +43,22 @@
     // after cover layout
     doc: (..args) => doc(
       ..args,
-      font: font + font-check(args.named().at("font", default: (:))),
+      font: font + args.named().at("font", default: (:)),
     ),
     // front matter layout
     front-matter: (..args) => front-matter(
+      twoside: twoside,
       ..args,
-      font: font + font-check(args.named().at("font", default: (:))),
     ),
     // main matter layout
     main-matter: (..args) => main-matter(
+      twoside: twoside,
       ..args,
-      font: font + font-check(args.named().at("font", default: (:))),
     ),
     // back matter layout
     back-matter: (..args) => back-matter(
+      twoside: twoside,
       ..args,
-      font: font + font-check(args.named().at("font", default: (:))),
     ),
     /// ----- ///
     /// pages ///
@@ -65,25 +66,25 @@
     // font display page
     font-display: (..args) => font-display(
       ..args,
-      font: font + font-check(args.named().at("font", default: (:))),
+      font: font + args.named().at("font", default: (:)),
     ),
     // cover page
     cover: (..args) => cover(
       info: info,
       ..args,
-      font: font + font-check(args.named().at("font", default: (:))),
+      font: font + args.named().at("font", default: (:)),
     ),
     // preface page
     preface: (..args) => preface(
       twoside: twoside,
       ..args,
-      font: font + font-check(args.named().at("font", default: (:))),
+      font: font + args.named().at("font", default: (:)),
     ),
     // outline page
     outline-wrapper: (..args) => outline-wrapper(
       twoside: twoside,
       ..args,
-      font: font + font-check(args.named().at("font", default: (:))),
+      font: font + args.named().at("font", default: (:)),
     ),
     // notation page
     notation: (..args) => notation(
@@ -97,6 +98,11 @@
     ),
     // table list page
     table-list: (..args) => table-list(
+      twoside: twoside,
+      ..args,
+    ),
+    // equation list page
+    equation-list: (..args) => equation-list(
       twoside: twoside,
       ..args,
     ),

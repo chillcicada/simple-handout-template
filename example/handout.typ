@@ -51,6 +51,7 @@
   notation,
   figure-list,
   table-list,
+  equation-list,
 ) = define-config(
   info: (
     title: (
@@ -124,8 +125,10 @@
 
 #show: back-matter
 
-#notation()[]
+#notation(include "notation.typ")
 
 #figure-list()
 
 #table-list()
+
+#equation-list()

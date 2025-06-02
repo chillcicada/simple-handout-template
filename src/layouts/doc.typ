@@ -1,4 +1,5 @@
-#import "../utils/font.typ": use-size
+#import "../utils/font.typ": use-size, _use-font
+#import "../utils/util.typ": array-at
 
 #import "../imports.typ": show-cn-fakebold
 
@@ -6,9 +7,9 @@
   // from entry
   info: (:),
   // options
-  margin: (:),
   lang: "zh",
   region: "zh",
+  margin: (:),
   fallback: false,
   // self
   it,
@@ -36,20 +37,44 @@
   // options
   indent: 2em,
   justify: true,
-  leading: 1.5 * 15.6pt - 0.7em,
-  spacing: 1.5 * 15.6pt - 0.7em,
+  leading: 1em,
+  spacing: 1em,
   code-block-leading: 1em,
   code-block-spacing: 1em,
+  heading-font: ("HeiTi", "HeiTi", "SongTi"),
+  heading-size: ("三号", "四号", "中四", "小四"),
+  heading-front-vspace: (28.6pt, 0pt),
+  heading-back-vspace: (9.4pt, 0pt),
+  heading-above: (0pt, 25.1pt, 22pt),
+  heading-below: (21.2pt, 18.6pt),
+  heading-align: (center, left),
+  heading-weight: ("regular", "regular", "bold", "bold"),
+  heading-pagebreak: (true, false),
+  body-font: "SongTi",
   body-size: "小四",
+  footnote-font: "SongTi",
+  footnote-size: "五号",
+  math-font: "Math",
   math-size: "小四",
-  fontnote-size: "五号",
+  raw-font: "Mono",
+  raw-size: "五号",
+  caption-font: "SongTi",
+  caption-size: "五号",
+  caption-style: strong,
+  caption-separator: "  ",
   underline-offset: .1em,
   underline-stroke: .05em,
-  underline-evade: false,
+  underline-evade: true,
   enum-numbering: "①",
+  bibliography-font: "SongTi",
+  bibliography-size: "五号",
+  bibliography-spacing: 12pt,
   // self
   it,
 ) = {
+  /// Auxiliary functions
+  let use-font(name) = { _use-font(font, name) }
+
   /// Paragraph
   ///
   /// set justify, leading, spacing, and first-line-indent
@@ -65,10 +90,51 @@
   /// set indent for list
   set list(indent: indent)
 
+  /// Term
+  ///
+  /// disable first-line-indent for terms
+  show terms: set par(first-line-indent: 0em)
+
+  /// Heading
+  ///
+  /// only set default font family
+  /// set font weight to "regular" for better HeiTi performance
+  show heading: it => {
+    if array-at(heading-pagebreak, it.level) { pagebreak(weak: true) }
+
+    set text(
+      size: use-size(array-at(heading-size, it.level)),
+      font: use-font(array-at(heading-font, it.level)),
+      weight: array-at(heading-weight, it.level),
+    )
+
+    set block(
+      above: array-at(heading-above, it.level),
+      below: array-at(heading-below, it.level),
+    )
+
+    v(array-at(heading-front-vspace, it.level))
+
+    align(array-at(heading-align, it.level), it)
+
+    v(array-at(heading-back-vspace, it.level))
+  }
+
+  /// Body Text
+  ///
+  /// set default body font family and size
+  set text(font: font.SongTi, size: use-size(body-size))
+
+  /// Fontnote
+  show footnote.entry: set text(font: use-font(footnote-font), size: use-size(footnote-size))
+
+  /// Math Equation
+  show math.equation: set text(font: use-font(math-font), size: use-size(math-size))
+
   /// Raw
   ///
   /// set font for raw block
-  show raw: set text(font: font.Mono)
+  show raw: set text(font: use-font(raw-font), size: use-size(raw-size))
 
   // unset paragraph for raw block
   show raw.where(block: true): set par(
@@ -76,27 +142,14 @@
     spacing: code-block-spacing,
   )
 
-  /// Term
-  ///
-  /// disable first-line-indent for terms
-  show terms: set par(first-line-indent: 0em)
+  /// Figure
+  show figure.where(kind: table): set figure.caption(position: top)
 
-  /// Fontnote
-  show footnote.entry: set text(font: font.SongTi, size: use-size("五号"))
+  /// Figure Caption
+  set figure.caption(separator: caption-separator)
 
-  /// Math Equation
-  show math.equation: set text(font: font.Math, size: use-size(math-size))
-
-  /// Heading
-  ///
-  /// only set default font family
-  /// set font weight to "regular" for better HeiTi performance
-  show heading: set text(font: font.HeiTi, weight: "regular")
-
-  /// Body Text
-  ///
-  /// set default body font family and size
-  set text(font: font.SongTi, size: use-size(body-size))
+  show figure.caption: caption-style
+  show figure.caption: set text(font: use-font(caption-font), size: use-size(caption-size))
 
   /// Underline
   ///
@@ -111,6 +164,13 @@
   ///
   /// set default enum numbering and indent
   set enum(numbering: enum-numbering, indent: indent)
+
+  /// Bibliography
+  show bibliography: set text(font: use-font(bibliography-font), size: use-size(bibliography-size))
+
+  show bibliography: set par(spacing: bibliography-spacing)
+
+  /// Stroke
 
   it
 }

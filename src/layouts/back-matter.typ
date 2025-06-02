@@ -2,10 +2,8 @@
 
 #import "../imports.typ": i-figured
 
-
 #let back-matter(
   // from entry
-  font: (:),
   twoside: false,
   // options
   heading-numbering: (

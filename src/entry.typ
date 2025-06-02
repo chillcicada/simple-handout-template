@@ -15,10 +15,12 @@
 #import "pages/equation-list.typ": equation-list
 
 #import "utils/font.typ": use-size, _use-font
+#import "utils/biliography.typ": bilingual-bibliography
 
 #let define-config(
   font: (:),
   twoside: false,
+  bibliography: none,
   info: (
     title: (title: "标 题", subtitle: "副标题"),
     authors: ((name: "作者", email: "mail@example.com"),),
@@ -30,6 +32,7 @@
     /// entry options ///
     /// ------------- ///
     twoside: twoside,
+    use-font: name => _use-font(font, name),
     info: info,
     font: font,
     /// ------- ///
@@ -104,6 +107,11 @@
     // equation list page
     equation-list: (..args) => equation-list(
       twoside: twoside,
+      ..args,
+    ),
+    // bilingual bibliography
+    bilingual-bibliography: (..args) => bilingual-bibliography(
+      bibliography: bibliography,
       ..args,
     ),
   )

@@ -37,6 +37,9 @@
 )
 
 #let (
+  /// entry options
+  twoside,
+  use-font,
   /// layouts
   meta,
   doc,
@@ -51,6 +54,8 @@
   notation,
   figure-list,
   table-list,
+  equation-list,
+  bilingual-bibliography,
 ) = define-config(
   info: (
     title: (
@@ -78,6 +83,7 @@
     version: "0.3.0",
   ),
   font: font-family,
+  bibliography: bibliography.with("refs.bib"),
 )
 
 /// Document Configuration
@@ -124,8 +130,12 @@
 
 #show: back-matter
 
-#notation()[]
+#notation(include "notation.typ")
 
 #figure-list()
 
 #table-list()
+
+#equation-list()
+
+#bilingual-bibliography()

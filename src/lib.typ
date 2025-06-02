@@ -1,5 +1,5 @@
 /// Main Entry Point
-#import "entry.typ": define-config
+#import "entry.typ": define-config, use-size
 
 /// Components
 #import "components/packages.typ": (

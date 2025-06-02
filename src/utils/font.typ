@@ -15,15 +15,30 @@
         message: "Font family not supported, ensure the font family keys contain " + _support-font-family.join(", "),
       )
     }
-  } else {
+  } else if type(font) == array {
+    for font in font {
+      assert(
+        _support-font-family.contains(font),
+        message: "Font family not supported, ensure the font family keys contain " + _support-font-family.join(", "),
+      )
+    }
+  } else if type(font) == str {
     assert(
       _support-font-family.contains(font),
       message: "Font family not supported, ensure the font family keys contain " + _support-font-family.join(", "),
     )
+  } else {
+    assert(false, message: "Invalid font type, expected dictionary, array or string.")
   }
 
   font
 }
+
+#let trim-en(font) = { font.slice(1) }
+
+#let _use-font(font, name) = { font-check(font).at(name) }
+
+#let _use-cjk-font(font, name) = { trim-en(_use-font(font, name)) }
 
 /// Word compatible font size for CJK
 #let _builtin-font-size = (

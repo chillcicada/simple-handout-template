@@ -123,7 +123,7 @@ $
   $
 
 #highlight[问题：毛细管测试之前，通常要设定几个等比数列的剪切速率，在测
-量前是不知道非牛顿指数n的。那么怎么设定剪切速率？]
+  量前是不知道非牛顿指数n的。那么怎么设定剪切速率？]
 
 *毛细管流变仪测量误差的来源*
 
@@ -1060,7 +1060,8 @@ b）入口端收敛角：随着入口端收敛角减小，液体中可逆应变�
     columns: 2,
     gutter: 1em,
     align: center + horizon,
-    image("media/elasticity/入口收敛流动.png", width: 150pt), image("media/elasticity/入口角与收敛角示意图.png", width: 180pt),
+    image("media/elasticity/入口收敛流动.png", width: 150pt),
+    image("media/elasticity/入口角与收敛角示意图.png", width: 180pt),
   ),
   caption: [入口收敛流动示意图],
 )
@@ -1203,7 +1204,7 @@ $N_w>7$时，液体为不稳定流动。
 应力松弛：在恒定温度和形变保持不变的情况下,高聚物内部的应力随时间增加而逐渐衰减的现象。例如拉伸一块未交联的橡胶到一定长度,并保持长度不变,随着时间的增长,这块橡胶的回弹力会逐渐减小,这是因为里面的应力在慢慢地减小,甚至可以减小到零。
 应力与时间也成指数关系：
 $
-sigma=
+  sigma=
 $
 
 
@@ -1351,5 +1352,3 @@ $ eta_c (dot(gamma)) = (d tau(dot(gamma))) / (d dot(gamma)) $
 
 储能模量与法向应力差关系：
 $ lim_(omega → 0) (G'(omega)) / omega^2 = lim_(N_1 → infinity) N_1 / (2 dot(gamma)^2) |_(dot(gamma) = omega) $
-
-#heading(level: 2, numbering: none)[参考文献]

@@ -482,5 +482,3 @@ f. 结晶，不易取向和解取向，取向结构稳定。如PA、PET。
 #figure(image("media/chapter2/图片7.png", width: 300pt))
 
 存在剪切诱导结晶的最低剪切速率，高于该剪切速率才能观察到剪切诱导结晶。在相同剪切速率下，总结晶速率和成核密度随剪切时间延长而变快。
-
-#heading(level: 2, numbering: none)[参考文献]

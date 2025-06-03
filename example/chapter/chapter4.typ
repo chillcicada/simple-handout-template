@@ -66,5 +66,3 @@ $
 === 填充对流变行为的影响
 
 聚丙烯填充碳酸钙
-
-#heading(level: 2, numbering: none)[参考文献]

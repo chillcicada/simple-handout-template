@@ -8,3 +8,5 @@
   three-line-table,
   two-line-table,
 )
+
+#import "components/summary.typ": summary-block

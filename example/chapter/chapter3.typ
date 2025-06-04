@@ -171,15 +171,15 @@ $
 - $R_i$ ：内筒半径
 - $R_o$ ：外筒内径
 
-$dot(gamma)_r = - (r d omega) / (d r)$
+$ dot(gamma)_r = - (r d omega) / (d r) $
 
-$tau_r dot 2 pi r L dot r = T$
+$ tau_r dot 2 pi r L dot r = T $
 
-$tau_r = T / (2 pi r^2 L)$
+$ tau_r = T / (2 pi r^2 L) $
 
-$dot(gamma)_r = (2 omega R_i^2 R_o^2) / (r^2 (R_o^2 - R_i^2))$
+$ dot(gamma)_r = (2 omega R_i^2 R_o^2) / (r^2 (R_o^2 - R_i^2)) $
 
-$eta = T / (4 pi L omega) (1 / R_i^2 - 1 / R_o^2) = (K T) / omega$
+$ eta = T / (4 pi L omega) (1 / R_i^2 - 1 / R_o^2) = (K T) / omega $
 
 *推导：*
 
@@ -306,9 +306,9 @@ $ tau_11 - tau_22 = (2 F) / (pi R^2) $
 *特点：*
 + 动态下测量，方便地模拟加工实际
 + 应用广（流变性质、加工性能）
-+ 螺杆无级变速。
-+ 原料用量少（50g甚至5g)，材料广泛
-+ 易清理。
++ 螺杆无级变速
++ 原料用量少（50g甚至5g），材料广泛
++ 易清理
 
 === 拉伸粘度
 
@@ -501,6 +501,36 @@ $M_c$ : 临界分子量，发生分子链缠结的最小分子量
 
 #text(blue)[*熔体零切粘度和松弛时间的分子长度依赖性*]
 
+对于聚合物熔体的零切粘度，有$eta_0=lambda G$。
+
+
+Reptation理论（蛇行理论）是描述缠结高分子链动力学行为的关键模型，该理论将相邻链对目标链的拓扑限制抽象为一条虚拟管道（Tube），链被约束在管道内，只能沿自身轮廓方向运动。
+
+#figure(
+  image("media/chapter3/reptation.png", width: 350pt),
+  caption: [Reptation理论示意图],
+)
+熔体分子链沿着缠结管的扩散系数$D_e=(k T)/zeta_"tot"=(k T)/(N zeta_0)$。其中$zeta_"tot"$和$zeta_0$分别为整链和链段受溶剂摩擦阻力，$N$为一根分子链中的链段数目。
+因而，链的松弛时间$lambda = (L_"eq")^2/D_e$，其中$L_"eq"∝N$为缠结形成的管子的长度。故$lambda = (L_"eq")^2/D ∝ N^2/(1"/"N)∝ N^3$。
+
+而又因为模量取决于缠结密度，$G=(rho N_A k T)/M_e$，与总分子量无关。
+所以$eta_0 =lambda G∝ N^3$。
+
+
+对于高分子稀溶液或未缠结的高分子熔体，可以用Rouse模型模拟。Rouse模型将高分子链视为由N个珠子（Beads）和N−1根弹簧（Springs）组成的链。
+
+#figure(
+  image("media/chapter3/rouse链.png", width: 350pt),
+  caption: [Rouse模型示意图],
+)
+
+假设每个“珠子”受到摩擦阻力$zeta$，则整条链受摩擦阻力$zeta_R=N zeta$，故扩散系数$D_R=(k T)/(N zeta)$。可得松弛时间（Rouse时间）$lambda≈R^2/D_R≈R^2/(k T"/" N zeta)=zeta/(k T) N R^2∝N^2$。
+
+Rouse模型中弹性主要来源于单链的熵弹性，$G∝N^(-1)$。故$eta_0=lambda G∝N$。
+
+
+
+
 #text(blue)[*聚合物分子量分布对粘度的影响*]
 
 #figure(
@@ -607,15 +637,92 @@ $M_c$ : 临界分子量，发生分子链缠结的最小分子量
 4. 超支化大分子的粘度在分子量超过一定数值后，反而随分子量提高而下降。
 5. *长支链使熔体强度增加，有利于吹膜、发泡。*（支链对加工性能的影响，与前文“拉伸硬化”内容可相互结合。）
 ===== 配方因素（添加剂：润滑剂、填料）
-体系组成对η的影响
-1．加低分子物（溶剂、增塑剂、润滑剂），流动促
-进剂（如液晶，流动取向），降低粘度；
-#highlight[问题：2．共混（不同高分子）]2．共混（不同高分子）
-共混是高分子改性三大方法之一（连续纤维增强
-、填充、共混）。
-共混（blending)是指加入高分子和高分子混合，
-研究共混高聚物熔体的流变学, 对于控制共混物的
-相结构和最终性能有重要指导意义。
+
+体系组成影响$eta$的情形主要包括：
++ 加低分子物（溶剂、增塑剂、润滑剂）、流动促进剂（如液晶，流动取向）等，可以降低粘度；
+
++ 共混（不同高分子）：共混（blending)是指加入高分子和高分子混合，是高分子改性三大方法（连续纤维增强、填充、共混）之一。
+#highlight[问题：2．共混（不同高分子）]
+
+
+#text(red)[*高分子共混体系的流变行为*]
+
+研究共混高聚物熔体的流变学，对于控制共混物的相结构和最终性能有重要指导意义。
+
+#text(blue)[*高分子－高分子共混五项原则*]
+
+为获得稳定均质的高分子共混物，需遵循以下五项原则：
+
+①从结构上看，根据相似相溶原则，需要高分子极性相匹配；
+
+②根据热力学原则，需溶度参数$delta$相近；
+
+③从胶体化学角度，需要形成稳定的界面层，故需表面张力相近；
+
+④根据分子动力学原则，需扩散能力相近。侧链的长短相近有利于渗透和扩散，易形成浓度变化较为对称的界面扩散层。
+
+⑤等粘性原则（流变学原则），指两相粘度接近，易混合均匀。
+
+#text(blue)[*共混体系组成对$eta$的影响*]
+
+两相共混物粘度可通过理想共混体剪切粘度的对数加和公式初步预测。
+#align(center, block[Utracki公式：$lg eta_m=omega_1 lg eta_1 + omega_2 lg eta_2$
+])
+
+然而，实验数据常偏离理想预测（如下图所示）。
+
+#figure(
+  image("media/chapter3/utracki.png", width: 250pt),
+  caption: [Utracki简单共混物的粘度变化规律及其偏差],
+)
+
+偏差可能揭示界面相互作用或相结构演变等。正偏差说明强界面作用，阻碍分子链滑移。负偏差说明弱界面作用，出现相分离。交替偏差则由相结构转变引起，例如从连续相变为分散相。
+
+#figure(
+  image("media3/chapter3/共混example.png", width: 400pt),
+  caption: [不相容共混体系组成对粘弹性的影响的案例1],
+)
+
+上图中分别给出了PS/PMMA共混物的$eta$（左）和稳态第一法向应力差异$N_1$（右）与共混物成分的关系图，可见与线性η共混物成分关系（虚线）的负偏差程度随着剪切应力σ的增加而增加。也可以看出，共混物的粘度相比纯聚合物下降，但是弹性却相反，相较于纯聚合物增强。
+
+#figure(
+  image("media/chapter3/共混案例2.png", width: 400pt),
+  caption: [不相容共混体系组成对粘弹性的影响的案例2],
+)
+
+对于HDPE/PS共混物的情况，可以发现，随着HDPE含量的升高，共混物粘度从负偏差变为正偏差，而弹性与粘性的趋势正好相反。
+
+#figure(
+  image("media/chapter3/共混形态new.png", width: 300pt),
+  caption: [在200°C下挤出过程中收集的HDPE/PS冷冻挤出物横截面的显微照片],
+)
+
+上图给出了三种 HDPE/PS 混合物的挤出物的显微照片，其中暗区代表PS相，亮区代表HDPE相。75/25 HDPE/PS 混合物的形态（此时η处于最大值，$N_1$处于最小值），与其他两种混合物的形态完全不同，另外两种混合物离散 HDPE 固定相分散在连续 PS 固定相中，而75/25 HDPE/PS 混合物两相看起来是互锁的。这种分散状态将使 75/25 HDPE/PS 混合物非常难以流动。
+
+相形态也显著影响流变行为。如下图所示，两个牛顿流体共混后，成为剪切变稀流体。这是由于分散相液滴剪切变形导致垂直于流线的截面积变小了。
+#figure(
+  image("media/chapter3/牛顿流体共混.png", width: 350pt),
+  caption: [尼龙6（●）、PET（▲）以及两种比例共混物共混物（○、△）黏度随剪切速率变化],
+)
+
+#text(red)[*触变剂（thixotropic agent）*]
+
+触变剂的作用在于可以防止树脂在施工的斜面或垂直面上流淌，避免树脂含量在上下层不均匀现象，从而保证制品的质量。
+
+常用的触变剂包括气相二氧化硅、沉淀二氧化硅。其它的触变剂还有石棉、高岭土、凹凸棒土、乳液法氯乙烯化合物等。用量一般在0.1%-4%，根据具体要求确定。
+
+#figure(
+  image("media/chapter3/触变剂原理.png", width: 400pt),
+  caption: [触变剂原理],
+)
+
+#text(red)[*增稠剂（Thickening agent）*]
+
+增稠剂是一种流变助剂，不仅可以使涂料增稠，防止施工中出现流挂现象，而且能赋予涂料优异的机械性能和贮存稳定性。常用的增稠剂包括无机增稠剂(膨润土)、纤维素类、聚丙烯酸酯、缔合型聚氨酯和聚多糖等。
+
+
+
+
 重点：填充体系的流变行为
 
 #text(red)[*填充体系的流变行为*]
@@ -1245,8 +1352,52 @@ $
 === 粘弹性的力学模型
 
 ==== Maxwell 模型
+Maxwell模型把高分子链等效为一个黏壶和一个弹簧串联，可用于模拟未化学交联聚合物熔体或溶液的粘弹性。
+#figure(
+  image("media/chapter3/maxwell.png", width: 100pt),
+  caption: [黏壶-弹簧模型],
+)
+如图所示，当模型受力时，两个元件：
 
-模拟线性高聚物的应力松弛、模拟高聚物的动态力学行为
+总应力$sigma=sigma_1=sigma_2$；
+
+总应变$epsilon=epsilon_1+epsilon_2$；
+
+应变速率$(d epsilon)/(d t)=(d epsilon_1)/(d t)+(d epsilon_2)/(d t)$。
+
+由于$sigma=E epsilon_1$，故$d sigma "/" d t=E d epsilon_1 "/" d t$；又由$sigma = eta (d epsilon_2)/(d t)$，可得到Maxwell模型的运动方程：
+
+#align(center, block[$(d epsilon)/(d t) = 1/E (d sigma)/(d t)+sigma/eta$])
+
+在应力松弛情况下，实验是瞬间将力加到模型上，弹簧立即作出反应，而粘壶来不及运动，全部应变几乎都产生于弹簧。
+
+应力松弛过程中，总形变一定，$d epsilon "/" d t=0$。因此有：
+
+#align(center, block[$(d sigma)/sigma = -E/eta d t$])
+
+当$t=0$时，$sigma=sigma_0$，上式积分得$sigma(t)=sigma_0 e^(-t"/"tau)$，其中$tau=eta/E$，称为松弛时间，表示形变固定时由于粘性流动使应力减少到起始应力的$1"/"e$所需的时间。$t arrow.r infinity$时，应力松弛到0。
+
+需要注意的是，Maxwell模型不能模拟交联高聚物的应力松弛。交联高聚物的应力松弛不会到0。
+
+对于蠕变的情况，$sigma=sigma_0$，$epsilon(t) = sigma_0/E+(t sigma_0)/eta$，粘性项随时间线性发散，时间无限长时表现出纯粘性。因此，用Maxwell模型模拟蠕变是不成功的，它的蠕变类似牛顿流体。
+
+*Maxwell模型的复数模量*
+
+对模型施加一个交变应力$sigma(t)=sigma_0 e^(i omega t)$，由于$d sigma"/"d t=i omega sigma$，可得：
+
+#align(center, block[$(d epsilon)/(d t) = 1/E (d sigma)/(d t)+sigma/eta=(1/E+1/(i omega eta))(d sigma)/(d t)$])
+
+故复数模量$E^*=d sigma "/" d epsilon=((d sigma)/(d t))"/"((d epsilon)/(d t))=1/(1/E+1/(i omega eta))$。代入$eta=tau E$，化简可得：
+
+#align(center, block[$E^*=(E omega^2 tau^2)/(1+ omega^2 tau^2)+i (E omega tau)/(1+ omega^2 tau^2)$])
+
+$E'=(E omega^2 tau^2)/(1+ omega^2 tau^2)$，称为储能模量，代表聚合物模量的弹性分量，反映应变作用下能量在熔体中的储存状况。损耗模量$E''= (E omega tau)/(1+ omega^2 tau^2)$称为损耗模量，为聚合物模量的黏性分量，反映材料在外加交变载荷作用下能量耗散的状况，二者的比值$tan delta=1/(omega tau)=E''/E'$为损耗因子。
+#figure(
+  image("media/chapter3/Maxwell模型的动态黏弹行为.png", width: 200pt),
+  caption: [Maxwell模型的动态黏弹行为],
+)
+低频时，$E'$很小；而高频时，粘壶基本来不及运动。值得注意的是，$tan δ$与$log omega$的关系与实际高聚物不符合。
+
 
 ==== Voigt 模型
 

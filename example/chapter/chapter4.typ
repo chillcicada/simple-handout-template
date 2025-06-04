@@ -7,7 +7,7 @@
 Deborah 数为表征粘弹性的无量纲数，由以色列学者 M. Reiner 1964年提出。
 
 $
-  D e = lambda / t
+  "De" = lambda / t
 $
 
 其中，$lambda$ 为松弛时间（relaxation time)，$t$ 为形变过程的时间。

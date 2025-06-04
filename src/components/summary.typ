@@ -1,8 +1,29 @@
 #import "../utils/font.typ": use-size
 
+/// = Examples
+///
+/// ```typ
+/// #summary-block(
+///   notion: [
+///     - 流变学的概念、分支和研究体系
+///     - 聚合物流变学的研究对象、基本概念和研究方法
+///     - 流变学在聚合物加工中的应用
+///   ],
+///   equation: table(
+///     table.header([涵义], [公式], [索引]),
+///     [1], [2], [3],
+///     [4], [5], [6],
+///   ),
+///   reference: [
+///     - 《高分子物理》
+///   ],
+/// )
+/// ```
 #let summary-block(
   // self
-  it,
+  notion: [],
+  equation: [],
+  reference: [],
 ) = {
   show heading: it => {
     if (it.level == 1) {
@@ -28,38 +49,28 @@
     }
   }
 
-  set list(marker: [□], indent: 24pt)
+  set list(marker: [☐], indent: 24pt)
 
-  // show table.cell: it => {
-  //   if calc.odd(it.x) { set fill(lightgray) }
-  // }
-
-  it
-}
-
-#summary-block()[
-  = 本章要点
-
-  == 概念
-
-  - zz
-  - zzz
-  - #lorem(10)
-  - #lorem(11)
-  - #lorem(12)
-  - 你说的对，但是《原神》是由米哈游自主研发的一款全新开放世界冒险游戏。游戏发生在一个被称作「提瓦特」的幻想世界，在这里，被神选中的人将被授予「神之眼」，导引元素之力。你将扮演一位名为「旅行者」的神秘角色，在自由的旅行中邂逅性格各异、能力独特的同伴们，和他们一起击败强敌，找回失散的亲人——同时，逐步发掘「原神」的真相。
-
-  == 公式
-
-  #table(
-    columns: (1fr, 1fr, 1fr),
-    [1], [2], [3],
-    [4], [5], [6],
+  set table(
+    columns: (1fr, 1fr, auto),
+    stroke: none,
+    fill: (x, y) => if calc.even(y) { luma(220) },
+    align: center + horizon,
   )
 
-  = 延伸阅读
+  [
+    = 本章要点
 
-  - 《高分子物理》
+    == 概念
 
-  = 课后习题
-]
+    #notion
+
+    == 公式
+
+    #equation
+
+    = 延伸阅读
+
+    #reference
+  ]
+}

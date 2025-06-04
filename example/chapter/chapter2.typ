@@ -251,10 +251,11 @@ $
   -dif v_r = (Delta P) / (2eta L) dot r dif r \
   integral_(v_r)^0 -dif v_r = integral_r^R (Delta P) / (2eta L) dot r dif r \
   v_r = (Delta P) / (4eta L) dot (R^2 - r^2) \
-  v_0 = (n R) / (n+1) ( (Delta P R) / (2k L) )^(1 / n) \
-  v_r = n / (n+1) ( (Delta P) / (2k L) )^(1 / n) ( R^((n+1) / n) - r^((n+1) / n) ) = v_0 [1 - ( r / R )^((n+1) / n)]
 $
-
+$
+  v_0 &= (Delta P) / (4eta L) dot R^2 \
+  v_r &= v_0 dot (1 - r^2 / R^2) 
+$
 *体积流率*：
 
 $
@@ -264,8 +265,8 @@ $
 ==== 非牛顿流体
 
 $
-  dot(gamma) &= k dot(gamma)^n = (Delta p r) / (2L) \
-  dot(gamma) &= -(dif gamma) / (dif r) = ( (Delta p r) / (2K L) )^(1 / n)
+  tau_r &= k dot(gamma)^n = (Delta p r) / (2L) \
+  dot(gamma) &= -(dif v_r) / (dif r) = ( (Delta p r) / (2K L) )^(1 / n)
 $
 
 $
@@ -276,7 +277,8 @@ $
 $
 
 $
-  v_0 = (n R) / (n+1) ( (Delta p R) / (2K L) )^(1 / n)
+  v_0 = (n R) / (n+1) ( (Delta p R) / (2K L) )^(1 / n) \
+  v_r = n / (n+1) ( (Delta P) / (2k L) )^(1 / n) ( R^((n+1) / n) - r^((n+1) / n) ) = v_0 [1 - ( r / R )^((n+1) / n)]
 $
 
 体积流率：

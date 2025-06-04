@@ -1352,10 +1352,11 @@ $
 === 粘弹性的力学模型
 
 ==== Maxwell 模型
+*模拟线性高聚物的应力松弛*
 Maxwell模型把高分子链等效为一个黏壶和一个弹簧串联，可用于模拟未化学交联聚合物熔体或溶液的粘弹性。
 #figure(
   image("media/chapter3/maxwell.png", width: 100pt),
-  caption: [黏壶-弹簧模型],
+  caption: [Maxwell黏壶-弹簧模型],
 )
 如图所示，当模型受力时，两个元件：
 
@@ -1381,7 +1382,7 @@ Maxwell模型把高分子链等效为一个黏壶和一个弹簧串联，可用�
 
 对于蠕变的情况，$sigma=sigma_0$，$epsilon(t) = sigma_0/E+(t sigma_0)/eta$，粘性项随时间线性发散，时间无限长时表现出纯粘性。因此，用Maxwell模型模拟蠕变是不成功的，它的蠕变类似牛顿流体。
 
-*Maxwell模型的复数模量*
+*模拟高聚物的动态力学行为*
 
 对模型施加一个交变应力$sigma(t)=sigma_0 e^(i omega t)$，由于$d sigma"/"d t=i omega sigma$，可得：
 
@@ -1394,12 +1395,77 @@ Maxwell模型把高分子链等效为一个黏壶和一个弹簧串联，可用�
 $E'=(E omega^2 tau^2)/(1+ omega^2 tau^2)$，称为储能模量，代表聚合物模量的弹性分量，反映应变作用下能量在熔体中的储存状况。损耗模量$E''= (E omega tau)/(1+ omega^2 tau^2)$称为损耗模量，为聚合物模量的黏性分量，反映材料在外加交变载荷作用下能量耗散的状况，二者的比值$tan delta=1/(omega tau)=E''/E'$为损耗因子。
 #figure(
   image("media/chapter3/Maxwell模型的动态黏弹行为.png", width: 200pt),
-  caption: [Maxwell模型的动态黏弹行为],
+  caption: [Maxwell模型的动态力学行为],
 )
-低频时，$E'$很小；而高频时，粘壶基本来不及运动。值得注意的是，$tan δ$与$log omega$的关系与实际高聚物不符合。
+低频时，$E'$很小；而高频时，粘壶基本来不及运动，仅弹性响应。值得注意的是，$tan δ$与$log omega$的关系与实际高聚物不符合，Maxwell模型仅包含单一弛豫过程。
+
+对于理想弹性体，柔量$D=1"/"E$。然而，在粘弹体中这一关系并不成立，$E(t)=sigma(t)/epsilon_0 != sigma_0/epsilon(t)=1/D(t)$。
+
+Maxwell模型中，类似于复数模量，复数柔量(compliance)可表示为：
+
+#align(center, block[$D^*=d epsilon"/"d sigma=((d epsilon)/(d t))"/"((d sigma)/(d t))=1/E+1/(i omega eta)=1/E+1/(i omega tau E)$])
+
+同样，实数柔量$D'=D=1/E$，虚数柔量$D''=1/(omega tau E)$。
 
 
 ==== Voigt 模型
+*模拟交联高聚物的蠕变过程*
+Voigt模型把高分子链等效为一个黏壶和一个弹簧并联，交联高聚物的蠕变过程。
+
+#figure(
+  image("media/chapter3/voigt.png", width: 150pt),
+  caption: [Voigt黏壶-弹簧模型],
+)
+
+如图所示，当模型受力时，两个元件：
+
+总应力$sigma=sigma_1+sigma_2$；
+
+总应变$epsilon=epsilon_1=epsilon_2$；
+
+应变速率$sigma=E epsilon+eta (d epsilon)/(d t)$。
+
+蠕变过程中，应力不变，$sigma=sigma_0$，故：
+
+#align(center, block[$(d epsilon)/sigma_0-E epsilon=(d t)/eta$])
+
+$t=0$时，$epsilon=0$，为初始条件。积分可得：
+
+#align(center, block[$epsilon(t)=sigma_0/E (1-e^(-t"/"tau))=epsilon(infinity)(1-e^(-t"/"tau))$])
+
+其中松弛时间$tau=eta"/"E$。
+
+$epsilon(infinity)=sigma_0/E$是$t arrow.r infinity$时的有限平衡形变，在时间无限长时，体系表现出纯弹性。
+
+#figure(
+  image("media/chapter3/voigt蠕变.png", width: 200pt),
+  caption: [Voigt模型的蠕变曲线],
+)
+
+需要注意的是，由于没有永久变形，Voigt模型不能模拟线型高聚物的蠕变过程。
+
+模拟高聚物的动态力学行为
+Voigt模型也可以用来模拟高聚物的动态力学行为。
+
+当给模型的应变为$epsilon(t)=epsilon_0 e^(i omega t)$时，可推知：
+
+#align(center, block[$sigma(t)=E epsilon_0 e^(i omega t)+i omega eta epsilon_0 e^(i omega t)$])
+
+复数模量$E^*=sigma(t)/epsilon(t)=E+i omega eta$，$E'=E$，$E''=omega eta$，$tan delta=omega eta/E=omega tau$。
+
+
+
+
+类似地，也可以给出复数柔量：$D^*=1/(E+i omega eta)=D/(1+omega^2 tau^2)-i (D omega tau)/(1+omega^2 tau^2)$。其中$D=1/E$。则实数和虚数柔量分别为$D'=D/(1+omega^2 tau^2)$，$D''=(D omega tau)/(1+omega^2 tau^2)$。
+
+
+#figure(
+  image("media/chapter3/voigt动态力学.png", width: 200pt),
+  caption: [Voigt模型的动态力学行为],
+)
+
+可以注意到，$tan delta-log omega$的曲线仍然与实际不符。
+
 
 模拟交联高聚物的蠕变过程、模拟高聚物的动态力学行为
 

@@ -1,3 +1,5 @@
+#import "../imports.typ": summary-block
+
 = 流变学在聚合物成型加工中的应用
 
 == 两个无量纲数
@@ -50,8 +52,8 @@ $
 
 Kharchenko等人研究发现，在聚丙烯（PP）基体中，多壁碳纳米管（MWNTs）可形成堵塞网络，显著改变复合材料的加工行为及性能。
 #figure(
-    image("media/chapter4/碳纳米管聚丙烯.png", width: 300pt),
-    caption: [通过MWNT填料抑制挤出膨胀],
+  image("media/chapter4/碳纳米管聚丙烯.png", width: 300pt),
+  caption: [通过MWNT填料抑制挤出膨胀],
 )
 
 如图所示，虚线为挤出口模的直径。可见碳纳米管填充聚丙烯发生反常的挤出收缩，而纯聚丙烯则挤出胀大。
@@ -67,8 +69,8 @@ Kharchenko等人研究发现，在聚丙烯（PP）基体中，多壁碳纳米�
 Tian等人研究聚丙烯（iPP）薄膜在挤出流延（Extrusion Film Casting, EFC）过程中的非线性稳定性与动力学行为，提出其存在拉伸共振不稳定性（draw resonance instability）。
 
 #figure(
-    image("media/chapter4/不稳定流动的消除措施.png", width: 350pt),
-    caption: [拉伸比（$D r$）对iPP薄膜拉伸过程的影响],
+  image("media/chapter4/不稳定流动的消除措施.png", width: 350pt),
+  caption: [拉伸比（$D r$）对iPP薄膜拉伸过程的影响],
 )
 图（a）给出了不同拉伸比下膜宽度随时间的演化过程；图（b）显示了$D r=30$时膜宽度、厚度的振荡情况。
 
@@ -92,3 +94,5 @@ Tian等人研究聚丙烯（iPP）薄膜在挤出流延（Extrusion Film Casting
 === 填充对流变行为的影响
 
 聚丙烯填充碳酸钙
+
+#summary-block()

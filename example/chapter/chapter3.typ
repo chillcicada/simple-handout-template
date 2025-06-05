@@ -1,7 +1,5 @@
 #import "../unit.typ": *
-#import "../../src/lib.typ" as template
-
-#import template: tablem
+#import "../imports.typ": summary-block, tablem
 
 = 粘弹性——流变学的核心概念
 
@@ -1598,3 +1596,5 @@ $ eta_c (dot(gamma)) = (d tau(dot(gamma))) / (d dot(gamma)) $
 
 储能模量与法向应力差关系：
 $ lim_(omega → 0) (G'(omega)) / omega^2 = lim_(N_1 → infinity) N_1 / (2 dot(gamma)^2) |_(dot(gamma) = omega) $
+
+#summary-block()

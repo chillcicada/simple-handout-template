@@ -132,24 +132,14 @@ $
 存在剪切诱导结晶的最低剪切速率，高于该剪切速率才能观察到剪切诱导结晶。在相同剪切速率下，总结晶速率和成核密度随剪切时间延长而变快。
 
 == 流变学对聚合物加工成型的理论指导
-
-=== 指导聚合物树脂的聚合和选用，以获得加工性能优良的聚合物;
-
-流变学指导手机防摔膜的材料设计
-
-=== 指导配方设计、加工方法和加工工艺的选择;
-
-流变学指导3D打印的配方和工艺设计
-
-=== 指导加工机械和模具的设计。
-
-层叠倍增挤出几十上百层复合膜，用作液晶显示器的反射膜
+流变学可以：
+- 指导聚合物树脂的聚合和选用，以获得加工性能优良的聚合物；
+- 指导配方设计、加工方法和加工工艺的选择;
+- 指导加工机械和模具的设计等。
+下举一些例子。
 
 == 流变学对聚合物加工成型的实际案例
 
-=== 拉伸粘度与成型加工性能
-
-难以电纺丝的聚合物溶液，加入PEO，有利于电纺丝获得一百到几微米的超细纤维
 
 === 挤出胀大的削弱措施
 
@@ -185,19 +175,22 @@ Tian等人研究聚丙烯（iPP）薄膜在挤出流延（Extrusion Film Casting
 
 //citation: Fucheng Tian, Xiaoliang Tang, Tingyu Xu, Junsheng Yang, Chun Xie, Liangbin Li; Nonlinear stability and dynamics of nonisothermal film casting. J. Rheol. 1 January 2018; 62 (1): 49–61. https://doi.org/10.1122/1.5009198
 
-=== 利用弹性效应，促进聚合物分子链的取向
 
-锂电池用聚丙烯微孔膜
 
-=== 流变学测试
+=== 温度扫描：意面的储能模量变化
 
-- 根据 $G'$ 和 $G''$ 判断加工性能
-- 温度扫描：意面的储能模量变化
+#figure(
+    image("media/chapter4/意面-1.png", width: 250pt),
+    caption: [意面的温度扫描测试],
+)
 
-- 最长松弛时间应用
-- 通过流变学测试解决PHBHHx难吹膜问题
+通过振荡时间扫描测试以 6.28 rad/s 的频率在 22 ℃ 下测试了一片意大利宽面条。收集了 2.5 min 干样品数据来建立储能模量 $G’$ 基线。
 
-*通过流变学测试解决PHBHHx难吹膜问题*
+在 2.5 min 后加入水，立即看到了水分带来的影响，即 $G’$ 下降。在 5 min 时，一边监测 $G’$，一边将温度升高到 95 ℃ 并保持。随着意大利面的烹煮，储能模量下降了约 3 个数量级，并在烹煮完成时达到平衡。
+
+=== 通过流变学测试解决PHBHHx难吹膜问题
+
+
 #figure(
     image("media/chapter4/PHBHHx-1.png", width: 350pt),
     caption: [PHBHHx吹膜效果与DMA测试],
@@ -212,7 +205,10 @@ Tian等人研究聚丙烯（iPP）薄膜在挤出流延（Extrusion Film Casting
 
 故提出新假设：入口压力降（熔体拉伸弹性）高的聚合物有利于吹膜。
 
-
+#figure(
+    image("media/chapter4/PHBHHx-3.png", width: 450pt),
+    caption: [对容易吹膜的材料和PHBXHHx进行流变学测试以及结构示意图],
+)
 如图，对容易吹膜和不容易吹膜的材料都进行流变学测试验证假设，
 结果发现，容易吹膜的LDPE、LLDPE、长支化TH-PBAT入口压力降都比较高。而难吹膜的PHBHHx、线形PR-PBAT 入口压力降都比较低。
 
@@ -228,10 +224,67 @@ Tian等人研究聚丙烯（iPP）薄膜在挤出流延（Extrusion Film Casting
     align: center + horizon,
     image("media/chapter4/PHBHHx-4.png", width: 160pt), image("media/chapter4/PHBHHx-5.png", width: 180pt),
   ),
-  caption: [共混不同含量PBAT-PHBHHx的],
+  caption: [共混不同含量PBAT-PHBHHx的流变测试],
 )
+测试发现，添加20%PBAT就能较为显著的改善PBHHx-1的吹膜特性，而继续增加PBAT含量虽然能提高分子链变形程度，但其熔体拉伸过程更易断。
 
-纺丝速度对纤维结构和性能的影响
+故最后选择20PBAT/PHBHHx-1配方。
+#figure(
+    image("media/chapter4/PHBHHx-6.png", width: 100pt),
+    caption: [工厂吹膜试验结果],
+)
+如图，工厂吹膜试验一次成功，基于新假设和流变学测试筛选出来的20PBAT/PHBHHx-1配方可以稳定吹膜。
+
+=== 服装纤维成型加工
+
+
+#figure(
+    image("media/chapter4/纺丝-6.png", width: 300pt),
+    caption: [熔体纺丝的原理],
+)
+熔法纺丝的主要特点是卷绕速度高、不需要溶剂和沉淀剂，设备简单，工艺流程短。熔点低于分解温
+度、可熔融形成热稳定熔体的成纤聚合物，都可采用这一方法成形。如涤纶、丙纶、锦纶等。上图为熔体纺丝的原理。
+
+
+*纺丝速度对纤维结构和性能的影响*
+
+#figure(
+    image("media/chapter4/纺丝-1.png", width: 200pt),
+    caption: [PET高速纺丝中的结晶度与纺速的关系],
+)
+PET是涤纶中常用的一种材料，如图，可以发现，基本上纺速越快，聚合物结晶度越大，是“拉伸硬化”的表现。在服装中又称这种充分结晶的纤维为FDY。
+#figure(
+    image("media/chapter4/纺丝-2.png", width: 150pt),
+    caption: [不同纺丝速度的纤维的DSC测试],
+)
+如图，发现拉伸速度越快的纤维，DSC测试无结晶峰，从而也可以证明FDY已经结晶完全。
+
+利用聚合物拉伸硬化的原理，对于一些原本熔点较低但性能比较好的纤维，在不改变原配方的情况下，通过提高拉伸速度来提高结晶度，进而提高纤维的实际熔点，从而使纤维更易加工。
+
+*利用熔体弹性效应设计异形截面纤维的截面*
+#figure(
+    image("media/chapter4/纺丝-3.png", width: 250pt),
+    caption: [不同喷丝孔形状与实际熔体形状对比],
+)
+如图，根据上章弹性章节中可以得知，熔体会挤出胀大，故设计纤维形状时，要考虑熔体的挤出胀大效应。
+#figure(
+  grid(
+    columns: 2,
+    gutter: 1em,
+    align: center + horizon,
+    image("media/chapter4/纺丝-5.png", width: 200pt), 
+    image("media/chapter4/纺丝-7.png", width: 150pt),
+  ),
+  caption: [纤维形状与异形三叶的喷丝孔形状],
+)
+因为纤维形状的不同在实际衣服中会产生不同的效果，所以纤维形状的设计是较为重要的一步。如图，异形三叶相较于常规截面纤维而言，具有保暖，导湿的效果。它的喷丝孔形状见右图。
+#figure(
+    image("media/chapter4/纺丝-4.png", width: 200pt),
+    caption: [Coolmax纤维横截面],
+)
+Coolmax纤维由美国杜邦公司研制开发，是异形截面的PET纤维。Coolmax纤维横截面呈扁平“十”字型，所以它的表面就形成了四道沟槽。该形状的纤维具有导湿快干的效果。
+
+
 === 填充对流变行为的影响
 
 聚丙烯填充碳酸钙
@@ -246,5 +299,12 @@ Tian等人研究聚丙烯（iPP）薄膜在挤出流延（Extrusion Film Casting
   caption: [聚丙烯填充碳酸钙体系，粘度和模量随填充含量的变化],
 )
 随着碳酸钙含量的增加，填充体系粘度（$eta$）增加，弹性($N_1$)减弱。
+
+#text(blue)[*通过填料多分散性降低粘度*]
+#figure(
+  image("media/chapter3/填充-5.png", width: 300pt),
+  caption: [填料分散峰数对材料粘度的影响],
+)
+如图，随着球形颗粒填料分散峰的数目的增加，相对粘度逐渐降低，故可以通过增加填料的多分散性降低黏度。在实际生产中，可通过此方式克服高纤维填充量导致的体系粘度增加而难以加工的问题。
 
 #summary-block()

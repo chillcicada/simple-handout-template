@@ -92,5 +92,3 @@ Tian等人研究聚丙烯（iPP）薄膜在挤出流延（Extrusion Film Casting
 === 填充对流变行为的影响
 
 聚丙烯填充碳酸钙
-
-#heading(level: 2, numbering: none)[参考文献]

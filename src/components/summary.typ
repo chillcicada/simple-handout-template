@@ -1,4 +1,7 @@
 #import "../utils/font.typ": use-size
+#import "../imports.typ": cuti
+
+#import cuti: fakebold
 
 /// = Examples
 ///
@@ -20,36 +23,38 @@
 /// )
 /// ```
 #let summary-block(
-  // self
-  notion: [],
-  equation: [],
-  reference: [],
+  // content
+  notion: none,
+  equation: none,
+  reference: none,
 ) = {
-  show heading: it => {
-    if (it.level == 1) {
-      block(
-        width: 100%,
-        fill: black,
-        text(
-          it,
-          white,
-          size: use-size("四号"),
-        ),
-        inset: (left: 8pt, y: 4pt),
-        below: 16pt,
-      )
-    } else {
-      block(
-        text(
-          it,
-          size: use-size("小四"),
-        ),
-        inset: (left: 24pt),
-      )
-    }
-  }
+  let block1(ctx) = block(
+    width: 100%,
+    fill: black,
+    text(
+      ctx,
+      white,
+      size: use-size("四号"),
+      font: "SimHei",
+    ),
+    inset: (left: 8pt, y: 4pt),
+    below: 16pt,
+  )
 
-  set list(marker: [☐], indent: 24pt)
+  let block2(ctx) = block(
+    text(
+      ctx,
+      size: use-size("小四"),
+      font: "SimHei",
+    ),
+    inset: (left: 24pt),
+  )
+
+  set list(
+    marker: text(fakebold("☐"), font: "KaiTi"),
+    indent: 24pt,
+    body-indent: 1.5em,
+  )
 
   set table(
     columns: (1fr, 1fr, auto),
@@ -59,18 +64,24 @@
   )
 
   [
-    = 本章要点
+    #block1[本章要点]
 
-    == 概念
+    #if (notion != none) {
+      block2[概念]
 
-    #notion
+      notion
+    }
 
-    == 公式
+    #if (equation != none) {
+      block2[公式]
 
-    #equation
+      equation
+    }
 
-    = 延伸阅读
+    #if (reference != none) {
+      block2[延伸阅读]
 
-    #reference
+      reference
+    }
   ]
 }

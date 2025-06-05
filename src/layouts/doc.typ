@@ -64,7 +64,7 @@
   caption-separator: "  ",
   underline-offset: .1em,
   underline-stroke: .05em,
-  underline-evade: true,
+  underline-evade: false,
   enum-numbering: "①",
   bibliography-font: "SongTi",
   bibliography-size: "五号",
@@ -163,7 +163,10 @@
   /// Enum
   ///
   /// set default enum numbering and indent
-  set enum(numbering: enum-numbering, indent: indent)
+  set enum(
+    numbering: enum-numbering,
+    indent: indent,
+  )
 
   /// Bibliography
   show bibliography: set text(font: use-font(bibliography-font), size: use-size(bibliography-size))

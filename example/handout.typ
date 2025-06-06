@@ -107,7 +107,7 @@
 #show: front-matter
 
 // Preface Page
-#preface(date: datetime(year: 2025, month: 5, day: 1))[
+#preface(date: datetime(year: 2025, month: 6, day: 6))[
   #include "preface.typ"
 ]
 
@@ -263,6 +263,7 @@ $
 )
 
 /// Chapter 2
+
 = 聚合物在流场中的流动
 
 == 基本概念

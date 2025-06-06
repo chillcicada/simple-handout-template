@@ -3388,13 +3388,3 @@ Coolmax纤维由美国杜邦公司研制开发，是异形截面的PET纤维。C
 #equation-list()
 
 #bilingual-bibliography()
-
-//citation：Han, Chang Dae, Rheology and Processing of Polymeric Materials: Volume 1: Polymer Rheology (New York, 2007; online edn, Oxford Academic, 12 Nov. 2020)
-
-//citation: Han CD, et al. Transactions of the Society of Rheology 14, 393 (1970).
-
-//citation: E. B. Bagley, A. M. Birks; Flow of Polyethylene into a Capillary. J. Appl. Phys. 1 March 1960; 31 (3): 556–561. https://doi.org/10.1063/1.1735627
-
-//citation: Kharchenko, S., Douglas, J., Obrzut, J. et al. Flow-induced properties of nanotube-filled polymer materials. Nature Mater 3, 564–568 (2004). https://doi.org/10.1038/nmat1183
-
-//citation: Fucheng Tian, Xiaoliang Tang, Tingyu Xu, Junsheng Yang, Chun Xie, Liangbin Li; Nonlinear stability and dynamics of nonisothermal film casting. J. Rheol. 1 January 2018; 62 (1): 49–61. https://doi.org/10.1122/1.5009198

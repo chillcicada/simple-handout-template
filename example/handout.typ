@@ -385,7 +385,7 @@ $ <零切粘度>
 微分粘度（稠度）：
 
 $
-  eta_c=(dif tau) / (dif gamma)
+  eta_c=(dif tau) / (dif dot(gamma))
 $ <微分粘度>
 
 表观粘度对应的是流动曲线上某点割线的斜率，微分粘度对应流动曲线上某点切线的斜率。
@@ -444,7 +444,7 @@ $ <双轴拉伸>
 *幂律公式*(Ostwald-de Waele模型)：
 
 $
-  tau=K gamma^n
+  tau=K dot(gamma)^n
 $ <幂律方程>
 
 其中，$K$为稠度系数（consistency index），$n$为流变指数（power-law index），或称非牛顿指数。
@@ -518,7 +518,7 @@ $
 $
 
 $
-  tau_r=Delta p / (2L)⋅ r
+  tau_r=(Delta p) / (2L)⋅ r
 $
 
 *速度分布*：
@@ -573,7 +573,7 @@ $
 $ <圆管中非牛顿流体体积流率>
 
 $
-  overline(v) &= Q / (pi R^2) = (n R) / (3n+1) ( (Delta p R) / (2K L) )^(k n) = (n+1) / (3n+1) v_0^2 \
+  overline(v) &= Q / (pi R^2) = (n R) / (3n+1) ( (Delta p R) / (2K L) )^(1/ n) = (n+1) / (3n+1) v_0 \
   v_r &= overline(v)dot (3n+1) / (n+1) [1 - (r / R)^((n+1) / pi)]
 $
 
@@ -581,7 +581,7 @@ $
 
 $
   dot(gamma)_(R, 牛) &= (3n + 1) / n dot Q / (pi R^3) \
-  dot(gamma)_(R,非 牛) &= (3n + 1) / (4n) dot gamma_牛
+  dot(gamma)_(R,非 牛) &= (3n + 1) / (4n) dot(gamma)_牛
 $
 
 $n$ 的测定方法：
@@ -674,7 +674,7 @@ $ <狭缝中幂律流体剪切速率>
     - 胀塑性流体：剪切增稠，其表观粘度随切变速率的增大而增大。
     - 触变性 (thixotropic)：一定剪切速率，随时间增加，$eta$下降
     - 震凝性 (rheopectic)：一定剪切速率，随时间增加，$eta$上升
-    - 幂律方程：$tau = K gamma^n$，其中 $K$ 为稠度系数，$n$ 为流变指数。
+    - 幂律方程：$tau = K dot(gamma)^n$，其中 $K$ 为稠度系数，$n$ 为流变指数。
     - 聚合物普适流动曲线：第一牛顿区、假塑性区、第二牛顿区。
     - 第一牛顿区：零切粘度，反映材料在没有外力的平衡态下的性质。
     - 假塑性区：随切变速率增加，表观粘度值变小。通常聚合物流体加工成型时的变速率正在这一范围内。
@@ -694,11 +694,11 @@ $ <狭缝中幂律流体剪切速率>
     [真实拉伸应力], [$ sigma = F / A $ <->], [@eqt:真实拉伸应力],
     [剪切粘度], [$ eta_a = tau / dot(gamma) $ <->], [@eqt:剪切粘度],
     [零切粘度], [$ eta_0 = lim_(dot(gamma)→0) tau / dot(gamma) $ <->], [@eqt:零切粘度],
-    [微分粘度（稠度）], [$ eta_c = (dif tau) / (dif gamma) $ <->], [@eqt:微分粘度],
+    [微分粘度（稠度）], [$ eta_c = (dif tau) / (dif dot(gamma)) $ <->], [@eqt:微分粘度],
     [拉伸粘度], [$ eta_T = sigma / dot(epsilon) $ <->], [@eqt:拉伸粘度],
     [单轴拉伸], [$ eta_T = 3 eta_a $ <->], [@eqt:单轴拉伸],
     [双轴拉伸], [$ eta_T = 6 eta_a $ <->], [@eqt:双轴拉伸],
-    [幂律方程], [$ tau = K gamma^n $ <->], [@eqt:幂律方程],
+    [幂律方程], [$ tau = K dot(gamma)^n $ <->], [@eqt:幂律方程],
     [Bird-Carreau模型], [$
         eta = eta_0 / [1 + (lambda dot(gamma))^2]^((1-n) / 2)
       $ <->], [@eqt:Bird-Carreau模型],
@@ -905,17 +905,17 @@ $ eta = T / (4 pi L omega) (1 / R_i^2 - 1 / R_o^2) = (K T) / omega $
 
 $ dot(gamma)_r = - r (dif omega_r) / (dif r) $
 
-$ tau_r = -2 r (dif omega_r) / (dif r) $
+$ tau_r = -eta r (dif omega_r) / (dif r) $
 
 $ tau_r dot 2 pi r L dot r = T $
 
 $ -2 pi eta L r^3 (dif omega_r) / (dif r) = T $
 
-$ -dif omega_r = T / (2 pi l L) dot (dif r) / r^3 $
+$ -dif omega_r = T / (2 pi eta L) dot (dif r) / r^3 $
 
 积分结果:
 
-$ omega / (4 pi eta L) = T / (4 pi l L) (R_i^2 - R_0^2) $
+$ omega  = T / (4 pi eta L) (1 / R_i^2 - 1/ R_0^2) $
 
 $ eta = T / (4 pi L omega) (1 / R_i^2 - 1 / R_0^2) $
 
@@ -945,7 +945,7 @@ $
   dot(gamma)_R = (d v) / (d z) = (omega R) / h
 $
 
-*牛顿流体* , 运用力矩平衡，对流体粘滞力的力矩进行积分，总和等于驱动上板旋转的扭矩$T$： $ tau_R = (2 T) / (pi R^3) $
+*牛顿流体* ，运用力矩平衡，对流体粘滞力的力矩进行积分，总和等于驱动上板旋转的扭矩$T$： $ tau_R = (2 T) / (pi R^3) $
 
 $
   eta_a = (2 h T) / (pi R^4 omega) = (K T) / omega
@@ -966,12 +966,12 @@ $
 
 *特点:*
 
-+ 处处剪切速率相同,上述计算方法适用于任何流体。测试和数据处理不需作任何校正；
++ 处处剪切速率相同，上述计算方法适用于任何流体。测试和数据处理不需作任何校正；
 + $alpha$ 通常为 $1°$ ，对于有大粒填料的分散体，通常使用 $alpha$ 为 $4°$ 的测量头。
 
 *原理公式:*
 
-$ dot(gamma) = (omega r) / (tan alpha) = omega / (tan alpha) $
+$ dot(gamma) = (omega r) / ( r tan alpha) = omega / (tan alpha) $
 
 $ tau = (3 T) / (2 pi R^3) $
 

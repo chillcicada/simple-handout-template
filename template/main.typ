@@ -59,7 +59,7 @@
 ) = define-config(
   info: (
     title: (
-      title: "标 题",
+      title: "标题",
       subtitle: "副标题",
     ),
     authors: (

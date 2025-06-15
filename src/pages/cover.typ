@@ -11,6 +11,8 @@
   /// Auxiliary function to parse the SemVer version and display it as Chinese numbering
   let parse-semver-major(version) = numbering("一", int(version.split(".").at(0)))
 
+  let space-text(text, spacing: " ") = text.split("").join(spacing).trim()
+
   /// Render the cover page
   // Title
   set text(font: font.SongTi)
@@ -23,7 +25,7 @@
         size: use-size("小初"),
         weight: "bold",
         spacing: 200%,
-      )[#info.title.title]
+      )[#space-text(info.title.title)]
 
       #text(
         size: use-size("一号"),

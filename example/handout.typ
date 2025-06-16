@@ -36,8 +36,6 @@
   ),
 )
 
-#let space-text(text, spacing: " ") = text.split("").join(spacing).trim()
-
 #let (
   /// entry options
   twoside,
@@ -61,7 +59,7 @@
 ) = define-config(
   info: (
     title: (
-      title: space-text("高分子流变学讲义"),
+      title: "高分子流变学讲义",
       subtitle: "Polymer Rheology",
     ),
     authors: (
@@ -514,11 +512,8 @@ $ <Modified-Cross模型>
 在圆管内取一个半径为r的圆柱形液体进行受力分析 :
 
 $
-  Delta p ⋅ pi r^2 - tau_r⋅ 2 pi r L = 0
-$
-
-$
-  tau_r=(Delta p) / (2L)⋅ r
+  Delta p dot pi r^2 - tau_r dot 2 pi r L &= 0 \
+  => tau_r &= (Delta p) / (2L) dot r
 $
 
 *速度分布*：
@@ -573,7 +568,7 @@ $
 $ <圆管中非牛顿流体体积流率>
 
 $
-  overline(v) &= Q / (pi R^2) = (n R) / (3n+1) ( (Delta p R) / (2K L) )^(1/ n) = (n+1) / (3n+1) v_0 \
+  overline(v) &= Q / (pi R^2) = (n R) / (3n+1) ( (Delta p R) / (2K L) )^(1 / n) = (n+1) / (3n+1) v_0 \
   v_r &= overline(v)dot (3n+1) / (n+1) [1 - (r / R)^((n+1) / pi)]
 $
 
@@ -915,7 +910,7 @@ $ -dif omega_r = T / (2 pi eta L) dot (dif r) / r^3 $
 
 积分结果:
 
-$ omega  = T / (4 pi eta L) (1 / R_i^2 - 1/ R_0^2) $
+$ omega = T / (4 pi eta L) (1 / R_i^2 - 1 / R_0^2) $
 
 $ eta = T / (4 pi L omega) (1 / R_i^2 - 1 / R_0^2) $
 
@@ -2474,7 +2469,7 @@ $
 
 低频时，$E'$很小；而高频时，粘壶基本来不及运动，仅弹性响应。值得注意的是，$tan δ$与$log omega$的关系与实际高聚物不符合，Maxwell模型仅包含单一弛豫过程。
 
-对于理想弹性体，柔量$D=1 slash E$。然而，在粘弹体中这一关系并不成立，$E(t)=sigma(t) / epsilon_0 != sigma_0 / epsilon(t)=1 / D(t)$。
+对于理想弹性体，柔量$D = 1 slash E$。然而，在粘弹体中这一关系并不成立，$E(t) = sigma(t) slash epsilon_0 != sigma_0 slash epsilon(t) = 1 / D(t)$。
 
 Maxwell模型中，类似于复数模量，复数柔量(compliance)可表示为：
 
@@ -2483,44 +2478,46 @@ Maxwell模型中，类似于复数模量，复数柔量(compliance)可表示为�
   block[$D^*=d epsilon slash d sigma=((d epsilon) / (d t)) slash ((d sigma) / (d t))=1 / E+1 / (i omega eta)=1 / E+1 / (i omega tau E)$],
 )
 
-同样，实数柔量$D'=D=1 / E$，虚数柔量$D''=1 / (omega tau E)$。
+同样，实数柔量 $D' = D = 1 slash E$，虚数柔量 $D'' = 1 slash (omega tau E)$。
 
 ==== Voigt 模型
 
-Voigt模型把高分子链等效为一个黏壶和一个弹簧并联，可以模拟交联高聚物的蠕变过程。
+Voigt 模型把高分子链等效为一个黏壶和一个弹簧并联，可以模拟交联高聚物的蠕变过程。
 
 #figure(
   image("media/chapter3/voigt.png", width: 100pt),
-  caption: [Voigt黏壶-弹簧模型],
+  caption: [Voigt 黏壶-弹簧模型],
 ) <Voigt模型>
 
 如图所示，当模型受力时，两个元件：
 
-总应力$sigma=sigma_1+sigma_2$；
+总应力 $sigma = sigma_1 + sigma_2$；
 
-总应变$epsilon=epsilon_1=epsilon_2$；
+总应变 $epsilon = epsilon_1 = epsilon_2$；
 
-应变速率$sigma=E epsilon+eta (d epsilon) / (d t)$。
+应变速率 $sigma = E epsilon + eta (d epsilon) / (d t)$。
 
 *模拟交联高聚物的蠕变过程*
 
 蠕变过程中，应力不变，$sigma=sigma_0$，故：
 
-$ (d epsilon) / sigma_0-E epsilon=(d t) / eta $
-
-$t=0$时，$epsilon=0$，为初始条件。积分可得：
-
 $
-  epsilon(t)=sigma_0 / E (1-e^(-t slash tau))=epsilon(infinity)(1-e^(-t slash tau))
+  (d epsilon) / sigma_0-E epsilon=(d t) / eta
 $
 
-其中松弛时间$tau=eta slash E$。
+$t = 0$ 时，$epsilon = 0$，为初始条件。积分可得：
 
-$epsilon(infinity)=sigma_0 / E$是$t arrow.r infinity$时的有限平衡形变，在时间无限长时，体系表现出纯弹性。
+$
+  epsilon(t) = sigma_0 / E (1-e^(-t slash tau)) = epsilon(infinity) (1-e^(-t slash tau))
+$
+
+其中松弛时间 $tau = eta slash E$。
+
+$epsilon(infinity) = sigma_0 slash E$ 是 $t arrow.r infinity$ 时的有限平衡形变，在时间无限长时，体系表现出纯弹性。
 
 #figure(
   image("media/chapter3/voigt蠕变.png", width: 150pt),
-  caption: [Voigt模型的蠕变曲线],
+  caption: [Voigt 模型的蠕变曲线],
 )
 
 需要注意的是，由于没有永久变形，Voigt模型不能模拟线型高聚物的蠕变过程。
@@ -2529,7 +2526,7 @@ $epsilon(infinity)=sigma_0 / E$是$t arrow.r infinity$时的有限平衡形变�
 
 Voigt模型也可以用来模拟高聚物的动态力学行为。
 
-当给模型的应变为$epsilon(t)=epsilon_0 e^(i omega t)$时，可推知：
+当给模型的应变为 $epsilon(t) = epsilon_0 exp(i omega t)$ 时，可推知：
 
 $
   sigma(t)=E epsilon_0 e^(i omega t)+i omega eta epsilon_0 e^(i omega t)
@@ -2541,15 +2538,15 @@ $
   E^*=sigma(t) / epsilon(t)=E+i omega eta
 $
 
-即$E'=E$，$E''=omega eta$，$tan delta=omega eta / E=omega tau$。
+即$E'=E$，$E'' = omega eta$，$tan delta = omega eta slash E = omega tau$。
 
 类似地，也可以给出复数柔量：$ D^*=1 / (E+i omega eta)=D / (1+omega^2 tau^2)-i (D omega tau) / (1+omega^2 tau^2) $其中$D=1 / E$。则实数和虚数柔量分别为$ D'=D / (1+omega^2 tau^2) $$
-  D''=(D omega tau) / (1+omega^2 tau^2)
+  D''=(D omega tau) / (1 + omega^2 tau^2)
 $
 
 #figure(
   image("media/chapter3/voigt模型动态力学.png", width: 170pt),
-  caption: [Voigt模型的动态力学行为],
+  caption: [Voigt 模型的动态力学行为],
 )
 
 可以注意到，$tan delta-log omega$的曲线仍然与实际不符。
@@ -2679,7 +2676,7 @@ $ <动态粘度>
 
 通常用三段式触变法评价一个材料的触变性。
 
-下面介绍几种不同模式的3ITT。
+下面介绍几种不同模式的 3ITT。
 
 注：R-rotary，旋转；O：oscillatory，震荡。
 
@@ -2703,12 +2700,12 @@ $ <动态粘度>
 
   如图，采用R-R-R测试模拟涂料的涂布过程，第一段可以理解为：涂料还未涂布；第二段，涂料正在进行涂布；第三段，停止涂布后，涂料的回复状态。(可参考上图“3ITT R-R-R模式”左图示意图)
 
-  1是添加无机硅酸盐胶凝剂的涂料，其结构回复迅速。从测试中可以获取到的信息：
+  1 是添加无机硅酸盐胶凝剂的涂料，其结构回复迅速。从测试中可以获取到的信息：
   - 流挂少（参考图像第三段即低剪切，其回复迅速）
   - 湿膜厚度高
   - 可能流平性能较差（这是由于结构回复太快，可能涂料还没充分延展，故流平性能可能较差，湿膜厚度高同理）
 
-  2是添加缔合增稠剂的涂料，其结构回复缓慢。从测试中可以获取到的信息：
+  2 是添加缔合增稠剂的涂料，其结构回复缓慢。从测试中可以获取到的信息：
   - 可发现其高剪切黏度高，防飞溅。（参考图像第二段即高剪切，其粘度高于1涂料）
   - 流平性能较好
   - 但是出现严重的流挂现象（参考图像第三段即低剪切，其回复缓慢）
@@ -2745,7 +2742,7 @@ $ <动态粘度>
 
   #figure(
     image("media/chapter3/瞬态测试-7.png", width: 250pt),
-    caption: [两种使用$gamma-tau$确定屈服应力的方法],
+    caption: [两种使用$gamma - tau$确定屈服应力的方法],
   )
 
   如图，可通过应力扫描测试确定宾汉流体的屈服应力。
@@ -2758,6 +2755,7 @@ $ <动态粘度>
   但用$gamma-tau$确定屈服应力的方法的缺点是，第二段拟合曲线可以选择的方式较多，得到的屈服应力数值不固定。故还有一种方法确定宾汉流体的屈服应力，即$eta-tau$测试，将该曲线的极大值点作为屈服应力。
 
 // TODO
+
 ==== 旋转流变仪动态测试
 
 ===== 测量方式
@@ -2780,7 +2778,7 @@ $ <动态粘度>
 
 可以得到的信息包括：
 
-（1）确定线性黏弹区（LVE），画出 $lg G'-lg gamma$ 或者 $lg G''-lg gamma$ 曲线，转折点 $gamma L$ 为黏弹区末端，即屈服点；
+（1）确定线性黏弹区（LVE），画出 $lg G' - lg gamma$ 或者 $lg G'' - lg gamma$ 曲线，转折点 $gamma L$ 为黏弹区末端，即屈服点；
 
 （2）$G''$ 和 $G'$ 的交点为流动点 $τ f$，可对样品的流动性、凝胶强度、柔韧性和稳定性等进行分析。
 
@@ -2800,7 +2798,7 @@ $ <动态粘度>
 
 （2）根据频率扫描结果，基于模型可以获得松弛时间谱和分子量分布；
 
-（3）零剪切黏度 $η_0$ 可以从损耗模量 $G''$ 求得，平衡可恢复柔量 $J e_0$ 可从储能模量 $G'$ 求得，平均松弛时间 $τ r$ 可从 $J e_0$ 和 $η_0$ 的乘积求得；
+（3）零剪切黏度 $η_0$ 可以从损耗模量 $G''$ 求得，平衡可恢复柔量 $"Je"_0$ 可从储能模量 $G'$ 求得，平均松弛时间 $τ_r$ 可从 $"Je"_0$ 和 $η_0$ 的乘积求得；
 
 （4）动态频率扫描可以用来分析材料的时间依赖行为。通过研究在很宽温度范围内的储能模量和耗能模量的频率依赖性，并利用时温叠加原理，可以得到超出仪器量程的很宽频率范围的数据。
 
@@ -2820,7 +2818,7 @@ $ <动态粘度>
     caption: [动态测试低频末端区],
   )
 
-  末端区（最低频部分）判据：$lg G-lg omega$ 的双对数图上，储能模量 $G’$ 曲线的斜率为2，损耗模量 $G’’$ 曲线的斜率为1。
+  末端区（最低频部分）判据：$lg G - lg omega$ 的双对数图上，储能模量 $G'$ 曲线的斜率为2，损耗模量 $G''$ 曲线的斜率为1。
 
 + 二看 $G'$ 是否有平台；
 
@@ -2844,7 +2842,7 @@ $ <动态粘度>
 
   对于单一松弛时间的体系，$G'$ 和 $G''$ 的交点对应的频率倒数等于松弛时间 $tau$ 。
 
-==== 动态粘弹性与稳态流变性的关系——Cox-Merz关系式\*
+==== 动态粘弹性与稳态流变性的关系 —— Cox-Merz 关系式\*
 
 第一 Cox-Merz 关系式：
 
@@ -2993,7 +2991,7 @@ $ <储能模量与法向应力差关系>
         sigma(t)=sigma_0 e^(i omega t)
       $ <->], [@eqt:粘性流动],
     [总形变], [$
-        epsilon(t)=epsilon_1+epsilon_2+epsilon_3=sigma / E_1+sigma / E_2(1-e^(-t slash tau))+sigma / eta_3 t
+        epsilon(t) = sigma / E_1+sigma / E_2(1-e^(-t slash tau))+sigma / eta_3 t
       $ <->], [@eqt:总形变],
     [应力松弛], [$
         sigma(t)=sigma_0 e^(-t slash tau)
@@ -3066,7 +3064,7 @@ $
   "Nw" = lambda dot(gamma)
 $
 
-其中，$tau$ 为松弛时间，$tau = eta / G$，$dot(gamma)$ 为外界剪切速率。
+其中，$tau$ 为松弛时间，$tau = eta slash G$，$dot(gamma)$ 为外界剪切速率。
 
 当$"Nw"<1$ 时，液体为粘性流动，弹性形变很小；$"Nw" = 1～7$时，液体为稳态粘弹性流体；$"Nw">7$时，液体为不稳定流动。
 
@@ -3208,10 +3206,10 @@ Tian等人研究聚丙烯（iPP）薄膜在挤出流延（Extrusion Film Casting
 
 #figure(
   image("media/chapter4/不稳定流动的消除措施.png", width: 350pt),
-  caption: [拉伸比（$D r$）对iPP薄膜拉伸过程的影响],
+  caption: [拉伸比（Dr）对iPP薄膜拉伸过程的影响],
 )
 
-图（a）给出了不同拉伸比下膜宽度随时间的演化过程；图（b）显示了$D r=30$时膜宽度、厚度的振荡情况。
+图（a）给出了不同拉伸比下膜宽度随时间的演化过程；图（b）显示了$"Dr"=30$时膜宽度、厚度的振荡情况。
 
 当拉伸比低于某个临界值（$D_"rc"$）时，扰动会逐渐减弱并达到稳态；而当超过该值后，薄膜宽度的初始扰动会逐渐放大并形成周期性振荡，导致不稳定。随着拉伸比增大，宽度和厚度波动增加，不稳定性提高。
 
@@ -3224,9 +3222,9 @@ Tian等人研究聚丙烯（iPP）薄膜在挤出流延（Extrusion Film Casting
   caption: [意面的温度扫描测试],
 )
 
-通过振荡时间扫描测试以 6.28 rad/s 的频率在 22 ℃ 下测试了一片意大利宽面条。收集了 2.5 min 干样品数据来建立储能模量 $G’$ 基线。
+通过振荡时间扫描测试以 6.28 rad/s 的频率在 22 ℃ 下测试了一片意大利宽面条。收集了 2.5 min 干样品数据来建立储能模量 $G'$ 基线。
 
-在 2.5 min 后加入水，立即看到了水分带来的影响，即 $G’$ 下降。在 5 min 时，一边监测 $G’$，一边将温度升高到 95 ℃ 并保持。随着意大利面的烹煮，储能模量下降了约 3 个数量级，并在烹煮完成时达到平衡。
+在 2.5 min 后加入水，立即看到了水分带来的影响，即 $G'$ 下降。在 5 min 时，一边监测 $G'$，一边将温度升高到 95 ℃ 并保持。随着意大利面的烹煮，储能模量下降了约 3 个数量级，并在烹煮完成时达到平衡。
 
 === 通过流变学测试解决PHBHHx难吹膜问题
 
@@ -3266,12 +3264,12 @@ Tian等人研究聚丙烯（iPP）薄膜在挤出流延（Extrusion Film Casting
     align: center + horizon,
     image("media/chapter4/PHBHHx-4.png", width: 160pt), image("media/chapter4/PHBHHx-5.png", width: 180pt),
   ),
-  caption: [共混不同含量PBAT-PHBHHx的流变测试],
+  caption: [共混不同含量 PBAT-PHBHHx 的流变测试],
 )
 
-测试发现，添加20%PBAT就能较为显著的改善PBHHx-1的吹膜特性，而继续增加PBAT含量虽然能提高分子链变形程度，但其熔体拉伸过程更易断。
+测试发现，添加 20%PBAT 就能较为显著的改善 PBHHx-1 的吹膜特性，而继续增加 PBAT 含量虽然能提高分子链变形程度，但其熔体拉伸过程更易断。
 
-故最后选择20PBAT/PHBHHx-1配方。
+故最后选择 20PBAT/PHBHHx-1 配方。
 
 #figure(
   image("media/chapter4/PHBHHx-6.png", width: 100pt),
@@ -3296,14 +3294,14 @@ Tian等人研究聚丙烯（iPP）薄膜在挤出流延（Extrusion Film Casting
   caption: [PET高速纺丝中的结晶度与纺速的关系],
 )
 
-PET是涤纶中常用的一种材料，如图，可以发现，基本上纺速越快，聚合物结晶度越大，是“拉伸硬化”的表现。在服装中又称这种充分结晶的纤维为FDY。
+PET 是涤纶中常用的一种材料，如图，可以发现，基本上纺速越快，聚合物结晶度越大，是“拉伸硬化”的表现。在服装中又称这种充分结晶的纤维为 FDY。
 
 #figure(
   image("media/chapter4/纺丝-2.png", width: 150pt),
   caption: [不同纺丝速度的纤维的DSC测试],
 )
 
-如图，发现拉伸速度越快的纤维，DSC测试无结晶峰，从而也可以证明FDY已经结晶完全。
+如图，发现拉伸速度越快的纤维，DSC 测试无结晶峰，从而也可以证明 FDY 已经结晶完全。
 
 利用聚合物拉伸硬化的原理，对于一些原本熔点较低但性能比较好的纤维，在不改变原配方的情况下，通过提高拉伸速度来提高结晶度，进而提高纤维的实际熔点，从而使纤维更易加工。
 
@@ -3327,12 +3325,13 @@ PET是涤纶中常用的一种材料，如图，可以发现，基本上纺速�
 )
 
 因为纤维形状的不同在实际衣服中会产生不同的效果，所以纤维形状的设计是较为重要的一步。如图，异形三叶相较于常规截面纤维而言，具有保暖，导湿的效果。它的喷丝孔形状见右图。
+
 #figure(
   image("media/chapter4/纺丝-4.png", width: 200pt),
-  caption: [Coolmax纤维横截面],
+  caption: [Coolmax 纤维横截面],
 )
 
-Coolmax纤维由美国杜邦公司研制开发，是异形截面的PET纤维。Coolmax纤维横截面呈扁平“十”字型，所以它的表面就形成了四道沟槽。该形状的纤维具有导湿快干的效果。
+Coolmax 纤维由美国杜邦公司研制开发，是异形截面的 PET 纤维。Coolmax 纤维横截面呈扁平“十”字型，所以它的表面就形成了四道沟槽。该形状的纤维具有导湿快干的效果。
 
 === 填充对流变行为的影响
 
@@ -3365,7 +3364,7 @@ Coolmax纤维由美国杜邦公司研制开发，是异形截面的PET纤维。C
     - 当 $"Nw"<1$ 时，液体为粘性流动，弹性形变很小；$"Nw" = 1～7$时，液体为稳态粘弹性流体；$"Nw">7$时，液体为不稳定流动。
     - 挤出过程中低分子量组分趋于管壁分布。
     - 聚合物在加工过程中在管道型腔中的流动都是剪切流动，在剪切流动中速度梯度的作用下，卷曲状长链分子逐渐沿流动方向舒展伸直和取向。熔体温度高，分子热运动剧烈，因此在大分子流动取向的同时必然存在着解取向。流动取向可以是单轴或双轴的，取决于制件的结构形状、尺寸和熔体在其中的流动，截面积恒定，单轴取向，截面积变化，双轴取向或在更好的方向上取向。流动对填料取向也有影响，取向结构在停止剪切后随时间延长而逐渐松弛。
-    - 聚合物在 $T_g$ 附近的拉伸取向取决于 $sigma$ 和 $sigma_y$，当$sigma < sigma_y$时，只产生高弹形变；当$sigma > sigma_y$时，可进行塑性拉伸。在$T_g ~ T_f$间拉伸时，$sigma_y$几乎不显著，不大的外力就可使聚合物产生连续的均匀的塑性形变，并可获得较高稳定的取向结构，这时材料的形变是均匀的拉伸过程。$T_f$以上的拉伸，分子活动能力提高，大分子易解缠，滑移和取向，但同时解取向速度也提高了，因此有效取向程度低，可迅速冷却保持取向度，熔融纺丝的取向就是粘流取向。
+    - 聚合物在 $T_g$ 附近的拉伸取向取决于 $sigma$ 和 $sigma_y$，当 $sigma < sigma_y$ 时，只产生高弹形变；当 $sigma > sigma_y$ 时，可进行塑性拉伸。在 $T_g ~ T_f$ 间拉伸时，$sigma_y$ 几乎不显著，不大的外力就可使聚合物产生连续的均匀的塑性形变，并可获得较高稳定的取向结构，这时材料的形变是均匀的拉伸过程。$T_f$ 以上的拉伸，分子活动能力提高，大分子易解缠，滑移和取向，但同时解取向速度也提高了，因此有效取向程度低，可迅速冷却保持取向度，熔融纺丝的取向就是粘流取向。
     - 影响聚合物拉取取向的因素有温度、应力、拉伸比、聚合物结构和低分子物质。
     - 剪切和拉伸导致聚合物结晶成核速率增加。其机理包括：剪切取向使平衡熔点升高；外场作用下成核能垒下降。存在剪切诱导结晶的最低剪切速率，高于该剪切速率才能观察到剪切诱导结晶。在相同剪切速率下，总结晶速率和成核密度随剪切时间延长而变快。
   ],
@@ -3379,7 +3378,7 @@ Coolmax纤维由美国杜邦公司研制开发，是异形截面的PET纤维。C
 
 #notation[
   / De: Deborah 数
-  / $"Nw"$: 韦森堡数
+  / Nw: 韦森堡数
 ]
 
 #figure-list()

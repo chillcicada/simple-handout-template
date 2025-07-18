@@ -17,22 +17,14 @@
     level: 1,
     numbering: none,
     outlined: outlined,
+    bookmarked: true,
     title,
   )
 
-  align(
-    center,
-    block(
-      width: width,
-      align(
-        start,
-        grid(
-          columns: columns,
-          row-gutter: row-gutter,
-          ..args,
-          ..it.children.filter(it => it.func() == terms.item).map(it => (it.term, it.description)).flatten()
-        ),
-      ),
-    ),
-  )
+  align(center, block(width: width, align(start, grid(
+    columns: columns,
+    row-gutter: row-gutter,
+    ..args,
+    ..it.children.filter(it => it.func() == terms.item).map(it => (it.term, it.description)).flatten()
+  ))))
 }

@@ -1,4 +1,4 @@
-#import "../src/lib.typ": define-config, summary-block, use-size, tablem
+#import "../src/lib.typ": define-config, summary-block, tablem, use-size
 #import "unit.typ": *
 
 /// 以下字体配置适用于安装了 Windows 10/11 字体及 Windows 10/11 简体中文字体扩展的设备，
@@ -149,10 +149,9 @@
       align(left)[
         中国科学院长春应用化学研究所殷敬华和栾世方研究组*根据高分子流变学理论*，对医用导管挤出过程开展了深入、系统的研究，阐明了拉伸对导管挤出过程中流量与变形的影响规律，明晰了拉伸作用下医用导管挤出流场及变形对口模温度、螺杆转速、牵引速度等的依赖关系。同时，他们对医用导管挤出拉伸流动过程进行数值分析、挤出变形控制及有限元分析，#text(blue)[*构建了#underline[高端医用导管原料分子结构参数-加工流变行为-精密挤出成型结构]间的关系，达到高端医用导管对尺寸精度控制稳定性的要求，从而解决了我国医用导管尺寸精度低、异形管特殊加工成型水平有限等共性难题。*]
 
-        #text(
-          size: use-size("五号"),
-          align(right)[——国家自然科学基金委员会、中国科学院，中国学科发展战略：高分子流体动力学。],
-        )
+        #text(size: use-size("五号"), align(
+          right,
+        )[——国家自然科学基金委员会、中国科学院，中国学科发展战略：高分子流体动力学。])
       ],
     ),
   ),
@@ -162,10 +161,7 @@
 
 聚合物流变学的研究对象主要包括高分子熔体、高分子溶液以及胶乳、粉体粒料、填充体等高分子产品，如下图所示：
 
-#figure(
-  image("media/chapter1/聚合物流变学研究对象.png", height: 2.2cm),
-  caption: [聚合物流变学的研究对象],
-)
+#figure(image("media/chapter1/聚合物流变学研究对象.png", height: 2.2cm), caption: [聚合物流变学的研究对象])
 
 === 聚合物流变学的基本概念
 
@@ -228,10 +224,7 @@ $
 
 === 流变学在聚合物加工中的应用
 
-#figure(
-  image("media/chapter1/聚合物流变学的实际应用.png", height: 7cm),
-  caption: [聚合物流变学的实际应用],
-)
+#figure(image("media/chapter1/聚合物流变学的实际应用.png", height: 7cm), caption: [聚合物流变学的实际应用])
 
 + 指导聚合物树脂的聚合和选用，以获得加工性能优良的聚合物;
 
@@ -252,8 +245,14 @@ $
     - 粘弹性是聚合物流变行为的基本特征。
   ],
   equation: table(
-    table.header([涵义], [公式], [索引]),
-    [Deborah 数], [$ "De" = lambda / t $ <->], [@eqt:dehorah],
+    table.header(
+      [涵义],
+      [公式],
+      [索引],
+    ),
+    [Deborah 数],
+    [$ "De" = lambda / t $ <->],
+    [@eqt:dehorah],
   ),
   reference: [
     - 国家自然科学基金委员会、中国科学院，中国学科发展战略：高分子流体动力学。科学出版社
@@ -470,8 +469,8 @@ $ <幂律方程>
 Bird-Carreau模型：
 
 $
-  eta &= eta_0 / [1 + (lambda dot(gamma))^2]^((1-n) / 2) \
-  dot(gamma) -> 0: & quad eta = eta_0 \
+                       eta & = eta_0 / [1 + (lambda dot(gamma))^2]^((1-n) / 2)        \
+          dot(gamma) -> 0: & quad eta = eta_0                                         \
   dot(gamma)>> 1 / lambda: & quad eta approx dot(gamma)^(n - 1) quad "相当于幂律方程"
 $ <Bird-Carreau模型>
 
@@ -512,8 +511,8 @@ $ <Modified-Cross模型>
 在圆管内取一个半径为r的圆柱形液体进行受力分析 :
 
 $
-  Delta p dot pi r^2 - tau_r dot 2 pi r L &= 0 \
-  => tau_r &= (Delta p) / (2L) dot r
+  Delta p dot pi r^2 - tau_r dot 2 pi r L & = 0                      \
+                                 => tau_r & = (Delta p) / (2L) dot r
 $
 
 *速度分布*：
@@ -528,8 +527,8 @@ $
 $
 
 $
-  v_0 &= (Delta P) / (4eta L) dot R^2 \
-  v_r &= v_0 dot (1 - r^2 / R^2)
+  v_0 & = (Delta P) / (4eta L) dot R^2 \
+  v_r & = v_0 dot (1 - r^2 / R^2)
 $
 
 *体积流率*：
@@ -541,15 +540,14 @@ $ <圆管中牛顿流体体积流率>
 ==== 非牛顿流体
 
 $
-  tau_r &= k dot(gamma)^n = (Delta p r) / (2L) \
-  dot(gamma) &= -(dif v_r) / (dif r) = ( (Delta p r) / (2K L) )^(1 / n)
+       tau_r & = k dot(gamma)^n = (Delta p r) / (2L)                     \
+  dot(gamma) & = -(dif v_r) / (dif r) = ( (Delta p r) / (2K L) )^(1 / n)
 $
 
 $
-  v_r
-  &= integral_r^R dot(gamma) dif r \
-  &= ( (Delta p) / (2K L) )^(1 / n) dot n / (n+1) dot ( R^((n+1) / n) - r^((n+1) / n) ) \
-  &= ( (Delta p R) / (2K L) )^(1 / n) (n R) / (n+1) [1 - (r / R)^((n+1) / n)]
+  v_r & = integral_r^R dot(gamma) dif r                                                      \
+      & = ( (Delta p) / (2K L) )^(1 / n) dot n / (n+1) dot ( R^((n+1) / n) - r^((n+1) / n) ) \
+      & = ( (Delta p R) / (2K L) )^(1 / n) (n R) / (n+1) [1 - (r / R)^((n+1) / n)]
 $
 
 $
@@ -560,23 +558,22 @@ $
 体积流率：
 
 $
-  Q
-  &= integral_0^R 2pi r dif r dot v_r \
-  &= integral_0^R 2pi ( (Delta p) / (2K L) )^(1 / n) n / (n+1) ( R^((n+1) / n) dot r - r^((2n+1) / n) ) dif r \
-  &= 2pi ( (Delta p) / (2K L) )^(1 / n) n / (n+1) ( R^((3n+1) / n) / 2 - n / (3n+1) R^((3n+1) / n) ) \
-  &= (pi n R^3) / (3n+1) ( (Delta p R) / (2K L) )^(1 / n) \
+  Q & = integral_0^R 2pi r dif r dot v_r                                                                         \
+    & = integral_0^R 2pi ( (Delta p) / (2K L) )^(1 / n) n / (n+1) ( R^((n+1) / n) dot r - r^((2n+1) / n) ) dif r \
+    & = 2pi ( (Delta p) / (2K L) )^(1 / n) n / (n+1) ( R^((3n+1) / n) / 2 - n / (3n+1) R^((3n+1) / n) )          \
+    & = (pi n R^3) / (3n+1) ( (Delta p R) / (2K L) )^(1 / n)                                                     \
 $ <圆管中非牛顿流体体积流率>
 
 $
-  overline(v) &= Q / (pi R^2) = (n R) / (3n+1) ( (Delta p R) / (2K L) )^(1 / n) = (n+1) / (3n+1) v_0 \
-  v_r &= overline(v)dot (3n+1) / (n+1) [1 - (r / R)^((n+1) / pi)]
+  overline(v) & = Q / (pi R^2) = (n R) / (3n+1) ( (Delta p R) / (2K L) )^(1 / n) = (n+1) / (3n+1) v_0 \
+          v_r & = overline(v)dot (3n+1) / (n+1) [1 - (r / R)^((n+1) / pi)]
 $
 
 管壁处剪切速率：
 
 $
-  dot(gamma)_(R, 牛) &= (3n + 1) / n dot Q / (pi R^3) \
-  dot(gamma)_(R,非 牛) &= (3n + 1) / (4n) dot(gamma)_牛
+    dot(gamma)_(R, 牛) & = (3n + 1) / n dot Q / (pi R^3) \
+  dot(gamma)_(R,非 牛) & = (3n + 1) / (4n) dot(gamma)_牛
 $
 
 $n$ 的测定方法：
@@ -677,46 +674,96 @@ $ <狭缝中幂律流体剪切速率>
     - 熔融指数：在一定温度下，熔融状态的高聚物在一定负荷下，十分钟内从规定直径和长度的标准毛细管中流出的重量（克重）。熔融指数是反映流动性好坏的指标。熔融指数越大，流动性越好。
   ],
   equation: table(
-    table.header([涵义], [公式], [索引]),
-    [剪切应变], [$ gamma = S / d = tan theta $ <->], [@eqt:剪切应变],
-    [剪切速率], [$ dot(gamma) = (dif gamma) / (dif t) $ <->], [@eqt:剪切速率],
-    [剪切应力], [$ tau = F / A $ <->], [@eqt:剪切应力],
-    [Hencky拉伸应变（真应变）], [$ epsilon = integral_(l_0)^l (dif l) / l = ln l / l_0 $ <->], [@eqt:Hencky拉伸应变],
-    [拉伸应变速率], [$
+    table.header(
+      [涵义],
+      [公式],
+      [索引],
+    ),
+    [剪切应变],
+    [$ gamma = S / d = tan theta $ <->],
+    [@eqt:剪切应变],
+    [剪切速率],
+    [$ dot(gamma) = (dif gamma) / (dif t) $ <->],
+    [@eqt:剪切速率],
+    [剪切应力],
+    [$ tau = F / A $ <->],
+    [@eqt:剪切应力],
+    [Hencky拉伸应变（真应变）],
+    [$ epsilon = integral_(l_0)^l (dif l) / l = ln l / l_0 $ <->],
+    [@eqt:Hencky拉伸应变],
+    [拉伸应变速率],
+    [$
         dot(epsilon) = (dif ln l / l_0) / (dif t) = 1 / l dot (dif l) / (dif t)
-      $ <->], [@eqt:拉伸应变速率],
-    [习用拉伸应力], [$ sigma = F / A_0 $ <->], [@eqt:习用拉伸应力],
-    [真实拉伸应力], [$ sigma = F / A $ <->], [@eqt:真实拉伸应力],
-    [剪切粘度], [$ eta_a = tau / dot(gamma) $ <->], [@eqt:剪切粘度],
-    [零切粘度], [$ eta_0 = lim_(dot(gamma)→0) tau / dot(gamma) $ <->], [@eqt:零切粘度],
-    [微分粘度（稠度）], [$ eta_c = (dif tau) / (dif dot(gamma)) $ <->], [@eqt:微分粘度],
-    [拉伸粘度], [$ eta_T = sigma / dot(epsilon) $ <->], [@eqt:拉伸粘度],
-    [单轴拉伸], [$ eta_T = 3 eta_a $ <->], [@eqt:单轴拉伸],
-    [双轴拉伸], [$ eta_T = 6 eta_a $ <->], [@eqt:双轴拉伸],
-    [幂律方程], [$ tau = K dot(gamma)^n $ <->], [@eqt:幂律方程],
-    [Bird-Carreau模型], [$
+      $ <->],
+    [@eqt:拉伸应变速率],
+    [习用拉伸应力],
+    [$ sigma = F / A_0 $ <->],
+    [@eqt:习用拉伸应力],
+    [真实拉伸应力],
+    [$ sigma = F / A $ <->],
+    [@eqt:真实拉伸应力],
+    [剪切粘度],
+    [$ eta_a = tau / dot(gamma) $ <->],
+    [@eqt:剪切粘度],
+    [零切粘度],
+    [$ eta_0 = lim_(dot(gamma)→0) tau / dot(gamma) $ <->],
+    [@eqt:零切粘度],
+    [微分粘度（稠度）],
+    [$ eta_c = (dif tau) / (dif dot(gamma)) $ <->],
+    [@eqt:微分粘度],
+    [拉伸粘度],
+    [$ eta_T = sigma / dot(epsilon) $ <->],
+    [@eqt:拉伸粘度],
+    [单轴拉伸],
+    [$ eta_T = 3 eta_a $ <->],
+    [@eqt:单轴拉伸],
+    [双轴拉伸],
+    [$ eta_T = 6 eta_a $ <->],
+    [@eqt:双轴拉伸],
+    [幂律方程],
+    [$ tau = K dot(gamma)^n $ <->],
+    [@eqt:幂律方程],
+    [Bird-Carreau模型],
+    [$
         eta = eta_0 / [1 + (lambda dot(gamma))^2]^((1-n) / 2)
-      $ <->], [@eqt:Bird-Carreau模型],
-    [Carreau-Yasuda模型], [$
+      $ <->],
+    [@eqt:Bird-Carreau模型],
+    [Carreau-Yasuda模型],
+    [$
         (eta - eta_infinity) / (eta_0 - eta_infinity) = 1 / [1 + (lambda dot(gamma))^a]^((1 - n) / a)
-      $ <->], [@eqt:Carreau-Yasuda模型],
-    [Cross模型], [$
+      $ <->],
+    [@eqt:Carreau-Yasuda模型],
+    [Cross模型],
+    [$
         (eta - eta_infinity) / (eta_0 - eta_infinity) = 1 / (1 + (lambda dot(gamma))^m)
-      $ <->], [@eqt:Cross模型],
-    [Modified Cross模型], [$
+      $ <->],
+    [@eqt:Cross模型],
+    [Modified Cross模型],
+    [$
         eta = eta_0 / (1 + (eta_0 dot(gamma) slash tau)^m)
-      $ <->], [@eqt:Modified-Cross模型],
-    [圆管中牛顿流体体积流率], [$ Q = (Delta P pi R^4) / (8eta L) $ <->], [@eqt:圆管中牛顿流体体积流率],
-    [圆管中非牛顿流体体积流率], [$
+      $ <->],
+    [@eqt:Modified-Cross模型],
+    [圆管中牛顿流体体积流率],
+    [$ Q = (Delta P pi R^4) / (8eta L) $ <->],
+    [@eqt:圆管中牛顿流体体积流率],
+    [圆管中非牛顿流体体积流率],
+    [$
         Q = (pi n R^3) / (3n+1) ( (Delta p R) / (2K L) )^(1 / n)
-      $ <->], [@eqt:圆管中非牛顿流体体积流率],
-    [Rabinowitsch-Mooney公式], [$
+      $ <->],
+    [@eqt:圆管中非牛顿流体体积流率],
+    [Rabinowitsch-Mooney公式],
+    [$
         dot(gamma)_w = dot(gamma)_a / 4 dot ( (dif ln dot(gamma)_a) / (dif ln tau_w) + 3 )
-      $ <->], [@eqt:Rabinowitsch-Mooney公式],
-    [狭缝中牛顿流体剪切速率], [$ dot(gamma)_a = (6 Q) / (W H^2) $ <->], [@eqt:狭缝中牛顿流体剪切速率],
-    [狭缝中幂律流体剪切速率], [$
+      $ <->],
+    [@eqt:Rabinowitsch-Mooney公式],
+    [狭缝中牛顿流体剪切速率],
+    [$ dot(gamma)_a = (6 Q) / (W H^2) $ <->],
+    [@eqt:狭缝中牛顿流体剪切速率],
+    [狭缝中幂律流体剪切速率],
+    [$
         dot(gamma)_w = dot(gamma)_a / 3 dot ( (dif ln dot(gamma)_a) / (dif ln tau_w) + 2 )
-      $ <->], [@eqt:狭缝中幂律流体剪切速率],
+      $ <->],
+    [@eqt:狭缝中幂律流体剪切速率],
   ),
 )
 
@@ -796,8 +843,8 @@ $ <毛细管管壁处剪切应力>
 毛细管管壁处牛顿流体的*剪切速率：*
 
 $
-  dot(gamma)_w &= (4Q) / (pi R^3) \
-  eta &= (tau_w) / (dot(gamma_w))
+  dot(gamma)_w & = (4Q) / (pi R^3)          \
+           eta & = (tau_w) / (dot(gamma_w))
 $ <毛细管管壁处牛顿流体的剪切速率>
 
 *非牛顿流体:*
@@ -824,10 +871,7 @@ $ <毛细管管壁处牛顿流体的剪切速率>
 
   *入口效应的应用－零长毛细管流变仪*
 
-  #figure(
-    image("media/chapter3/双筒毛细管流变仪.png", width: 150pt),
-    caption: [双筒毛细管流变仪示意图],
-  )
+  #figure(image("media/chapter3/双筒毛细管流变仪.png", width: 150pt), caption: [双筒毛细管流变仪示意图])
 
   如图，双筒毛细管流变仪，由零长毛细管直接获得入口压力降（弹性信息）；
   由普通毛细管获得粘度信息。
@@ -837,9 +881,8 @@ $ <毛细管管壁处牛顿流体的剪切速率>
   毛细管壁面处非牛顿流体的真实剪切速率
 
   $
-    dot(gamma)_(w,"非牛")
-    &= (3n+1) / (4n) dot(gamma)_(w,"牛") \
-    &= dot(gamma)_(w,"a") / 4 ((d ln(dot(gamma)_(w,"牛"))) / (d ln(tau_w)) +3)
+    dot(gamma)_(w,"非牛") & = (3n+1) / (4n) dot(gamma)_(w,"牛")                                       \
+                          & = dot(gamma)_(w,"a") / 4 ((d ln(dot(gamma)_(w,"牛"))) / (d ln(tau_w)) +3)
   $ <毛细管壁面处非牛顿流体的真实剪切速率>
 
 *毛细管流变仪测量误差的来源*
@@ -867,10 +910,7 @@ $ <毛细管管壁处牛顿流体的剪切速率>
 
 * (1) 同轴旋转圆筒流变仪*
 
-#figure(
-  image("media/chapter3/图片13.png", width: 250pt),
-  caption: [同轴旋转圆筒流变仪示意图],
-) <同轴旋转圆筒流变仪>
+#figure(image("media/chapter3/图片13.png", width: 250pt), caption: [同轴旋转圆筒流变仪示意图]) <同轴旋转圆筒流变仪>
 
 *特点*：
 
@@ -923,10 +963,7 @@ $ eta = T / (4 pi L omega) (1 / R_i^2 - 1 / R_0^2) $
 
 * (2) 平行板流变仪*
 
-#figure(
-  image("media/chapter3/平行板流变仪示意图.png", width: 200pt),
-  caption: [平行板流变仪示意图],
-) <平行板流变仪>
+#figure(image("media/chapter3/平行板流变仪示意图.png", width: 200pt), caption: [平行板流变仪示意图]) <平行板流变仪>
 
 *特点:*
 
@@ -954,10 +991,7 @@ $
 
 * (3) 锥板流变仪*
 
-#figure(
-  image("media/chapter3/椎板流变仪示意图.png", width: 180pt),
-  caption: [椎板流变仪示意图],
-) <椎板流变仪>
+#figure(image("media/chapter3/椎板流变仪示意图.png", width: 180pt), caption: [椎板流变仪示意图]) <椎板流变仪>
 
 *特点:*
 
@@ -991,15 +1025,12 @@ $ tau_11 - tau_22 = (2 F) / (pi R^2) $
 流变仪对比：
 
 #figure(
-  tablem(
-    ignore-second-row: false,
-    render: (..args) => {
-      table(
-        align: center + horizon,
-        ..args,
-      )
-    },
-  )[
+  tablem(ignore-second-row: false, render: (..args) => {
+    table(
+      align: center + horizon,
+      ..args,
+    )
+  })[
     | 类型 | 优点 | 缺点 | 适用情况 |
     | 细管式流变仪 | ①结构简单，可自行设计制造②剪应变速度范围大③可进行高剪应力测量 | ①试料用量多②剪应变速度非牛顿性修正大③测读及仪器清洗较繁④不便于恒温控制 | 常用仪型，有较好的适用性。可用于高粘度流动性差的试料，可进行高剪切试验 |
     | 同轴圆筒型旋转粘度计 | ①适用性较广②测读方便 | ①试料用料较多②剪应变速度非牛顿性修正较大 | 一般常用仪型，适用于较低粘度低弹性流变测量 |
@@ -1038,10 +1069,7 @@ $
 
 ==== 拉伸应变、应力张量
 
-#figure(
-  image("media/chapter3/图片9.png", width: 200pt),
-  caption: [拉伸应变示意图],
-)
+#figure(image("media/chapter3/图片9.png", width: 200pt), caption: [拉伸应变示意图])
 
 Hencky拉伸应变（真应变）：$ epsilon = integral_(l_0)^l (d l) / l =ln l / l_0 $
 拉伸应变速率：$ dot(epsilon)=(d ln l / l_0) / (d t)=1 / l dot (d l) / (d t) $
@@ -1049,10 +1077,7 @@ Hencky拉伸应变（真应变）：$ epsilon = integral_(l_0)^l (d l) / l =ln l
 拉伸应力：习用应力：$ sigma=F / A_0 $
 真实应力: $ sigma=F / A $
 
-#figure(
-  image("media/chapter3/拉伸应力张量.png", width: 250pt),
-  caption: [应力张量示意图],
-) <拉伸应力张量>
+#figure(image("media/chapter3/拉伸应力张量.png", width: 250pt), caption: [应力张量示意图]) <拉伸应力张量>
 
 ==== 拉伸流动和剪切流动区别、拉伸粘度与剪切粘度的关系
 
@@ -1126,10 +1151,7 @@ $ <Andrade公式>
 
 $E_eta$是粘流活化能，是分子链流动时用于克服分子间作用力以便更换位置所需要的能量。
 
-#figure(
-  image("media/chapter3/一些高聚物的粘流活化能值.jpg", width: 350pt),
-  caption: [一些高聚物的粘流活化能值],
-)
+#figure(image("media/chapter3/一些高聚物的粘流活化能值.jpg", width: 350pt), caption: [一些高聚物的粘流活化能值])
 
 2. 若$T$位于$T_g~(T_g+100)$ °C，粘流活化能不再是常数，协同跃迁单元数随温度下降而增加。
 
@@ -1170,10 +1192,7 @@ $eta$（$dot(gamma) = 100 "s"^(-1)$) / $eta$（$dot(gamma) = 1000 "s"^(-1)$)。
 
 压力p升高，自由体积下降，分子间的相互作用增大，$eta$增大
 
-#figure(
-  image("media/chapter3/压力对粘度的影响公式.png", width: 300pt),
-  caption: [压力对粘度的影响公式],
-)
+#figure(image("media/chapter3/压力对粘度的影响公式.png", width: 300pt), caption: [压力对粘度的影响公式])
 
 *压力－温度等效性：*p升高，相当于温度T下降。
 
@@ -1219,10 +1238,7 @@ $M_c$ : 临界分子量，发生分子链缠结的最小分子量
 
 Reptation理论（蛇行理论）是描述缠结高分子链动力学行为的关键模型，该理论将相邻链对目标链的拓扑限制抽象为一条虚拟管道（Tube），链被约束在管道内，只能沿自身轮廓方向运动。
 
-#figure(
-  image("media/chapter3/reptation.png", width: 350pt),
-  caption: [Reptation理论示意图],
-) <蛇行理论>
+#figure(image("media/chapter3/reptation.png", width: 350pt), caption: [Reptation理论示意图]) <蛇行理论>
 
 熔体分子链沿着缠结管的扩散系数$D_e$
 
@@ -1254,10 +1270,7 @@ $
 
 对于高分子稀溶液或未缠结的高分子熔体，可以用Rouse模型模拟。Rouse模型将高分子链视为由N个珠子（Beads）和N-1根弹簧（Springs）组成的链。
 
-#figure(
-  image("media/chapter3/rouse链.png", width: 350pt),
-  caption: [Rouse模型示意图],
-) <Rouse模型>
+#figure(image("media/chapter3/rouse链.png", width: 350pt), caption: [Rouse模型示意图]) <Rouse模型>
 
 假设每个“珠子”受到摩擦阻力$zeta$，则整条链受摩擦阻力为：
 
@@ -1287,10 +1300,7 @@ $
 
 #text(blue)[*聚合物分子量分布对粘度的影响*]
 
-#figure(
-  image("media/chapter3/分子量分布对粘度的影响.png", width: 150pt),
-  caption: [分子量分布对粘度的影响],
-)
+#figure(image("media/chapter3/分子量分布对粘度的影响.png", width: 150pt), caption: [分子量分布对粘度的影响])
 
 如图，分子量分布宽，非牛顿性显著， η对剪切较敏感。
 
@@ -1331,15 +1341,9 @@ $
 
 #text(blue)[*链支化*]
 
-#figure(
-  image("media/chapter3/链支化-1.png", width: 300pt),
-  caption: [Polyolefin architectures],
-)
+#figure(image("media/chapter3/链支化-1.png", width: 300pt), caption: [Polyolefin architectures])
 
-#figure(
-  image("media/chapter3/链支化-2.png", width: 200pt),
-  caption: [高、低密度聚乙烯的粘度与剪切速率的关系],
-)
+#figure(image("media/chapter3/链支化-2.png", width: 200pt), caption: [高、低密度聚乙烯的粘度与剪切速率的关系])
 
 如图所示，低密度聚乙烯（LDPE) 有长支化，剪切变稀更显著；
 
@@ -1362,10 +1366,7 @@ $
 
 #text(blue)[*多臂星形高分子分子量对粘度的影响*]
 
-#figure(
-  image("media/chapter3/链支化-3.png", width: 250pt),
-  caption: [多臂星形高分子分子量对零切粘度的影响],
-)
+#figure(image("media/chapter3/链支化-3.png", width: 250pt), caption: [多臂星形高分子分子量对零切粘度的影响])
 
 多臂（$>=3$）星形高分子臂长超过缠结长度后，缠结更多，零切粘度随分子量增加升高更显著。（与“聚合物分子量分布对粘度的影响”内容相吻合。）
 
@@ -1436,24 +1437,15 @@ $ <Utracki公式>
 
 然而，实验数据常偏离理想预测（如下图所示）。
 
-#figure(
-  image("media/chapter3/utracki.png", width: 250pt),
-  caption: [Utracki简单共混物的粘度变化规律及其偏差],
-)
+#figure(image("media/chapter3/utracki.png", width: 250pt), caption: [Utracki简单共混物的粘度变化规律及其偏差])
 
 偏差可能揭示界面相互作用或相结构演变等。正偏差说明强界面作用，阻碍分子链滑移。负偏差说明弱界面作用，出现相分离。交替偏差则由相结构转变引起，例如从连续相变为分散相。
 
-#figure(
-  image("media/chapter3/共混example.png", width: 400pt),
-  caption: [不相容共混体系组成对粘弹性的影响的案例1],
-)
+#figure(image("media/chapter3/共混example.png", width: 400pt), caption: [不相容共混体系组成对粘弹性的影响的案例1])
 
 上图中分别给出了PS/PMMA共混物的$eta$（左）和稳态第一法向应力差异$N_1$（右）与共混物成分的关系图，可见与线性η共混物成分关系（虚线）的负偏差程度随着剪切应力σ的增加而增加。也可以看出，共混物的粘度相比纯聚合物下降，但是弹性却相反，相较于纯聚合物增强。
 
-#figure(
-  image("media/chapter3/共混案例2.png", width: 400pt),
-  caption: [不相容共混体系组成对粘弹性的影响的案例2],
-)
+#figure(image("media/chapter3/共混案例2.png", width: 400pt), caption: [不相容共混体系组成对粘弹性的影响的案例2])
 
 对于HDPE/PS共混物的情况，可以发现，随着HDPE含量的升高，共混物粘度从负偏差变为正偏差，而弹性与粘性的趋势正好相反。
 
@@ -1477,10 +1469,7 @@ $ <Utracki公式>
 
 常用的触变剂包括气相二氧化硅、沉淀二氧化硅。其它的触变剂还有石棉、高岭土、凹凸棒土、乳液法氯乙烯化合物等。用量一般在0.1%-4%，根据具体要求确定。
 
-#figure(
-  image("media/chapter3/触变剂原理.png", width: 400pt),
-  caption: [触变剂原理],
-)
+#figure(image("media/chapter3/触变剂原理.png", width: 400pt), caption: [触变剂原理])
 
 #text(red)[*增稠剂（Thickening agent）*]
 
@@ -1502,10 +1491,7 @@ $ <Utracki公式>
 
   #text(blue)[*例如：*]
 
-  #figure(
-    image("media/chapter3/填充-1.png", width: 200pt),
-    caption: [炭黑填料对聚合物体系的影响],
-  )
+  #figure(image("media/chapter3/填充-1.png", width: 200pt), caption: [炭黑填料对聚合物体系的影响])
 
   如图，高填充含量的炭黑导致体系，形成网络结构，使得在剪切速率较小时，增大剪切速率，剪切应力不发生改变，直到剪切速率达到一定值后继续增加，应力才发生变化，即有*屈服应力*。
 
@@ -1514,10 +1500,7 @@ $ <Utracki公式>
 
 除此之外，偶联剂对聚合物填充体系的影响如下图所示。
 
-#figure(
-  image("media/chapter3/填充-2.png", width: 200pt),
-  caption: [偶联剂对聚合物填充体系的影响],
-)
+#figure(image("media/chapter3/填充-2.png", width: 200pt), caption: [偶联剂对聚合物填充体系的影响])
 
 如图，1，2未加偶联剂，3，4为加入铝酸酯偶联剂。
 
@@ -1612,26 +1595,17 @@ $phi_m$:分散相最大堆砌系数
 + 粒子随机分布未聚集时， $phi_m=0.60~0.63$；
 + 粒子随机聚集时, $phi_m$=0.37。
 
-#figure(
-  image("media/chapter3/填充-3-1.png", width: 250pt),
-  caption: [填充粒子形状与$phi_m$的关系],
-)
+#figure(image("media/chapter3/填充-3-1.png", width: 250pt), caption: [填充粒子形状与$phi_m$的关系])
 
 如上图，可以发现，粒子长径比越长，$phi_m$越小，同时对应着下图$phi slash phi_m$越大，相对粘度也越大。
 
-#figure(
-  image("media/chapter3/填充-3.png", width: 200pt),
-  caption: [相对粘度随$phi slash phi_m$变化的图像],
-)
+#figure(image("media/chapter3/填充-3.png", width: 200pt), caption: [相对粘度随$phi slash phi_m$变化的图像])
 
 如图，横坐标为$phi slash phi_m$，纵坐标为相对粘度，根据Mooney公式，随着$phi slash phi_m$增大，相对粘度也逐渐增大，且呈指数型增长，理论与实际符合良好。
 
 #text(blue)[*纤维长径比对纤维增强聚合物复合材料性能的影响*]
 
-#figure(
-  image("media/chapter3/填充-4.png", width: 250pt),
-  caption: [纤维长径比对材料性能的影响],
-)
+#figure(image("media/chapter3/填充-4.png", width: 250pt), caption: [纤维长径比对材料性能的影响])
 
 如图，可以发现纤维长径比增加有助于提高力学性能，但是根据前文，可以发现，纤维无序取向体系的粘度也会显著提高。
 
@@ -1667,10 +1641,7 @@ $phi_m$:分散相最大堆砌系数
 
 #text(blue)[*通过填料多分散性降低粘度*]
 
-#figure(
-  image("media/chapter3/填充-5.png", width: 300pt),
-  caption: [填料分散峰数对材料粘度的影响],
-)
+#figure(image("media/chapter3/填充-5.png", width: 300pt), caption: [填料分散峰数对材料粘度的影响])
 
 如图，随着球形颗粒填料分散峰的数目的增加，相对粘度逐渐降低，故可以通过增加填料的多分散性降低黏度。
 
@@ -1753,17 +1724,11 @@ $
   f=f_u+f_S
 $
 
-#figure(
-  image("media/chapter3/ftotemp.png", width: 200pt),
-  caption: [校正到固定伸长比时的$f$对$T$图],
-)
+#figure(image("media/chapter3/ftotemp.png", width: 200pt), caption: [校正到固定伸长比时的$f$对$T$图])
 
 $f_u=0$的高弹体也叫理想高弹体。理想高弹体拉伸时，只引起熵变，称为*熵弹性*。
 
-#figure(
-  image("media/chapter3/ftoepsilon.png", width: 200pt),
-  caption: [$f、f_u、f_S$对$epsilon$图],
-)
+#figure(image("media/chapter3/ftoepsilon.png", width: 200pt), caption: [$f、f_u、f_S$对$epsilon$图])
 
 如图所示，在较宽的形变范围，$f_u$几乎为0，说明橡胶的张力主要由熵弹性贡献。仅在大形变时，$f_u$不再近似为零。
 
@@ -1935,10 +1900,7 @@ $
 
 ==== 法向应力差
 
-#figure(
-  image("media/chapter3/流体微元力.png", width: 200pt),
-  caption: [流体微元受力示意图],
-) <流体微元受力示意图>
+#figure(image("media/chapter3/流体微元力.png", width: 200pt), caption: [流体微元受力示意图]) <流体微元受力示意图>
 
 图中，$x_1$方向表示流动方向，$x_2$方向为速度梯度方向。
 
@@ -1956,10 +1918,7 @@ $ <第二法向应力差>
 
 当分子链被拉伸，高分子线团沿流动方向被拉伸，沿着与剪切力垂直的方向上被压缩，也即在垂直于剪切方向需要有力压住高分子线团，高分子线团对板有反推力。一旦压缩力撤除，线团有回复的趋势，熵增将驱动链构象回复至无规线团平衡态。此即聚合物弹性的微观本质。
 
-#figure(
-  image("media/chapter3/法向应力差微观解释.png", width: 350pt),
-  caption: [高分子线团在外力作用下偏离平衡状态],
-)
+#figure(image("media/chapter3/法向应力差微观解释.png", width: 350pt), caption: [高分子线团在外力作用下偏离平衡状态])
 
 === 高聚物熔体中的弹性行为
 
@@ -1999,10 +1958,7 @@ $ <第二法向应力差>
 
 如下图所示，入口区的漩涡式流动导致了额外的压力损失。
 
-#figure(
-  image("media/chapter3/入口流线.png", width: 200pt),
-  caption: [用有色与无色相间的聚合物显示出的流线图形],
-)
+#figure(image("media/chapter3/入口流线.png", width: 200pt), caption: [用有色与无色相间的聚合物显示出的流线图形])
 
 *出口胀大效应*
 
@@ -2018,10 +1974,7 @@ $D_max$：挤出物最大直径；
 
 $D$：模口直径。
 
-#figure(
-  image("media/chapter3/出口胀大.png", width: 150pt),
-  caption: [出口胀大效应示意图],
-) <出口胀大效应>
+#figure(image("media/chapter3/出口胀大.png", width: 150pt), caption: [出口胀大效应示意图]) <出口胀大效应>
 
 其原因主要有二：
 
@@ -2029,18 +1982,12 @@ a）入口效应：入口区储存的拉伸弹性应变；
 
 b）剪切流动区：管道内的剪切弹性应变。
 
-#figure(
-  image("media/chapter3/出口胀大原因.png", width: 350pt),
-  caption: [HDPE于180℃在不同剪切速率下的B-(L/D)关系],
-)
+#figure(image("media/chapter3/出口胀大原因.png", width: 350pt), caption: [HDPE于180℃在不同剪切速率下的B-(L/D)关系])
 
 究其微观本质，挤出胀大效应的本质是分子链在挤出过程中弹性应变未完全松弛，而在出口处松弛所引起的。出口处可恢复弹性形变
 $ gamma_"出口" = gamma_"入口" dot e^(-t / lambda) + gamma_"管内"= gamma_"入口" dot e^(-t / lambda) +(2tau_w) / (3G) $。
 
-#figure(
-  image("media/chapter3/出口胀大微观本质.png", width: 200pt),
-  caption: [出口胀大原理示意图],
-)
+#figure(image("media/chapter3/出口胀大微观本质.png", width: 200pt), caption: [出口胀大原理示意图])
 
 据此，我们也可以得知降低膨胀比的两种方法：a）降低弹性应变；b）增加松弛时间比 $t / lambda$。
 
@@ -2108,18 +2055,15 @@ b）入口端收敛角：随着入口端收敛角减小，液体中可逆应变�
   Han公式：
 
   $
-    N_1 &= p_"exit"+sigma_w ((d p_"exit") / (d sigma_w)) \
-    N_2 &= -sigma_w ((d p_"exit") / (d sigma_w))
+    N_1 & = p_"exit"+sigma_w ((d p_"exit") / (d sigma_w)) \
+    N_2 & = -sigma_w ((d p_"exit") / (d sigma_w))
   $ <Han公式>
 
 ==== 高聚物熔体的不稳定流动
 
 高聚物熔体在剪切速率超过临界值时，会从稳定层流转变为不稳定流动，导致挤出物表面畸变。当熔体所受应力大于熔体自身的强度或者聚合物分子间作用力时，就会发生熔体破裂。这种不稳定性主要由弹性效应主导。
 
-#figure(
-  image("media/chapter3/熔体破裂.png", width: 250pt),
-  caption: [高聚物熔体的不稳定流动],
-) <高聚物熔体的不稳定流动>
+#figure(image("media/chapter3/熔体破裂.png", width: 250pt), caption: [高聚物熔体的不稳定流动]) <高聚物熔体的不稳定流动>
 
 ===== 管道入口处的次级流动导致熔体破裂
 
@@ -2151,28 +2095,19 @@ b）入口端收敛角：随着入口端收敛角减小，液体中可逆应变�
 
 这是因为，当高聚物熔体在管道中承受高剪切速率时，其与管壁界面的动态相互作用会引发滑-粘转变振荡。其微观机理是，剪切应力较小时，界面不滑动，此时界面处分子链受拉伸发生取向；当剪切速率超过临界剪切速率时，界面发生滑动，此时界面处分子链解取向，使剪切应力迅速降低，降至低于临界剪切应力；剪切应力减小，界面停止滑动，分子链重新取向。熔体如此反复在两种状态之间振荡。
 
-#figure(
-  image("media/chapter3/滑-粘转变微观机理.png", width: 350pt),
-  caption: [滑-粘转变微观机理],
-) <管壁滑-粘转变>
+#figure(image("media/chapter3/滑-粘转变微观机理.png", width: 350pt), caption: [滑-粘转变微观机理]) <管壁滑-粘转变>
 
 据此也可以合理推断，可以利用管壁滑移扩大挤出稳定的剪切速率区。例如，通过加入含氟的低表面能改性剂促进管壁滑移，可以有效降低熔体中的真实剪切速率。
 
 上面我们介绍了两种导致熔体破裂的情况。其导致不稳定的原因对比如下图所示。
 
-#figure(
-  image("media/chapter3/熔体破裂对比.png", width: 200pt),
-  caption: [两种导致熔体破裂的情况的对比],
-)
+#figure(image("media/chapter3/熔体破裂对比.png", width: 200pt), caption: [两种导致熔体破裂的情况的对比])
 
 ===== 熔体破裂的临界剪切应力和临界剪切速率
 
 临界剪切应力$tau_c$，即引发熔体破裂的最小剪切应力，主要取决于材料本征属性，例如分子链缠结强度、松弛时间等，对同种高聚物基本恒定。而临界剪切速率$dot(gamma)$为对应$tau_c$的剪切速率值，还取决于流场条件，例如温度、流道几何等。例如，对于同一种流体，临界剪切速率随着温度升高明显升高。
 
-#figure(
-  image("media/chapter3/熔体破裂临界.png", width: 350pt),
-  caption: [几种常见熔体破裂的临界剪切应力和临界剪切速率],
-)
+#figure(image("media/chapter3/熔体破裂临界.png", width: 350pt), caption: [几种常见熔体破裂的临界剪切应力和临界剪切速率])
 
 ===== 熔体破裂的判据
 
@@ -2235,10 +2170,7 @@ b）入口端收敛角：随着入口端收敛角减小，液体中可逆应变�
 
 蠕变，指在一定的温度和较小的恒定外力(拉力、压力或扭力等)作用下，材料的形变随时间的增加而逐渐增大的现象。
 
-#figure(
-  image("media/chapter3/力学松弛-1.png", width: 150pt),
-  caption: [线型高聚物的蠕变曲线],
-)
+#figure(image("media/chapter3/力学松弛-1.png", width: 150pt), caption: [线型高聚物的蠕变曲线])
 
 从分子运动和变化的角度来看，蠕变过程包括下面三种形变。
 
@@ -2294,10 +2226,7 @@ $ <应力松弛>
 
 $sigma_0$：起始应力；$tau$：松弛时间。
 
-#figure(
-  image("media/chapter3/力学松弛-2.png", width: 140pt),
-  caption: [不同温度下的应力松弛曲线],
-)
+#figure(image("media/chapter3/力学松弛-2.png", width: 140pt), caption: [不同温度下的应力松弛曲线])
 
 只有在玻璃化温度附近的几十度范围内，应力松弛现象比较明显。例如含有增塑剂的聚氣乙烯丝，用它缚物，开始扎得很紧，后来会变松，就是应力松弛现象比较明显的例子。对于交联的高聚物，由于分子间不能滑移，所以应力不会松弛到零，只能松弛到某一数值，正因为这样，橡胶制品都是经过交联的。
 
@@ -2383,10 +2312,7 @@ $
 
 Maxwell模型把高分子链等效为一个黏壶和一个弹簧串联，可用于模拟未化学交联聚合物熔体或溶液的粘弹性。
 
-#figure(
-  image("media/chapter3/maxwell.png", width: 50pt),
-  caption: [Maxwell黏壶-弹簧模型],
-) <Maxwell模型>
+#figure(image("media/chapter3/maxwell.png", width: 50pt), caption: [Maxwell黏壶-弹簧模型]) <Maxwell模型>
 
 如图所示，当模型受力时，两个元件：
 
@@ -2462,10 +2388,7 @@ $
 $
   tan delta=1 / (omega tau)=E'' / E'
 $
-#figure(
-  image("media/chapter3/Maxwell模型的动态黏弹行为.png", width: 170pt),
-  caption: [Maxwell模型的动态力学行为],
-)
+#figure(image("media/chapter3/Maxwell模型的动态黏弹行为.png", width: 170pt), caption: [Maxwell模型的动态力学行为])
 
 低频时，$E'$很小；而高频时，粘壶基本来不及运动，仅弹性响应。值得注意的是，$tan δ$与$log omega$的关系与实际高聚物不符合，Maxwell模型仅包含单一弛豫过程。
 
@@ -2484,10 +2407,7 @@ Maxwell模型中，类似于复数模量，复数柔量(compliance)可表示为�
 
 Voigt 模型把高分子链等效为一个黏壶和一个弹簧并联，可以模拟交联高聚物的蠕变过程。
 
-#figure(
-  image("media/chapter3/voigt.png", width: 100pt),
-  caption: [Voigt 黏壶-弹簧模型],
-) <Voigt模型>
+#figure(image("media/chapter3/voigt.png", width: 100pt), caption: [Voigt 黏壶-弹簧模型]) <Voigt模型>
 
 如图所示，当模型受力时，两个元件：
 
@@ -2515,10 +2435,7 @@ $
 
 $epsilon(infinity) = sigma_0 slash E$ 是 $t arrow.r infinity$ 时的有限平衡形变，在时间无限长时，体系表现出纯弹性。
 
-#figure(
-  image("media/chapter3/voigt蠕变.png", width: 150pt),
-  caption: [Voigt 模型的蠕变曲线],
-)
+#figure(image("media/chapter3/voigt蠕变.png", width: 150pt), caption: [Voigt 模型的蠕变曲线])
 
 需要注意的是，由于没有永久变形，Voigt模型不能模拟线型高聚物的蠕变过程。
 
@@ -2540,14 +2457,9 @@ $
 
 即$E'=E$，$E'' = omega eta$，$tan delta = omega eta slash E = omega tau$。
 
-类似地，也可以给出复数柔量：$ D^*=1 / (E+i omega eta)=D / (1+omega^2 tau^2)-i (D omega tau) / (1+omega^2 tau^2) $其中$D=1 / E$。则实数和虚数柔量分别为$ D'=D / (1+omega^2 tau^2) $$
-  D''=(D omega tau) / (1 + omega^2 tau^2)
-$
+类似地，也可以给出复数柔量：$ D^*=1 / (E+i omega eta)=D / (1+omega^2 tau^2)-i (D omega tau) / (1+omega^2 tau^2) $其中$D=1 / E$。则实数和虚数柔量分别为$ D'=D / (1+omega^2 tau^2) $$ D''=(D omega tau) / (1 + omega^2 tau^2) $
 
-#figure(
-  image("media/chapter3/voigt模型动态力学.png", width: 170pt),
-  caption: [Voigt 模型的动态力学行为],
-)
+#figure(image("media/chapter3/voigt模型动态力学.png", width: 170pt), caption: [Voigt 模型的动态力学行为])
 
 可以注意到，$tan delta-log omega$的曲线仍然与实际不符。
 
@@ -2665,10 +2577,7 @@ $ <动态粘度>
 
 蠕变与回复是最为常用的流变组合测量，第一个步骤中应力设置为一恒定值，第二个步骤中应力设置为0，其应力控制轮廓和典型响应特征如下图所示。
 
-#figure(
-  image("media/chapter3/瞬态测试-1.png", width: 200pt),
-  caption: [蠕变与回复],
-)
+#figure(image("media/chapter3/瞬态测试-1.png", width: 200pt), caption: [蠕变与回复])
 
 #text(blue)[*三段式触变法（3ITT）*]
 
@@ -2684,19 +2593,13 @@ $ <动态粘度>
 
   三段恒定*剪切速率*按“低-高-低”组合，通过应力或黏度对时间的响应特征来评估触变结构破坏和重建过程，是另外一种较为常用的触变性评估方法，其速率控制轮廓和典型响应特征如下图所示。
 
-  #figure(
-    image("media/chapter3/瞬态测试-2.png", width: 300pt),
-    caption: [3ITT R-R-R模式],
-  )
+  #figure(image("media/chapter3/瞬态测试-2.png", width: 300pt), caption: [3ITT R-R-R模式])
 
   3ITT测量中，第一和第三段的剪切速率通常需要设置得足够低，目的是为了模拟静态的情况；第二段剪切速率和持续时间可根据应用场景的实际情况设置。
 
   *应用-涂料性能检验*
 
-  #figure(
-    image("media/chapter3/瞬态测试-5.png", width: 200pt),
-    caption: [涂料性能测试-R-R-R测试],
-  )
+  #figure(image("media/chapter3/瞬态测试-5.png", width: 200pt), caption: [涂料性能测试-R-R-R测试])
 
   如图，采用R-R-R测试模拟涂料的涂布过程，第一段可以理解为：涂料还未涂布；第二段，涂料正在进行涂布；第三段，停止涂布后，涂料的回复状态。(可参考上图“3ITT R-R-R模式”左图示意图)
 
@@ -2712,10 +2615,7 @@ $ <动态粘度>
 
 2. *振荡模式3ITT(小应变振荡-高剪切旋转-小应变振荡,O-R-O模式)*
 
-  #figure(
-    image("media/chapter3/瞬态测试-3.png", width: 300pt),
-    caption: [3ITT O-R-O模式],
-  )
+  #figure(image("media/chapter3/瞬态测试-3.png", width: 300pt), caption: [3ITT O-R-O模式])
 
   结果:
 
@@ -2725,10 +2625,7 @@ $ <动态粘度>
 
   *应用-汽车喷漆涂*
 
-  #figure(
-    image("media/chapter3/瞬态测试-6.png", width: 200pt),
-    caption: [汽车喷漆涂-O-R-O测试],
-  )
+  #figure(image("media/chapter3/瞬态测试-6.png", width: 200pt), caption: [汽车喷漆涂-O-R-O测试])
 
   当 $G''>G'$,液体流动状态，流平，流挂。
 
@@ -2740,17 +2637,11 @@ $ <动态粘度>
 
   #text(blue)[*宾汉流体的屈服应力-通过应力扫描*]
 
-  #figure(
-    image("media/chapter3/瞬态测试-7.png", width: 250pt),
-    caption: [两种使用$gamma - tau$确定屈服应力的方法],
-  )
+  #figure(image("media/chapter3/瞬态测试-7.png", width: 250pt), caption: [两种使用$gamma - tau$确定屈服应力的方法])
 
   如图，可通过应力扫描测试确定宾汉流体的屈服应力。
 
-  #figure(
-    image("media/chapter3/瞬态测试-8.png", width: 250pt),
-    caption: [另一种确定屈服应力的方法],
-  )
+  #figure(image("media/chapter3/瞬态测试-8.png", width: 250pt), caption: [另一种确定屈服应力的方法])
 
   但用$gamma-tau$确定屈服应力的方法的缺点是，第二段拟合曲线可以选择的方式较多，得到的屈服应力数值不固定。故还有一种方法确定宾汉流体的屈服应力，即$eta-tau$测试，将该曲线的极大值点作为屈服应力。
 
@@ -2804,28 +2695,19 @@ $ <动态粘度>
 
 频率曲线认识：$G', G'' - omega$ 曲线
 
-#figure(
-  image("media/chapter3/动态测试1.png", width: 350pt),
-  caption: [动态测试模量-频率关系图],
-)
+#figure(image("media/chapter3/动态测试1.png", width: 350pt), caption: [动态测试模量-频率关系图])
 
 原理推导参考 Maxwell 模型
 
 + 一看低频是否到末端区（Terminal region）；
 
-  #figure(
-    image("media/chapter3/动态测试2.png", width: 350pt),
-    caption: [动态测试低频末端区],
-  )
+  #figure(image("media/chapter3/动态测试2.png", width: 350pt), caption: [动态测试低频末端区])
 
   末端区（最低频部分）判据：$lg G - lg omega$ 的双对数图上，储能模量 $G'$ 曲线的斜率为2，损耗模量 $G''$ 曲线的斜率为1。
 
 + 二看 $G'$ 是否有平台；
 
-  #figure(
-    image("media/chapter3/动态测试3.png", width: 350pt),
-    caption: [动态测试平台模量],
-  )
+  #figure(image("media/chapter3/动态测试3.png", width: 350pt), caption: [动态测试平台模量])
 
   平台模量指模量在一定频率范围内几乎不变。
 
@@ -2835,10 +2717,7 @@ $ <动态粘度>
 
 + 三看 $G'$ 和 $G''$ 是否有交点。
 
-  #figure(
-    image("media/chapter3/动态测试4.png", width: 300pt),
-    caption: [动态测试$G'$ 和 $G''$ 交点],
-  )
+  #figure(image("media/chapter3/动态测试4.png", width: 300pt), caption: [动态测试$G'$ 和 $G''$ 交点])
 
   对于单一松弛时间的体系，$G'$ 和 $G''$ 的交点对应的频率倒数等于松弛时间 $tau$ 。
 
@@ -2853,8 +2732,8 @@ $ <第一Cox-Merz关系式>
 第二 Cox-Merz 关系式：
 
 $
-  eta'(omega) &= eta_c ( dot(gamma))|_(dot(gamma) = omega) \
-  eta_c (dot(gamma)) &= (d tau(dot(gamma))) / (d dot(gamma))
+         eta'(omega) & = eta_c ( dot(gamma))|_(dot(gamma) = omega) \
+  eta_c (dot(gamma)) & = (d tau(dot(gamma))) / (d dot(gamma))
 $ <第二Cox-Merz关系式>
 
 储能模量与法向应力差关系：
@@ -2894,149 +2773,269 @@ $ <储能模量与法向应力差关系>
     - 非线性粘弹性：随着应变增加，模量随应变而变化。稳态高剪切速率下的显著弹性行为也是非线性粘弹性。
   ],
   equation: table(
-    table.header([涵义], [公式], [索引]),
-    [毛细管流变仪], [-], [@fig:毛细管流变仪],
-    [毛细管管壁处剪切应力], [$ tau_w = (R Delta P) / (2L) $ <->], [@eqt:毛细管管壁处剪切应力],
-    [毛细管管壁处牛顿流体的剪切速率], [$
+    table.header(
+      [涵义],
+      [公式],
+      [索引],
+    ),
+    [毛细管流变仪],
+    [-],
+    [@fig:毛细管流变仪],
+    [毛细管管壁处剪切应力],
+    [$ tau_w = (R Delta P) / (2L) $ <->],
+    [@eqt:毛细管管壁处剪切应力],
+    [毛细管管壁处牛顿流体的剪切速率],
+    [$
         dot(gamma) = (2R Delta P) / (L eta)
-      $ <->], [@eqt:毛细管管壁处牛顿流体的剪切速率],
-    [入口压力降校正的经验公式], [$ tau_w = (R Delta P) / (2(L+ n_B D)) $ <->], [@eqt:入口压力降校正的经验公式],
-    [毛细管壁面处非牛顿流体的真实剪切速率], [$
+      $ <->],
+    [@eqt:毛细管管壁处牛顿流体的剪切速率],
+    [入口压力降校正的经验公式],
+    [$ tau_w = (R Delta P) / (2(L+ n_B D)) $ <->],
+    [@eqt:入口压力降校正的经验公式],
+    [毛细管壁面处非牛顿流体的真实剪切速率],
+    [$
         dot(gamma)_(w,"非牛")
         = dot(gamma)_(w,"a") / 4 ((d ln(dot(gamma)_(w,"牛"))) / (d ln(tau_w)) +3)
-      $ <->], [@eqt:毛细管壁面处非牛顿流体的真实剪切速率],
-    [同轴旋转圆筒流变仪], [-], [@fig:同轴旋转圆筒流变仪],
-    [平行板流变仪], [-], [@fig:平行板流变仪],
-    [椎板流变仪], [-], [@fig:椎板流变仪],
-    [拉伸应力张量], [-], [@fig:拉伸应力张量],
-    [Andrade公式], [$
+      $ <->],
+    [@eqt:毛细管壁面处非牛顿流体的真实剪切速率],
+    [同轴旋转圆筒流变仪],
+    [-],
+    [@fig:同轴旋转圆筒流变仪],
+    [平行板流变仪],
+    [-],
+    [@fig:平行板流变仪],
+    [椎板流变仪],
+    [-],
+    [@fig:椎板流变仪],
+    [拉伸应力张量],
+    [-],
+    [@fig:拉伸应力张量],
+    [Andrade公式],
+    [$
         eta = A e^((E_eta) / (k T))
-      $ <->], [@eqt:Andrade公式],
-    [WLF方程], [$
+      $ <->],
+    [@eqt:Andrade公式],
+    [WLF方程],
+    [$
         log a_T = (-C_1 (T - T_s)) / (C_2 + T - T_s)
-      $ <->], [@eqt:WLF方程],
-    [蛇行理论], [-], [@fig:蛇行理论],
-    [Rouse模型], [-], [@fig:Rouse模型],
-    [Utracki公式], [$
+      $ <->],
+    [@eqt:WLF方程],
+    [蛇行理论],
+    [-],
+    [@fig:蛇行理论],
+    [Rouse模型],
+    [-],
+    [@fig:Rouse模型],
+    [Utracki公式],
+    [$
         lg eta_m=omega_1 lg eta_1 + omega_2 lg eta_2
-      $ <->], [@eqt:Utracki公式],
-    [Einstein公式], [$
+      $ <->],
+    [@eqt:Utracki公式],
+    [Einstein公式],
+    [$
         eta_r = eta / eta_0=1+K_E phi
-      $ <->], [@eqt:Einstein公式],
-    [Guth-Gold方程], [$
+      $ <->],
+    [@eqt:Einstein公式],
+    [Guth-Gold方程],
+    [$
         eta_r = 1+2.5 phi +14.1 phi^2
-      $ <->], [@eqt:Guth-Gold方程],
-    [Mooney公式], [$
+      $ <->],
+    [@eqt:Guth-Gold方程],
+    [Mooney公式],
+    [$
         ln(eta / eta_0)=(K_E phi) / (1-phi slash phi_m)
-      $ <->], [@eqt:Mooney公式],
-    [橡胶弹性], [$
+      $ <->],
+    [@eqt:Mooney公式],
+    [橡胶弹性],
+    [$
         f=((partial u) / (partial l))_(T,V)-T((partial S) / (partial l))_(T,V)
-      $ <->], [@eqt:橡胶弹性],
-    [拉伸强度], [$
+      $ <->],
+    [@eqt:橡胶弹性],
+    [拉伸强度],
+    [$
         sigma_t = P / (b d)
-      $ <->], [@eqt:拉伸强度],
-    [杨氏模量], [$
+      $ <->],
+    [@eqt:拉伸强度],
+    [杨氏模量],
+    [$
         E= (Delta P slash b d) / (Delta l slash l_0)
-      $ <->], [@eqt:杨氏模量],
-    [弯曲强度], [$
+      $ <->],
+    [@eqt:杨氏模量],
+    [弯曲强度],
+    [$
         sigma_f = P / 2 (l_0 slash 2) / (b d^2 slash 6)
-      $ <->], [@eqt:弯曲强度],
-    [弯曲模量], [$
+      $ <->],
+    [@eqt:弯曲强度],
+    [弯曲模量],
+    [$
         E_f = (Delta P l_0^3) / (4 b d^3 delta)
-      $ <->], [@eqt:弯曲模量],
-    [冲击强度], [$
+      $ <->],
+    [@eqt:弯曲模量],
+    [冲击强度],
+    [$
         sigma_i = W / (b d)
-      $ <->], [@eqt:冲击强度],
-    [剪切模量], [$
+      $ <->],
+    [@eqt:冲击强度],
+    [剪切模量],
+    [$
         G=sigma_s / gamma = F / (A_0 tan theta)
-      $ <->], [@eqt:剪切模量],
-    [体积模量], [$
+      $ <->],
+    [@eqt:剪切模量],
+    [体积模量],
+    [$
         B=F / (Delta V slash V_0)=(P V_0) / (Delta V)
-      $ <->], [@eqt:体积模量],
-    [弹性模量关系], [$
+      $ <->],
+    [@eqt:体积模量],
+    [弹性模量关系],
+    [$
         E=2G (1+nu)=3B(1-2nu)
-      $ <->], [@eqt:弹性模量关系],
-    [流体微元受力示意图], [-], [@fig:流体微元受力示意图],
-    [第一法向应力差], [$
+      $ <->],
+    [@eqt:弹性模量关系],
+    [流体微元受力示意图],
+    [-],
+    [@fig:流体微元受力示意图],
+    [第一法向应力差],
+    [$
         N_1=sigma_11+sigma_22=psi_1 dot(gamma)>0
-      $ <->], [@eqt:第一法向应力差],
-    [第二法向应力差], [$
+      $ <->],
+    [@eqt:第一法向应力差],
+    [第二法向应力差],
+    [$
         N_2=sigma_22-sigma_33=psi_2 dot(gamma)≈-0.1 N_1 < 0
-      $ <->], [@eqt:第二法向应力差],
-    [爬杆效应], [-], [@fig:爬杆效应],
-    [入口效应], [-], [@fig:入口效应],
-    [膨胀比], [$
+      $ <->],
+    [@eqt:第二法向应力差],
+    [爬杆效应],
+    [-],
+    [@fig:爬杆效应],
+    [入口效应],
+    [-],
+    [@fig:入口效应],
+    [膨胀比],
+    [$
         B=D_max slash D
-      $ <->], [@eqt:膨胀比],
-    [出口胀大效应], [-], [@fig:出口胀大效应],
-    [Tanner公式], [$
+      $ <->],
+    [@eqt:膨胀比],
+    [出口胀大效应],
+    [-],
+    [@fig:出口胀大效应],
+    [Tanner公式],
+    [$
         N_1=2 sigma_w (2 B^6-2)^(1 slash 2)
-      $ <->], [@eqt:Tanner公式],
-    [Han公式], [$
-        N_1 &= p_"exit"+sigma_w ((d p_"exit") / (d sigma_w)) \
-        N_2 &= -sigma_w ((d p_"exit") / (d sigma_w))
-      $ <->], [@eqt:Han公式],
-    [管道入口处的次级流动], [-], [@fig:管道入口处的次级流动],
-    [管壁滑-粘转变], [-], [@fig:管壁滑-粘转变],
-    [韦森堡数], [$
+      $ <->],
+    [@eqt:Tanner公式],
+    [Han公式],
+    [$
+        N_1 & = p_"exit"+sigma_w ((d p_"exit") / (d sigma_w)) \
+        N_2 & = -sigma_w ((d p_"exit") / (d sigma_w))
+      $ <->],
+    [@eqt:Han公式],
+    [管道入口处的次级流动],
+    [-],
+    [@fig:管道入口处的次级流动],
+    [管壁滑-粘转变],
+    [-],
+    [@fig:管壁滑-粘转变],
+    [韦森堡数],
+    [$
         "Nw" = lambda dot(gamma)
-      $ <->], [@eqt:韦森堡数],
-    [普弹形变], [$
+      $ <->],
+    [@eqt:韦森堡数],
+    [普弹形变],
+    [$
         epsilon(t)=epsilon_0 e^(i omega t)
-      $ <->], [@eqt:普弹形变],
-    [高弹形变], [$
+      $ <->],
+    [@eqt:普弹形变],
+    [高弹形变],
+    [$
         epsilon(t)=epsilon_0 sin omega t
-      $ <->], [@eqt:高弹形变],
-    [粘性流动], [$
+      $ <->],
+    [@eqt:高弹形变],
+    [粘性流动],
+    [$
         sigma(t)=sigma_0 e^(i omega t)
-      $ <->], [@eqt:粘性流动],
-    [总形变], [$
+      $ <->],
+    [@eqt:粘性流动],
+    [总形变],
+    [$
         epsilon(t) = sigma / E_1+sigma / E_2(1-e^(-t slash tau))+sigma / eta_3 t
-      $ <->], [@eqt:总形变],
-    [应力松弛], [$
+      $ <->],
+    [@eqt:总形变],
+    [应力松弛],
+    [$
         sigma(t)=sigma_0 e^(-t slash tau)
-      $ <->], [@eqt:应力松弛],
-    [Maxwell模型], [-], [@fig:Maxwell模型],
-    [Voigt模型], [-], [@fig:Voigt模型],
-    [移动因子], [$
+      $ <->],
+    [@eqt:应力松弛],
+    [Maxwell模型],
+    [-],
+    [@fig:Maxwell模型],
+    [Voigt模型],
+    [-],
+    [@fig:Voigt模型],
+    [移动因子],
+    [$
         a_T = tau / tau_s
-      $ <->], [@eqt:移动因子],
-    [动态应变], [$
+      $ <->],
+    [@eqt:移动因子],
+    [动态应变],
+    [$
         epsilon (t) =epsilon_0 sin omega t
-      $ <->], [@eqt:动态应变],
-    [动态应力], [$
+      $ <->],
+    [@eqt:动态应变],
+    [动态应力],
+    [$
         sigma (t)=sigma_0 sin omega t cos delta + sigma_0 cos omega t sin delta
-      $ <->], [@eqt:动态应力],
-    [储能模量], [$
+      $ <->],
+    [@eqt:动态应力],
+    [储能模量],
+    [$
         E'=(sigma_0 / epsilon_0) cos delta
-      $ <->], [@eqt:储能模量],
-    [损耗模量], [$
+      $ <->],
+    [@eqt:储能模量],
+    [损耗模量],
+    [$
         E''=(sigma_0 / epsilon_0) sin delta
-      $ <->], [@eqt:损耗模量],
-    [复数模量], [$
+      $ <->],
+    [@eqt:损耗模量],
+    [复数模量],
+    [$
         E^*=E'+i E''
-      $ <->], [@eqt:复数模量],
-    [损耗因子], [$
+      $ <->],
+    [@eqt:复数模量],
+    [损耗因子],
+    [$
         tan delta =E'' / E'
-      $ <->], [@eqt:损耗因子],
-    [动态模量], [$
+      $ <->],
+    [@eqt:损耗因子],
+    [动态模量],
+    [$
         E=|E^*|=sqrt(E'^2+E''^2)
-      $ <->], [@eqt:动态模量],
-    [复数粘度], [$
+      $ <->],
+    [@eqt:动态模量],
+    [复数粘度],
+    [$
         eta^*=tau^* / dot(gamma)^* =tau^* / (i omega gamma^*)=G'' / omega - i G' / omega
-      $ <->], [@eqt:复数粘度],
-    [动态粘度], [$
+      $ <->],
+    [@eqt:复数粘度],
+    [动态粘度],
+    [$
         eta'=G'' / omega
-      $ <->], [@eqt:动态粘度],
-    [第一Cox-Merz关系式], [$
+      $ <->],
+    [@eqt:动态粘度],
+    [第一Cox-Merz关系式],
+    [$
         |eta^*(omega)| = eta_a (dot(gamma))|_(dot(gamma) = omega)
-      $ <->], [@eqt:第一Cox-Merz关系式],
-    [第二Cox-Merz关系式], [$
-        eta_c (dot(gamma)) &= (d tau(dot(gamma))) / (d dot(gamma))
-      $ <->], [@eqt:第二Cox-Merz关系式],
-    [储能模量与法向应力差关系], [$
+      $ <->],
+    [@eqt:第一Cox-Merz关系式],
+    [第二Cox-Merz关系式],
+    [$
+        eta_c (dot(gamma)) & = (d tau(dot(gamma))) / (d dot(gamma))
+      $ <->],
+    [@eqt:第二Cox-Merz关系式],
+    [储能模量与法向应力差关系],
+    [$
         lim_(omega → 0) (G'(omega)) / omega^2 = lim_(N_1 → infinity) N_1 / (2 dot(gamma)^2) |_(dot(gamma) = omega)
-      $ <->], [@eqt:储能模量与法向应力差关系],
+      $ <->],
+    [@eqt:储能模量与法向应力差关系],
   ),
 )
 
@@ -3189,10 +3188,7 @@ $
 *反常！－碳纳米管填充聚丙烯的挤出收缩*
 
 Kharchenko等人研究发现，在聚丙烯（PP）基体中，多壁碳纳米管（MWNTs）可形成堵塞网络，显著改变复合材料的加工行为及性能。
-#figure(
-  image("media/chapter4/碳纳米管聚丙烯.png", width: 300pt),
-  caption: [通过MWNT填料抑制挤出膨胀],
-)
+#figure(image("media/chapter4/碳纳米管聚丙烯.png", width: 300pt), caption: [通过MWNT填料抑制挤出膨胀])
 
 如图所示，虚线为挤出口模的直径。可见碳纳米管填充聚丙烯发生反常的挤出收缩，而纯聚丙烯则挤出胀大。
 
@@ -3204,10 +3200,7 @@ Kharchenko等人研究发现，在聚丙烯（PP）基体中，多壁碳纳米�
 
 Tian等人研究聚丙烯（iPP）薄膜在挤出流延（Extrusion Film Casting, EFC）过程中的非线性稳定性与动力学行为，提出其存在拉伸共振不稳定性（draw resonance instability）。
 
-#figure(
-  image("media/chapter4/不稳定流动的消除措施.png", width: 350pt),
-  caption: [拉伸比（Dr）对iPP薄膜拉伸过程的影响],
-)
+#figure(image("media/chapter4/不稳定流动的消除措施.png", width: 350pt), caption: [拉伸比（Dr）对iPP薄膜拉伸过程的影响])
 
 图（a）给出了不同拉伸比下膜宽度随时间的演化过程；图（b）显示了$"Dr"=30$时膜宽度、厚度的振荡情况。
 
@@ -3217,10 +3210,7 @@ Tian等人研究聚丙烯（iPP）薄膜在挤出流延（Extrusion Film Casting
 
 === 温度扫描：意面的储能模量变化
 
-#figure(
-  image("media/chapter4/意面-1.png", width: 250pt),
-  caption: [意面的温度扫描测试],
-)
+#figure(image("media/chapter4/意面-1.png", width: 250pt), caption: [意面的温度扫描测试])
 
 通过振荡时间扫描测试以 6.28 rad/s 的频率在 22 ℃ 下测试了一片意大利宽面条。收集了 2.5 min 干样品数据来建立储能模量 $G'$ 基线。
 
@@ -3228,17 +3218,11 @@ Tian等人研究聚丙烯（iPP）薄膜在挤出流延（Extrusion Film Casting
 
 === 通过流变学测试解决PHBHHx难吹膜问题
 
-#figure(
-  image("media/chapter4/PHBHHx-1.png", width: 350pt),
-  caption: [PHBHHx吹膜效果与DMA测试],
-)
+#figure(image("media/chapter4/PHBHHx-1.png", width: 350pt), caption: [PHBHHx吹膜效果与DMA测试])
 
 如图，PHBHHx吹膜性差，提出假设：PHBHHx吹膜性差是由于熔体强度低。但是，经过DMA测试之后发现，PHBHHx熔体强度甚至高于容易吹膜的TH-PBAT。
 
-#figure(
-  image("media/chapter4/PHBHHx-2.png", width: 350pt),
-  caption: [PHBHHx系列流变学测试],
-)
+#figure(image("media/chapter4/PHBHHx-2.png", width: 350pt), caption: [PHBHHx系列流变学测试])
 
 如图，对PHBHHx系列做流变学测试，发现可吹膜的PBAT入口压力降最高，说明PBAT的拉伸弹性表现最好。而PHBHHx入口压力降最低。
 
@@ -3271,35 +3255,23 @@ Tian等人研究聚丙烯（iPP）薄膜在挤出流延（Extrusion Film Casting
 
 故最后选择 20PBAT/PHBHHx-1 配方。
 
-#figure(
-  image("media/chapter4/PHBHHx-6.png", width: 100pt),
-  caption: [工厂吹膜试验结果],
-)
+#figure(image("media/chapter4/PHBHHx-6.png", width: 100pt), caption: [工厂吹膜试验结果])
 
 如图，工厂吹膜试验一次成功，基于新假设和流变学测试筛选出来的20PBAT/PHBHHx-1配方可以稳定吹膜。
 
 === 服装纤维成型加工
 
-#figure(
-  image("media/chapter4/纺丝-6.png", width: 300pt),
-  caption: [熔体纺丝的原理],
-)
+#figure(image("media/chapter4/纺丝-6.png", width: 300pt), caption: [熔体纺丝的原理])
 
 熔法纺丝的主要特点是卷绕速度高、不需要溶剂和沉淀剂，设备简单，工艺流程短。熔点低于分解温度、可熔融形成热稳定熔体的成纤聚合物，都可采用这一方法成形。如涤纶、丙纶、锦纶等。上图为熔体纺丝的原理。
 
 *纺丝速度对纤维结构和性能的影响*
 
-#figure(
-  image("media/chapter4/纺丝-1.png", width: 200pt),
-  caption: [PET高速纺丝中的结晶度与纺速的关系],
-)
+#figure(image("media/chapter4/纺丝-1.png", width: 200pt), caption: [PET高速纺丝中的结晶度与纺速的关系])
 
 PET 是涤纶中常用的一种材料，如图，可以发现，基本上纺速越快，聚合物结晶度越大，是“拉伸硬化”的表现。在服装中又称这种充分结晶的纤维为 FDY。
 
-#figure(
-  image("media/chapter4/纺丝-2.png", width: 150pt),
-  caption: [不同纺丝速度的纤维的DSC测试],
-)
+#figure(image("media/chapter4/纺丝-2.png", width: 150pt), caption: [不同纺丝速度的纤维的DSC测试])
 
 如图，发现拉伸速度越快的纤维，DSC 测试无结晶峰，从而也可以证明 FDY 已经结晶完全。
 
@@ -3307,10 +3279,7 @@ PET 是涤纶中常用的一种材料，如图，可以发现，基本上纺速�
 
 *利用熔体弹性效应设计异形截面纤维的截面*
 
-#figure(
-  image("media/chapter4/纺丝-3.png", width: 250pt),
-  caption: [不同喷丝孔形状与实际熔体形状对比],
-)
+#figure(image("media/chapter4/纺丝-3.png", width: 250pt), caption: [不同喷丝孔形状与实际熔体形状对比])
 
 如图，根据上章弹性章节中可以得知，熔体会挤出胀大，故设计纤维形状时，要考虑熔体的挤出胀大效应。
 
@@ -3326,10 +3295,7 @@ PET 是涤纶中常用的一种材料，如图，可以发现，基本上纺速�
 
 因为纤维形状的不同在实际衣服中会产生不同的效果，所以纤维形状的设计是较为重要的一步。如图，异形三叶相较于常规截面纤维而言，具有保暖，导湿的效果。它的喷丝孔形状见右图。
 
-#figure(
-  image("media/chapter4/纺丝-4.png", width: 200pt),
-  caption: [Coolmax 纤维横截面],
-)
+#figure(image("media/chapter4/纺丝-4.png", width: 200pt), caption: [Coolmax 纤维横截面])
 
 Coolmax 纤维由美国杜邦公司研制开发，是异形截面的 PET 纤维。Coolmax 纤维横截面呈扁平“十”字型，所以它的表面就形成了四道沟槽。该形状的纤维具有导湿快干的效果。
 
@@ -3351,24 +3317,19 @@ Coolmax 纤维由美国杜邦公司研制开发，是异形截面的 PET 纤维�
 
 #text(blue)[*通过填料多分散性降低粘度*]
 
-#figure(
-  image("media/chapter3/填充-5.png", width: 300pt),
-  caption: [填料分散峰数对材料粘度的影响],
-)
+#figure(image("media/chapter3/填充-5.png", width: 300pt), caption: [填料分散峰数对材料粘度的影响])
 
 如图，随着球形颗粒填料分散峰的数目的增加，相对粘度逐渐降低，故可以通过增加填料的多分散性降低黏度。在实际生产中，可通过此方式克服高纤维填充量导致的体系粘度增加而难以加工的问题。
 
-#summary-block(
-  notion: [
-    - Deborah 数为表征粘弹性的无量纲数。Deborah 数打破了固体和流体响应的界限，提供了衡量粘弹性的定量尺子。De 越小，响应越快，性质更像液体。
-    - 当 $"Nw"<1$ 时，液体为粘性流动，弹性形变很小；$"Nw" = 1～7$时，液体为稳态粘弹性流体；$"Nw">7$时，液体为不稳定流动。
-    - 挤出过程中低分子量组分趋于管壁分布。
-    - 聚合物在加工过程中在管道型腔中的流动都是剪切流动，在剪切流动中速度梯度的作用下，卷曲状长链分子逐渐沿流动方向舒展伸直和取向。熔体温度高，分子热运动剧烈，因此在大分子流动取向的同时必然存在着解取向。流动取向可以是单轴或双轴的，取决于制件的结构形状、尺寸和熔体在其中的流动，截面积恒定，单轴取向，截面积变化，双轴取向或在更好的方向上取向。流动对填料取向也有影响，取向结构在停止剪切后随时间延长而逐渐松弛。
-    - 聚合物在 $T_g$ 附近的拉伸取向取决于 $sigma$ 和 $sigma_y$，当 $sigma < sigma_y$ 时，只产生高弹形变；当 $sigma > sigma_y$ 时，可进行塑性拉伸。在 $T_g ~ T_f$ 间拉伸时，$sigma_y$ 几乎不显著，不大的外力就可使聚合物产生连续的均匀的塑性形变，并可获得较高稳定的取向结构，这时材料的形变是均匀的拉伸过程。$T_f$ 以上的拉伸，分子活动能力提高，大分子易解缠，滑移和取向，但同时解取向速度也提高了，因此有效取向程度低，可迅速冷却保持取向度，熔融纺丝的取向就是粘流取向。
-    - 影响聚合物拉取取向的因素有温度、应力、拉伸比、聚合物结构和低分子物质。
-    - 剪切和拉伸导致聚合物结晶成核速率增加。其机理包括：剪切取向使平衡熔点升高；外场作用下成核能垒下降。存在剪切诱导结晶的最低剪切速率，高于该剪切速率才能观察到剪切诱导结晶。在相同剪切速率下，总结晶速率和成核密度随剪切时间延长而变快。
-  ],
-)
+#summary-block(notion: [
+  - Deborah 数为表征粘弹性的无量纲数。Deborah 数打破了固体和流体响应的界限，提供了衡量粘弹性的定量尺子。De 越小，响应越快，性质更像液体。
+  - 当 $"Nw"<1$ 时，液体为粘性流动，弹性形变很小；$"Nw" = 1～7$时，液体为稳态粘弹性流体；$"Nw">7$时，液体为不稳定流动。
+  - 挤出过程中低分子量组分趋于管壁分布。
+  - 聚合物在加工过程中在管道型腔中的流动都是剪切流动，在剪切流动中速度梯度的作用下，卷曲状长链分子逐渐沿流动方向舒展伸直和取向。熔体温度高，分子热运动剧烈，因此在大分子流动取向的同时必然存在着解取向。流动取向可以是单轴或双轴的，取决于制件的结构形状、尺寸和熔体在其中的流动，截面积恒定，单轴取向，截面积变化，双轴取向或在更好的方向上取向。流动对填料取向也有影响，取向结构在停止剪切后随时间延长而逐渐松弛。
+  - 聚合物在 $T_g$ 附近的拉伸取向取决于 $sigma$ 和 $sigma_y$，当 $sigma < sigma_y$ 时，只产生高弹形变；当 $sigma > sigma_y$ 时，可进行塑性拉伸。在 $T_g ~ T_f$ 间拉伸时，$sigma_y$ 几乎不显著，不大的外力就可使聚合物产生连续的均匀的塑性形变，并可获得较高稳定的取向结构，这时材料的形变是均匀的拉伸过程。$T_f$ 以上的拉伸，分子活动能力提高，大分子易解缠，滑移和取向，但同时解取向速度也提高了，因此有效取向程度低，可迅速冷却保持取向度，熔融纺丝的取向就是粘流取向。
+  - 影响聚合物拉取取向的因素有温度、应力、拉伸比、聚合物结构和低分子物质。
+  - 剪切和拉伸导致聚合物结晶成核速率增加。其机理包括：剪切取向使平衡熔点升高；外场作用下成核能垒下降。存在剪切诱导结晶的最低剪切速率，高于该剪切速率才能观察到剪切诱导结晶。在相同剪切速率下，总结晶速率和成核密度随剪切时间延长而变快。
+])
 
 /// ----------- ///
 /// Back Matter ///

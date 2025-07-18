@@ -11,11 +11,9 @@
     level: 1,
     numbering: none,
     outlined: outlined,
+    bookmarked: true,
     title,
   )
 
-  outline(
-    title: none,
-    target: math.equation.where(block: true),
-  )
+  outline(title: none, target: math.equation.where(block: true))
 }

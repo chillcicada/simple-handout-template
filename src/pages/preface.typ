@@ -1,4 +1,4 @@
-#import "../utils/font.typ": use-size, _use-font
+#import "../utils/font.typ": _use-font, use-size
 
 #let preface(
   // from entry
@@ -20,6 +20,7 @@
   heading(
     level: 1,
     outlined: outlined,
+    bookmarked: true,
     title,
   )
 

@@ -1,4 +1,4 @@
-#import "layouts/doc.typ": meta, doc
+#import "layouts/doc.typ": doc, meta
 #import "layouts/front-matter.typ": front-matter
 #import "layouts/main-matter.typ": main-matter
 #import "layouts/back-matter.typ": back-matter
@@ -14,7 +14,7 @@
 #import "pages/table-list.typ": table-list
 #import "pages/equation-list.typ": equation-list
 
-#import "utils/font.typ": use-size, _use-font
+#import "utils/font.typ": _use-font, use-size
 #import "utils/biliography.typ": bilingual-bibliography
 
 #let define-config(

@@ -1,4 +1,4 @@
-#import "../utils/font.typ": use-size, _use-font
+#import "../utils/font.typ": _use-font, use-size
 #import "../utils/util.typ": array-at
 
 #import "../imports.typ": show-cn-fakebold
@@ -11,20 +11,18 @@
   region: "zh",
   margin: (:),
   fallback: false,
+  use-fakebold: true,
   // self
   it,
 ) = {
   // fix bold and italic
-  show: show-cn-fakebold
+  show: it => if use-fakebold { show-cn-fakebold(it) } else { it }
 
   set text(lang: lang, fallback: fallback, region: region)
 
   set page(margin: margin)
 
-  set document(
-    title: info.title.title,
-    author: info.authors.map(author => author.name),
-  )
+  set document(title: info.title.title, author: info.authors.map(author => author.name))
 
   set heading(bookmarked: true)
 
@@ -78,12 +76,7 @@
   /// Paragraph
   ///
   /// set justify, leading, spacing, and first-line-indent
-  set par(
-    justify: justify,
-    leading: leading,
-    spacing: spacing,
-    first-line-indent: (amount: indent, all: true),
-  )
+  set par(justify: justify, leading: leading, spacing: spacing, first-line-indent: (amount: indent, all: true))
 
   /// List
   ///
@@ -108,10 +101,7 @@
       weight: array-at(heading-weight, it.level),
     )
 
-    set block(
-      above: array-at(heading-above, it.level),
-      below: array-at(heading-below, it.level),
-    )
+    set block(above: array-at(heading-above, it.level), below: array-at(heading-below, it.level))
 
     v(array-at(heading-front-vspace, it.level))
 

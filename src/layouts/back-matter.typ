@@ -20,13 +20,11 @@
   /// Render the back matter page
   pagebreak(weak: true, to: if twoside { "odd" })
 
-  set heading(
-    numbering: custom-numbering(
-      first-level: heading-numbering.first-level,
-      depth: heading-numbering.depth,
-      heading-numbering.format,
-    ),
-  )
+  set heading(numbering: custom-numbering(
+    first-level: heading-numbering.first-level,
+    depth: heading-numbering.depth,
+    heading-numbering.format,
+  ))
 
   if reset-counter { counter(heading).update(0) }
 

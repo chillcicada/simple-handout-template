@@ -1,5 +1,5 @@
-// #import "../src/lib.typ": define-config
-#import "@preview/simple-handout:0.1.0": define-config
+#import "../src/lib.typ": define-config
+// #import "@preview/simple-handout:0.1.0": define-config
 
 /// 以下字体配置适用于安装了 Windows 10/11 字体及 Windows 10/11 简体中文字体扩展的设备，
 /// 请勿修改 font-family 中定义的键值，一般情况下，其含义为：
@@ -10,36 +10,19 @@
 /// - Mono: 等宽字体，对于代码，会优先使用此项，推荐中文字体使用黑体或楷体，或者一些流行的中文等宽字体
 /// - Math: 数学字体，通常用于数学公式和符号，中文字体默认使用楷体
 #let font-family = (
-  SongTi: (
-    (name: "Times New Roman", covers: "latin-in-cjk"),
-    "NSimSun",
-  ),
-  HeiTi: (
-    (name: "Arial", covers: "latin-in-cjk"),
-    "SimHei",
-  ),
-  KaiTi: (
-    (name: "Times New Roman", covers: "latin-in-cjk"),
-    "KaiTi",
-  ),
-  FangSong: (
-    (name: "Times New Roman", covers: "latin-in-cjk"),
-    "FangSong",
-  ),
-  Mono: (
-    (name: "DejaVu Sans Mono", covers: "latin-in-cjk"),
-    "SimHei",
-  ),
-  Math: (
-    "New Computer Modern Math",
-    "KaiTi",
-  ),
+  SongTi: ((name: "Times New Roman", covers: "latin-in-cjk"), "NSimSun"),
+  HeiTi: ((name: "Arial", covers: "latin-in-cjk"), "SimHei"),
+  KaiTi: ((name: "Times New Roman", covers: "latin-in-cjk"), "KaiTi"),
+  FangSong: ((name: "Times New Roman", covers: "latin-in-cjk"), "FangSong"),
+  Mono: ((name: "DejaVu Sans Mono", covers: "latin-in-cjk"), "SimHei"),
+  Math: ("New Computer Modern Math", "KaiTi"),
 )
 
 #let (
+  ..config,
   /// entry options
   twoside,
-  use-font,
+  use-fonts,
   /// layouts
   meta,
   doc,
@@ -47,38 +30,36 @@
   main-matter,
   back-matter,
   /// pages
-  font-display,
+  fonts-display,
   cover,
   preface,
   outline-wrapper,
   notation,
+  master-list,
   figure-list,
   table-list,
   equation-list,
   bilingual-bibliography,
 ) = define-config(
   info: (
-    title: (
-      title: "标题",
-      subtitle: "副标题",
-    ),
+    title: "标题",
+    subtitle: "副标题",
     authors: (
-      (
-        name: "作者",
-        email: "mail@example.com",
-      ),
+      (name: "作者", email: "mail@example.com"),
     ),
     version: "0.0.0",
+    date: datetime.today(),
   ),
-  font: font-family,
-  bibliography: bibliography.with("refs.bib"),
+  fonts: font-family,
+  twoside: false,
+  bibliography: read("refs.bib"),
 )
 
 /// Document Configuration
-#show: meta
+#show: it => meta(it)
 
 /// Font Display Page
-#font-display()
+#fonts-display()
 
 /// Cover Page
 #cover()

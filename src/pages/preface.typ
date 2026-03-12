@@ -1,10 +1,9 @@
-#import "../utils/font.typ": _use-font, use-size
-
 #let preface(
   // from entry
-  font: (:),
+  fonts: (:),
   twoside: false,
   // options
+  default-fonts: (:),
   date: datetime.today(),
   date-display: "[year] 年 [month] 月 [day] 日",
   title: [前　　言],
@@ -14,21 +13,22 @@
   // self
   it,
 ) = {
-  /// Render the preface page
-  pagebreak(weak: true, to: if twoside { "odd" })
+  import "../font.typ": _use-fonts
+  import "../imports.typ": tntt
+  import tntt: twoside-pagebreak, use-size
 
-  heading(
-    level: 1,
-    outlined: outlined,
-    bookmarked: true,
-    title,
-  )
+  let use-fonts = _use-fonts.with(fonts + default-fonts)
+
+  /// Render the preface page
+  twoside-pagebreak(twoside)
+
+  heading(level: 1, outlined: outlined, bookmarked: true, title)
 
   // body
-  set text(font: _use-font(font, body-font), size: use-size("小四"))
+  set text(font: use-fonts(body-font), size: use-size("小四"))
 
   it
 
   // back
-  align(right, text(font: _use-font(font, body-font), size: use-size("小四"), date.display(date-display)))
+  align(right, text(font: use-fonts(body-font), size: use-size("小四"), date.display(date-display)))
 }

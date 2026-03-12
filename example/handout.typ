@@ -1,45 +1,84 @@
-#import "../src/lib.typ": define-config, summary-block, tablem, use-size
+#import "../src/lib.typ": cuti, define-config, use-size
+
+#import "@preview/unify:0.7.1": unit as _unit
+#import "@preview/tablem:0.2.0": tablem, three-line-table as _three-line-table
 #import "unit.typ": *
 
-/// 以下字体配置适用于安装了 Windows 10/11 字体及 Windows 10/11 简体中文字体扩展的设备，
-/// 请勿修改 font-family 中定义的键值，一般情况下，其含义为：
-/// - SongTi: 宋体，正文字体，通常对应西文中的衬线字体
-/// - HeiTi: 黑体，标题字体，通常对应西文中的无衬线字体
-/// - KaiTi: 楷体，用于说明性文本和主观性的表达
-/// - FangSong: 仿宋，通常用于注释、引文及权威性阐述
-/// - Mono: 等宽字体，对于代码，会优先使用此项，推荐中文字体使用黑体或楷体，或者一些流行的中文等宽字体
-/// - Math: 数学字体，通常用于数学公式和符号，中文字体默认使用楷体
+#let unit = _unit.with(per: "\/")
+
+#let two-line-table = tablem.with(ignore-second-row: false, use-table-header: false, render: (
+  columns: auto,
+  ..args,
+) => {
+  table(
+    columns: columns,
+    stroke: none,
+    align: center + horizon,
+    table.hline(y: 0, stroke: .5pt),
+    ..args,
+    table.hline(stroke: .5pt),
+  )
+})
+
+#let three-line-table = _three-line-table.with(ignore-second-row: false)
+
+#let summary-block(notion: none, equation: none, reference: none) = {
+  import cuti: fakebold
+
+  let block1(ctx) = block(
+    width: 100%,
+    fill: black,
+    text(ctx, white, size: use-size("四号"), font: "SimHei"),
+    inset: (left: 8pt, y: 4pt),
+    below: 16pt,
+  )
+  let block2(ctx) = block(text(ctx, size: use-size("小四"), font: "SimHei"), inset: (left: 24pt))
+
+  set list(marker: text(fakebold("☐"), font: "KaiTi"), indent: 24pt, body-indent: 1.5em)
+  set table(
+    columns: (1fr, 1fr, auto),
+    stroke: none,
+    fill: (x, y) => if calc.even(y) { luma(220) },
+    align: center + horizon,
+  )
+
+  {
+    block1[本章要点]
+
+    if (notion != none) {
+      block2[概念]
+
+      notion
+    }
+
+    if (equation != none) {
+      block2[公式]
+
+      equation
+    }
+
+    if (reference != none) {
+      block2[延伸阅读]
+
+      reference
+    }
+  }
+}
+
 #let font-family = (
-  SongTi: (
-    (name: "Times New Roman", covers: "latin-in-cjk"),
-    "NSimSun",
-  ),
-  HeiTi: (
-    (name: "Arial", covers: "latin-in-cjk"),
-    "SimHei",
-  ),
-  KaiTi: (
-    (name: "Times New Roman", covers: "latin-in-cjk"),
-    "KaiTi",
-  ),
-  FangSong: (
-    (name: "Times New Roman", covers: "latin-in-cjk"),
-    "FangSong",
-  ),
-  Mono: (
-    (name: "DejaVu Sans Mono", covers: "latin-in-cjk"),
-    "SimHei",
-  ),
-  Math: (
-    "New Computer Modern Math",
-    "KaiTi",
-  ),
+  SongTi: ((name: "Times New Roman", covers: "latin-in-cjk"), "NSimSun"),
+  HeiTi: ((name: "Arial", covers: "latin-in-cjk"), "SimHei"),
+  KaiTi: ((name: "Times New Roman", covers: "latin-in-cjk"), "KaiTi"),
+  FangSong: ((name: "Times New Roman", covers: "latin-in-cjk"), "FangSong"),
+  Mono: ((name: "DejaVu Sans Mono", covers: "latin-in-cjk"), "SimHei"),
+  Math: ("New Computer Modern Math", "KaiTi"),
 )
 
 #let (
+  ..config,
   /// entry options
   twoside,
-  use-font,
+  use-fonts,
   /// layouts
   meta,
   doc,
@@ -47,62 +86,59 @@
   main-matter,
   back-matter,
   /// pages
-  font-display,
+  fonts-display,
   cover,
   preface,
   outline-wrapper,
   notation,
+  master-list,
   figure-list,
   table-list,
   equation-list,
   bilingual-bibliography,
 ) = define-config(
   info: (
-    title: (
-      title: "高分子流变学讲义",
-      subtitle: "Polymer Rheology",
-    ),
+    title: "高分子流变学讲义",
+    subtitle: "Polymer Rheology",
     authors: (
-      (
-        name: "单明悦",
-        email: "shanmy22@mails.tsinghua.edu.cn",
-      ),
-      (
-        name: "王一涵",
-        email: "yh-w22@mails.tsinghua.edu.cn",
-      ),
-      (
-        name: "王子易",
-        email: "w-zy22@mails.tsinghua.edu.cn",
-      ),
-      (
-        name: "刘宽",
-        email: "liukuan22@mails.tsinghua.edu.cn",
-      ),
+      (name: "单明悦", email: "shanmy22@mails.tsinghua.edu.cn"),
+      (name: "王一涵", email: "yh-w22@mails.tsinghua.edu.cn"),
+      (name: "王子易", email: "w-zy22@mails.tsinghua.edu.cn"),
+      (name: "刘宽", email: "liukuan22@mails.tsinghua.edu.cn"),
     ),
     version: "1.0.0",
+    date: datetime.today(),
   ),
-  font: font-family,
-  bibliography: bibliography.with("refs.bib"),
+  fonts: font-family,
+  bibliography: read("refs.bib"),
 )
 
 /// Document Configuration
-#show: meta
+#show: it => meta(it)
 
 /// Font Display Page
-// #font-display()
+// #fonts-display()
 
 /// Cover Page
 #cover()
 
 /// After Cover Layout, basical layout for Front Matter, Main Matter and Back Matter
-#show: doc
+#show: it => doc(
+  leading: 1em,
+  spacing: 1em,
+  heading-font: ("HeiTi", "HeiTi", "SongTi"),
+  heading-weight: ("regular", "regular", "bold"),
+  outline-fill: repeat([.], gap: 0.15em),
+  it,
+)
+
+#set enum(numbering: "①")
 
 /// ------------ ///
 /// Front Matter ///
 /// ------------ ///
 
-#show: front-matter
+#show: it => front-matter(it)
 
 // Preface Page
 #preface(date: datetime(year: 2025, month: 6, day: 6))[
@@ -110,13 +146,22 @@
 ]
 
 // Outline Page
-#outline-wrapper()
+#outline-wrapper(
+  gap: 0pt,
+  font: ("HeiTi", "SongTi", "FangSong"),
+  size: ("小三", "四号", "小四"),
+  fill: (repeat([.], gap: 0.15em),),
+  indent: (0pt, 28pt, 22pt, 28pt),
+  above: (30pt, 18pt, 12pt, 12pt),
+  below: (0pt,),
+  depth: 4,
+)
 
 /// ----------- ///
 /// Main Matter ///
 /// ----------- ///
 
-#show: main-matter
+#show: it => main-matter(heading-numbering: (formats: ("第一章", "1.1"), depth: 4, supplyment: " "), it)
 
 /// Chapter 1
 
@@ -469,8 +514,8 @@ $ <幂律方程>
 Bird-Carreau模型：
 
 $
-                       eta & = eta_0 / [1 + (lambda dot(gamma))^2]^((1-n) / 2)        \
-          dot(gamma) -> 0: & quad eta = eta_0                                         \
+                       eta & = eta_0 / [1 + (lambda dot(gamma))^2]^((1-n) / 2) \
+          dot(gamma) -> 0: & quad eta = eta_0 \
   dot(gamma)>> 1 / lambda: & quad eta approx dot(gamma)^(n - 1) quad "相当于幂律方程"
 $ <Bird-Carreau模型>
 
@@ -511,7 +556,7 @@ $ <Modified-Cross模型>
 在圆管内取一个半径为r的圆柱形液体进行受力分析 :
 
 $
-  Delta p dot pi r^2 - tau_r dot 2 pi r L & = 0                      \
+  Delta p dot pi r^2 - tau_r dot 2 pi r L & = 0 \
                                  => tau_r & = (Delta p) / (2L) dot r
 $
 
@@ -540,12 +585,12 @@ $ <圆管中牛顿流体体积流率>
 ==== 非牛顿流体
 
 $
-       tau_r & = k dot(gamma)^n = (Delta p r) / (2L)                     \
+       tau_r & = k dot(gamma)^n = (Delta p r) / (2L) \
   dot(gamma) & = -(dif v_r) / (dif r) = ( (Delta p r) / (2K L) )^(1 / n)
 $
 
 $
-  v_r & = integral_r^R dot(gamma) dif r                                                      \
+  v_r & = integral_r^R dot(gamma) dif r \
       & = ( (Delta p) / (2K L) )^(1 / n) dot n / (n+1) dot ( R^((n+1) / n) - r^((n+1) / n) ) \
       & = ( (Delta p R) / (2K L) )^(1 / n) (n R) / (n+1) [1 - (r / R)^((n+1) / n)]
 $
@@ -558,10 +603,10 @@ $
 体积流率：
 
 $
-  Q & = integral_0^R 2pi r dif r dot v_r                                                                         \
+  Q & = integral_0^R 2pi r dif r dot v_r \
     & = integral_0^R 2pi ( (Delta p) / (2K L) )^(1 / n) n / (n+1) ( R^((n+1) / n) dot r - r^((2n+1) / n) ) dif r \
-    & = 2pi ( (Delta p) / (2K L) )^(1 / n) n / (n+1) ( R^((3n+1) / n) / 2 - n / (3n+1) R^((3n+1) / n) )          \
-    & = (pi n R^3) / (3n+1) ( (Delta p R) / (2K L) )^(1 / n)                                                     \
+    & = 2pi ( (Delta p) / (2K L) )^(1 / n) n / (n+1) ( R^((3n+1) / n) / 2 - n / (3n+1) R^((3n+1) / n) ) \
+    & = (pi n R^3) / (3n+1) ( (Delta p R) / (2K L) )^(1 / n) \
 $ <圆管中非牛顿流体体积流率>
 
 $
@@ -692,9 +737,7 @@ $ <狭缝中幂律流体剪切速率>
     [$ epsilon = integral_(l_0)^l (dif l) / l = ln l / l_0 $ <->],
     [@eqt:Hencky拉伸应变],
     [拉伸应变速率],
-    [$
-        dot(epsilon) = (dif ln l / l_0) / (dif t) = 1 / l dot (dif l) / (dif t)
-      $ <->],
+    [$ dot(epsilon) = (dif ln l / l_0) / (dif t) = 1 / l dot (dif l) / (dif t) $ <->],
     [@eqt:拉伸应变速率],
     [习用拉伸应力],
     [$ sigma = F / A_0 $ <->],
@@ -724,45 +767,31 @@ $ <狭缝中幂律流体剪切速率>
     [$ tau = K dot(gamma)^n $ <->],
     [@eqt:幂律方程],
     [Bird-Carreau模型],
-    [$
-        eta = eta_0 / [1 + (lambda dot(gamma))^2]^((1-n) / 2)
-      $ <->],
+    [$ eta = eta_0 / [1 + (lambda dot(gamma))^2]^((1-n) / 2) $ <->],
     [@eqt:Bird-Carreau模型],
     [Carreau-Yasuda模型],
-    [$
-        (eta - eta_infinity) / (eta_0 - eta_infinity) = 1 / [1 + (lambda dot(gamma))^a]^((1 - n) / a)
-      $ <->],
+    [$ (eta - eta_infinity) / (eta_0 - eta_infinity) = 1 / [1 + (lambda dot(gamma))^a]^((1 - n) / a) $ <->],
     [@eqt:Carreau-Yasuda模型],
     [Cross模型],
-    [$
-        (eta - eta_infinity) / (eta_0 - eta_infinity) = 1 / (1 + (lambda dot(gamma))^m)
-      $ <->],
+    [$ (eta - eta_infinity) / (eta_0 - eta_infinity) = 1 / (1 + (lambda dot(gamma))^m) $ <->],
     [@eqt:Cross模型],
     [Modified Cross模型],
-    [$
-        eta = eta_0 / (1 + (eta_0 dot(gamma) slash tau)^m)
-      $ <->],
+    [$ eta = eta_0 / (1 + (eta_0 dot(gamma) slash tau)^m) $ <->],
     [@eqt:Modified-Cross模型],
     [圆管中牛顿流体体积流率],
     [$ Q = (Delta P pi R^4) / (8eta L) $ <->],
     [@eqt:圆管中牛顿流体体积流率],
     [圆管中非牛顿流体体积流率],
-    [$
-        Q = (pi n R^3) / (3n+1) ( (Delta p R) / (2K L) )^(1 / n)
-      $ <->],
+    [$ Q = (pi n R^3) / (3n+1) ( (Delta p R) / (2K L) )^(1 / n) $ <->],
     [@eqt:圆管中非牛顿流体体积流率],
     [Rabinowitsch-Mooney公式],
-    [$
-        dot(gamma)_w = dot(gamma)_a / 4 dot ( (dif ln dot(gamma)_a) / (dif ln tau_w) + 3 )
-      $ <->],
+    [$ dot(gamma)_w = dot(gamma)_a / 4 dot ( (dif ln dot(gamma)_a) / (dif ln tau_w) + 3 ) $ <->],
     [@eqt:Rabinowitsch-Mooney公式],
     [狭缝中牛顿流体剪切速率],
     [$ dot(gamma)_a = (6 Q) / (W H^2) $ <->],
     [@eqt:狭缝中牛顿流体剪切速率],
     [狭缝中幂律流体剪切速率],
-    [$
-        dot(gamma)_w = dot(gamma)_a / 3 dot ( (dif ln dot(gamma)_a) / (dif ln tau_w) + 2 )
-      $ <->],
+    [$ dot(gamma)_w = dot(gamma)_a / 3 dot ( (dif ln dot(gamma)_a) / (dif ln tau_w) + 2 ) $ <->],
     [@eqt:狭缝中幂律流体剪切速率],
   ),
 )
@@ -843,7 +872,7 @@ $ <毛细管管壁处剪切应力>
 毛细管管壁处牛顿流体的*剪切速率：*
 
 $
-  dot(gamma)_w & = (4Q) / (pi R^3)          \
+  dot(gamma)_w & = (4Q) / (pi R^3) \
            eta & = (tau_w) / (dot(gamma_w))
 $ <毛细管管壁处牛顿流体的剪切速率>
 
@@ -881,7 +910,7 @@ $ <毛细管管壁处牛顿流体的剪切速率>
   毛细管壁面处非牛顿流体的真实剪切速率
 
   $
-    dot(gamma)_(w,"非牛") & = (3n+1) / (4n) dot(gamma)_(w,"牛")                                       \
+    dot(gamma)_(w,"非牛") & = (3n+1) / (4n) dot(gamma)_(w,"牛") \
                           & = dot(gamma)_(w,"a") / 4 ((d ln(dot(gamma)_(w,"牛"))) / (d ln(tau_w)) +3)
   $ <毛细管壁面处非牛顿流体的真实剪切速率>
 
@@ -2785,18 +2814,13 @@ $ <储能模量与法向应力差关系>
     [$ tau_w = (R Delta P) / (2L) $ <->],
     [@eqt:毛细管管壁处剪切应力],
     [毛细管管壁处牛顿流体的剪切速率],
-    [$
-        dot(gamma) = (2R Delta P) / (L eta)
-      $ <->],
+    [$ dot(gamma) = (2R Delta P) / (L eta) $ <->],
     [@eqt:毛细管管壁处牛顿流体的剪切速率],
     [入口压力降校正的经验公式],
     [$ tau_w = (R Delta P) / (2(L+ n_B D)) $ <->],
     [@eqt:入口压力降校正的经验公式],
     [毛细管壁面处非牛顿流体的真实剪切速率],
-    [$
-        dot(gamma)_(w,"非牛")
-        = dot(gamma)_(w,"a") / 4 ((d ln(dot(gamma)_(w,"牛"))) / (d ln(tau_w)) +3)
-      $ <->],
+    [$ dot(gamma)_(w,"非牛") = dot(gamma)_(w,"a") / 4 ((d ln(dot(gamma)_(w,"牛"))) / (d ln(tau_w)) +3) $ <->],
     [@eqt:毛细管壁面处非牛顿流体的真实剪切速率],
     [同轴旋转圆筒流变仪],
     [-],
@@ -2811,14 +2835,10 @@ $ <储能模量与法向应力差关系>
     [-],
     [@fig:拉伸应力张量],
     [Andrade公式],
-    [$
-        eta = A e^((E_eta) / (k T))
-      $ <->],
+    [$ eta = A e^((E_eta) / (k T)) $ <->],
     [@eqt:Andrade公式],
     [WLF方程],
-    [$
-        log a_T = (-C_1 (T - T_s)) / (C_2 + T - T_s)
-      $ <->],
+    [$ log a_T = (-C_1 (T - T_s)) / (C_2 + T - T_s) $ <->],
     [@eqt:WLF方程],
     [蛇行理论],
     [-],
@@ -2827,82 +2847,52 @@ $ <储能模量与法向应力差关系>
     [-],
     [@fig:Rouse模型],
     [Utracki公式],
-    [$
-        lg eta_m=omega_1 lg eta_1 + omega_2 lg eta_2
-      $ <->],
+    [$ lg eta_m=omega_1 lg eta_1 + omega_2 lg eta_2 $ <->],
     [@eqt:Utracki公式],
     [Einstein公式],
-    [$
-        eta_r = eta / eta_0=1+K_E phi
-      $ <->],
+    [$ eta_r = eta / eta_0=1+K_E phi $ <->],
     [@eqt:Einstein公式],
     [Guth-Gold方程],
-    [$
-        eta_r = 1+2.5 phi +14.1 phi^2
-      $ <->],
+    [$eta_r = 1+2.5 phi +14.1 phi^2$ <->],
     [@eqt:Guth-Gold方程],
     [Mooney公式],
-    [$
-        ln(eta / eta_0)=(K_E phi) / (1-phi slash phi_m)
-      $ <->],
+    [$ ln(eta / eta_0)=(K_E phi) / (1-phi slash phi_m) $ <->],
     [@eqt:Mooney公式],
     [橡胶弹性],
-    [$
-        f=((partial u) / (partial l))_(T,V)-T((partial S) / (partial l))_(T,V)
-      $ <->],
+    [$ f=((partial u) / (partial l))_(T,V)-T((partial S) / (partial l))_(T,V) $ <->],
     [@eqt:橡胶弹性],
     [拉伸强度],
-    [$
-        sigma_t = P / (b d)
-      $ <->],
+    [$ sigma_t = P / (b d) $ <->],
     [@eqt:拉伸强度],
     [杨氏模量],
-    [$
-        E= (Delta P slash b d) / (Delta l slash l_0)
-      $ <->],
+    [$ E= (Delta P slash b d) / (Delta l slash l_0) $ <->],
     [@eqt:杨氏模量],
     [弯曲强度],
-    [$
-        sigma_f = P / 2 (l_0 slash 2) / (b d^2 slash 6)
-      $ <->],
+    [$ sigma_f = P / 2 (l_0 slash 2) / (b d^2 slash 6) $ <->],
     [@eqt:弯曲强度],
     [弯曲模量],
-    [$
-        E_f = (Delta P l_0^3) / (4 b d^3 delta)
-      $ <->],
+    [$ E_f = (Delta P l_0^3) / (4 b d^3 delta) $ <->],
     [@eqt:弯曲模量],
     [冲击强度],
-    [$
-        sigma_i = W / (b d)
-      $ <->],
+    [$ sigma_i = W / (b d) $ <->],
     [@eqt:冲击强度],
     [剪切模量],
-    [$
-        G=sigma_s / gamma = F / (A_0 tan theta)
-      $ <->],
+    [$ G=sigma_s / gamma = F / (A_0 tan theta) $ <->],
     [@eqt:剪切模量],
     [体积模量],
-    [$
-        B=F / (Delta V slash V_0)=(P V_0) / (Delta V)
-      $ <->],
+    [$ B=F / (Delta V slash V_0)=(P V_0) / (Delta V) $ <->],
     [@eqt:体积模量],
     [弹性模量关系],
-    [$
-        E=2G (1+nu)=3B(1-2nu)
-      $ <->],
+    [$ E=2G (1+nu)=3B(1-2nu) $ <->],
     [@eqt:弹性模量关系],
     [流体微元受力示意图],
     [-],
     [@fig:流体微元受力示意图],
     [第一法向应力差],
-    [$
-        N_1=sigma_11+sigma_22=psi_1 dot(gamma)>0
-      $ <->],
+    [$ N_1=sigma_11+sigma_22=psi_1 dot(gamma)>0 $ <->],
     [@eqt:第一法向应力差],
     [第二法向应力差],
-    [$
-        N_2=sigma_22-sigma_33=psi_2 dot(gamma)≈-0.1 N_1 < 0
-      $ <->],
+    [$ N_2=sigma_22-sigma_33=psi_2 dot(gamma)≈-0.1 N_1 < 0 $ <->],
     [@eqt:第二法向应力差],
     [爬杆效应],
     [-],
@@ -2911,23 +2901,19 @@ $ <储能模量与法向应力差关系>
     [-],
     [@fig:入口效应],
     [膨胀比],
-    [$
-        B=D_max slash D
-      $ <->],
+    [$ B=D_max slash D $ <->],
     [@eqt:膨胀比],
     [出口胀大效应],
     [-],
     [@fig:出口胀大效应],
     [Tanner公式],
-    [$
-        N_1=2 sigma_w (2 B^6-2)^(1 slash 2)
-      $ <->],
+    [$ N_1=2 sigma_w (2 B^6-2)^(1 slash 2) $ <->],
     [@eqt:Tanner公式],
     [Han公式],
     [$
-        N_1 & = p_"exit"+sigma_w ((d p_"exit") / (d sigma_w)) \
-        N_2 & = -sigma_w ((d p_"exit") / (d sigma_w))
-      $ <->],
+      N_1 & = p_"exit"+sigma_w ((d p_"exit") / (d sigma_w)) \
+      N_2 & = -sigma_w ((d p_"exit") / (d sigma_w))
+    $ <->],
     [@eqt:Han公式],
     [管道入口处的次级流动],
     [-],
@@ -2936,34 +2922,22 @@ $ <储能模量与法向应力差关系>
     [-],
     [@fig:管壁滑-粘转变],
     [韦森堡数],
-    [$
-        "Nw" = lambda dot(gamma)
-      $ <->],
+    [$ "Nw" = lambda dot(gamma) $ <->],
     [@eqt:韦森堡数],
     [普弹形变],
-    [$
-        epsilon(t)=epsilon_0 e^(i omega t)
-      $ <->],
+    [$ epsilon(t)=epsilon_0 e^(i omega t) $ <->],
     [@eqt:普弹形变],
     [高弹形变],
-    [$
-        epsilon(t)=epsilon_0 sin omega t
-      $ <->],
+    [\$       epsilon(t)=epsilon_0 sin omega t \$ <->],
     [@eqt:高弹形变],
     [粘性流动],
-    [$
-        sigma(t)=sigma_0 e^(i omega t)
-      $ <->],
+    [$ sigma(t)=sigma_0 e^(i omega t) $ <->],
     [@eqt:粘性流动],
     [总形变],
-    [$
-        epsilon(t) = sigma / E_1+sigma / E_2(1-e^(-t slash tau))+sigma / eta_3 t
-      $ <->],
+    [$ epsilon(t) = sigma / E_1+sigma / E_2(1-e^(-t slash tau))+sigma / eta_3 t $ <->],
     [@eqt:总形变],
     [应力松弛],
-    [$
-        sigma(t)=sigma_0 e^(-t slash tau)
-      $ <->],
+    [$ sigma(t)=sigma_0 e^(-t slash tau) $ <->],
     [@eqt:应力松弛],
     [Maxwell模型],
     [-],
@@ -2972,69 +2946,45 @@ $ <储能模量与法向应力差关系>
     [-],
     [@fig:Voigt模型],
     [移动因子],
-    [$
-        a_T = tau / tau_s
-      $ <->],
+    [$ a_T = tau / tau_s $ <->],
     [@eqt:移动因子],
     [动态应变],
-    [$
-        epsilon (t) =epsilon_0 sin omega t
-      $ <->],
+    [$ epsilon (t) =epsilon_0 sin omega t $ <->],
     [@eqt:动态应变],
     [动态应力],
-    [$
-        sigma (t)=sigma_0 sin omega t cos delta + sigma_0 cos omega t sin delta
-      $ <->],
+    [$ sigma (t)=sigma_0 sin omega t cos delta + sigma_0 cos omega t sin delta $ <->],
     [@eqt:动态应力],
     [储能模量],
-    [$
-        E'=(sigma_0 / epsilon_0) cos delta
-      $ <->],
+    [$ E'=(sigma_0 / epsilon_0) cos delta $ <->],
     [@eqt:储能模量],
     [损耗模量],
-    [$
-        E''=(sigma_0 / epsilon_0) sin delta
-      $ <->],
+    [$ E''=(sigma_0 / epsilon_0) sin delta $ <->],
     [@eqt:损耗模量],
     [复数模量],
-    [$
-        E^*=E'+i E''
-      $ <->],
+    [$ E^*=E'+i E'' $ <->],
     [@eqt:复数模量],
     [损耗因子],
-    [$
-        tan delta =E'' / E'
-      $ <->],
+    [$ tan delta =E'' / E' $ <->],
     [@eqt:损耗因子],
     [动态模量],
-    [$
-        E=|E^*|=sqrt(E'^2+E''^2)
-      $ <->],
+    [$ E=|E^*|=sqrt(E'^2+E''^2) $ <->],
     [@eqt:动态模量],
     [复数粘度],
-    [$
-        eta^*=tau^* / dot(gamma)^* =tau^* / (i omega gamma^*)=G'' / omega - i G' / omega
-      $ <->],
+    [$ eta^*=tau^* / dot(gamma)^* =tau^* / (i omega gamma^*)=G'' / omega - i G' / omega $ <->],
     [@eqt:复数粘度],
     [动态粘度],
-    [$
-        eta'=G'' / omega
-      $ <->],
+    [$ eta'=G'' / omega $ <->],
     [@eqt:动态粘度],
     [第一Cox-Merz关系式],
-    [$
-        |eta^*(omega)| = eta_a (dot(gamma))|_(dot(gamma) = omega)
-      $ <->],
+    [$ |eta^*(omega)| = eta_a (dot(gamma))|_(dot(gamma) = omega) $ <->],
     [@eqt:第一Cox-Merz关系式],
     [第二Cox-Merz关系式],
-    [$
-        eta_c (dot(gamma)) & = (d tau(dot(gamma))) / (d dot(gamma))
-      $ <->],
+    [$ eta_c (dot(gamma)) & = (d tau(dot(gamma))) / (d dot(gamma)) $ <->],
     [@eqt:第二Cox-Merz关系式],
     [储能模量与法向应力差关系],
     [$
-        lim_(omega → 0) (G'(omega)) / omega^2 = lim_(N_1 → infinity) N_1 / (2 dot(gamma)^2) |_(dot(gamma) = omega)
-      $ <->],
+      lim_(omega → 0) (G'(omega)) / omega^2 = lim_(N_1 → infinity) N_1 / (2 dot(gamma)^2) |_(dot(gamma) = omega)
+    $ <->],
     [@eqt:储能模量与法向应力差关系],
   ),
 )
@@ -3335,7 +3285,7 @@ Coolmax 纤维由美国杜邦公司研制开发，是异形截面的 PET 纤维�
 /// Back Matter ///
 /// ----------- ///
 
-#show: back-matter
+#show: it => back-matter(it)
 
 #notation[
   / De: Deborah 数

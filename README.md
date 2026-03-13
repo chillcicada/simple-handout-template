@@ -1,6 +1,6 @@
 # Simple Handout Template
 
-This is a simple typst handout template, **original made for my course 'Polymer Molding and Processing' at the Tsinghua University.** It is designed to be easy to use and modify, with a focus on simplicity and clarity.
+This is a simple typst handout template for Chinese typesetting based on [TnTT](https://github.com/chillcicada/tntt), **original made for my course 'Polymer Molding and Processing' at the Tsinghua University.** It is designed to be easy to use and modify, with a focus on simplicity and clarity.
 
 ## Example
 

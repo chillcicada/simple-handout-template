@@ -1,15 +1,15 @@
 [package]
 name = "simple-handout"
-version = "0.1.0"
+version = "0.2.0"
 entrypoint = "src/lib.typ"
 authors = ["chillcicada"]
 license = "MIT"
-description = "A simple handout template."
+description = "A simple handout template for Chinese typesetting based on TnTT."
 repository = "https://github.com/chillcicada/simple-handout-template"
-keywords = ["book", "handout", "template"]
+keywords = ["book", "handout", "template", "cjk", "tntt"]
 categories = ["book"]
 exclude = [".*", "example"]
-compiler = "0.13.0"
+compiler = "0.14.0"
 
 [template]
 path = "template"

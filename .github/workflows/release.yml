@@ -2,8 +2,6 @@ name: Release package
 
 on:
   push:
-    branches:
-      - webapp
     tags:
       - "v*"
   workflow_dispatch:
@@ -15,6 +13,7 @@ env:
 jobs:
   release:
     runs-on: ubuntu-latest
+    if: contains(github.event.ref, 'refs/tags/') && github.event.base_ref == 'refs/heads/webapp'
     steps:
       - name: Checkout
         uses: actions/checkout@v6

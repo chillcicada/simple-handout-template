@@ -1,1 +1,1 @@
-#import "@preview/tntt:0.5.1"
+#import "@preview/tntt:0.5.2"

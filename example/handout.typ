@@ -1,7 +1,7 @@
 #import "../src/lib.typ": cuti, define-config, use-size
 
-#import "@preview/unify:0.7.1": unit as _unit
-#import "@preview/tablem:0.2.0": tablem, three-line-table as _three-line-table
+#import "@preview/unify:0.8.1": unit as _unit
+#import "@preview/tablem:0.3.0": tablem, three-line-table as _three-line-table
 #import "unit.typ": *
 
 #let unit = _unit.with(per: "\/")
